@@ -1,0 +1,39 @@
+.garage {
+  h1 {
+    margin-left: 100px;
+    margin-bottom: 40px;
+    span {
+      color: var(--primary-color);
+    }
+  }
+  margin-bottom: 40px;
+}
+.garage .places {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  img {
+    width: 31%;
+    height: 31%;
+    transition: .3s ease-in-out;
+    border-radius: 10px;
+    border: 1px solid var(--primary-color);
+  }
+  img:hover{
+    scale: 1.1;
+  }
+}
+/* media */
+@media only screen and (max-width: 1024px) {
+  .container {
+    width: 100%;
+  }
+}
+@media only screen and (max-width: 576px) {
+  .garage {
+    h1 {
+      margin-left: 10px;
+      /* margin-bottom: 40px; */
+    }
+  }
+}

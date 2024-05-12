@@ -1,4 +1,4 @@
-#root {
+/* #root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
@@ -39,4 +39,75 @@
 
 .read-the-docs {
   color: #888;
+} */
+
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/* ======== google fonts ========= */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600;700&display=swap");
+
+/* ======== css variables ============ */
+:root {
+  --primary-color: #f66f00;
+  --secondary-color: #0d1113;
+  --heading-color: #fff;
+  --body-bg: #0e1213;
+  --small-text-color: #acb2b2;
+  --font-name: "Montserrat", sans-serif;
+  --card-bg: #0a0b0b;
+}
+
+/* base style */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--body-bg);
+  font-family: var(--font-name);
+}
+
+a {
+  text-decoration: none;
+  color: unset;
+}
+
+ul {
+  list-style: none;
+}
+
+p {
+  color: var(--small-text-color);
+  font-size: 0.9rem;
+  line-height: 28px;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: var(--heading-color);
+  font-weight: 500;
+}
+
+/* reuseable css */
+
+.container {
+  width: 1140px;
+  margin: auto;
+  padding: 0px 20px;
+}
+
+.highlight {
+  color: var(--primary-color);
+}
+
+section {
+  padding: 60px 0px;
 }

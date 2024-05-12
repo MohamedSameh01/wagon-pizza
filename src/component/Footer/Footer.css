@@ -1,0 +1,134 @@
+/* footer style */
+
+.footer {
+  padding-top: 60px;
+  padding-bottom: 30px;
+  background: var(--card-bg);
+  display: block;
+  /* margin-top: 100px; */
+}
+.footer__wrapper {
+  display: flex;
+  column-gap: 2rem;
+}
+
+.footer__logo {
+  width: 40%;
+}
+
+.footer__box {
+  width: 15%;
+}
+
+.footer__logo p {
+  margin-top: 15px;
+  margin-bottom: 20px;
+}
+
+.subscribe__box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid var(--primary-color);
+  border-radius: 5px;
+  width: 90%;
+}
+
+.subscribe__box input {
+  padding: 15px 7px;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: #acb2b2;
+  font-size: 0.9rem;
+}
+
+.subscribe__box input::placeholder {
+  color: #acb2b2;
+}
+
+.subscribe__btn {
+  padding: 15px 25px;
+  background: var(--primary-color);
+  color: var(--secondary-color);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  border-radius: 0px 5px 5px 0px;
+}
+
+.footer__link-title {
+  margin-bottom: 20px;
+}
+
+.footer__menu {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+}
+
+.footer__link {
+  color: var(--small-text-color);
+  font-size: 0.9rem;
+}
+
+.footer__copyright {
+  text-align: center;
+  margin-top: 50px;
+}
+/* media  */
+@media only screen and (max-width: 1024px) {
+  .container {
+    width: 100%;
+  }
+}
+@media only screen and (max-width: 768px) {
+      section {
+    padding: 40px 0px;
+  }
+ .footer__logo {
+    width: 100%;
+  }
+
+  .footer__wrapper {
+    flex-wrap: wrap;
+    row-gap: 2rem;
+  }
+
+  .footer__box {
+    width: 30%;
+  }
+
+  .footer__logo input {
+    padding: 8px;
+    font-size: 0.8rem;
+  }
+
+  .subscribe__box {
+    width: 100%;
+  }
+
+  .subscribe__btn {
+    padding: 8px 30px;
+    font-size: 0.8rem;
+  }
+
+  .footer__link-title {
+    font-size: 1rem;
+  }
+
+  .footer__link {
+    font-size: 0.8rem;
+  }
+
+  .footer__copyright {
+    font-size: 0.8rem;
+  }
+}
+@media only screen and (max-width: 576px) {
+      .footer__box {
+    width: 45%;
+  }
+}
