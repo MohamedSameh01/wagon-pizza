@@ -42,17 +42,18 @@
 } */
 
 
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600;700&display=swap");
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 /* ======== google fonts ========= */
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600;700&display=swap");
 
 /* ======== css variables ============ */
 :root {
   --primary-color: #f66f00;
+  --orange-light: #e18336;
   --secondary-color: #0d1113;
   --heading-color: #fff;
   --body-bg: #0e1213;

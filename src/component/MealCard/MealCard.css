@@ -1,0 +1,61 @@
+
+.card {
+  height: 400px;
+  width: 30%;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  background: transparent;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-top: 30px;
+  color: var(--primary-color);
+  border-bottom: .1px solid var(--primary-color);
+}
+
+.card-image {
+  width: 100%;
+  height: 250px;
+  object-fit: contain;
+}
+
+.card-content {
+  padding: 16px;
+}
+
+.meal-name {
+  margin: 0;
+  margin-bottom: 16px;
+  color: var(--primary-color);
+  font-size: 18px;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.price {
+  font-size: 16px;
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+.cart-icon {
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .card {
+    width: 90%;
+  }
+
+  .meal-name {
+    font-size: 16px;
+  }
+
+  .price {
+    font-size: 14px;
+  }
+}

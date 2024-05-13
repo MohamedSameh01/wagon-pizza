@@ -1,6 +1,7 @@
+/* eslint-disable react/no-unescaped-entities */
 // import React from 'react'
 import "./Paner2.css"
-import PanerBoy from "../../assets/images/panerBoy.jpg"
+import PanerBoy from "../../assets/images/panerBoy2.jpg"
 
 const Paner2 = () => {
     return (
@@ -16,11 +17,8 @@ const Paner2 = () => {
                             <span className="highlight">Im Wangen's Pizza</span> geniessen Sie exzellente Speisen und Getränke in einem entspannten Ambiente.
                             Wir vereinen gekonnt die raffinierte italienische Esskultur mit dem Schweizer Lebensstil.
                         </h2>
-
                         <button className="view__more-btn">Order Now</button>
                     </div>
-
-                    
                 </div>
             </div>
         </section>

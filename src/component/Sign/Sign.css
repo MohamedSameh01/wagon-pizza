@@ -5,10 +5,8 @@
   .text {
     margin: auto;
     padding: 50px;
-    /* width: 70%; */
     text-align: center;
-    background-color: var(--small-text-color);
-    /* border-radius:4%; */
+    background-image: url("../../assets/background/pizza4.jpg");
     h1 {
       font-size: 2.5rem;
       line-height: 40px;
