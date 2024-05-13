@@ -3,7 +3,7 @@ import "./Sign.css"
 const Sign = () => {
   return (
     <section className="sign">
-        <div className="text container">
+        <div className="text">
               <h1>Profitieren Sie von unserem exklusiven Angebot: 
               <br/>
               Erhalten Sie <span> 50 % Rabatt auf Ihre erste Bestellung!</span></h1>
