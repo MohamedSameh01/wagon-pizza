@@ -26,15 +26,11 @@ const Nav = () => {
     };
   }, []);
 
-
-
   // const handleClickOutsideCart = (event) => {
   //   if (cartRef.current && !cartRef.current.contains(event.target)) {
   //     setIsMenue(false);
   //   }
   // };
-
-
 
   useEffect(() => {
     document.addEventListener("click", handleClickOutside, true);
@@ -42,8 +38,6 @@ const Nav = () => {
       document.removeEventListener("click", handleClickOutside, true);
     };
   }, []);
-
-
   return (
     <header className="header">
       <nav className="nav">
@@ -77,7 +71,9 @@ const Nav = () => {
         </div>
 
         <div className="nav-buttons">
-          <button className="login-btn">Login</button>
+          <button className="login-btn">
+            <Link to="Login">Login</Link>
+          </button>
           <div className="cart-container">
             <FaCartShopping className="cart" />
             <span className="quantity">0</span>
@@ -95,11 +91,7 @@ const Nav = () => {
       {/* <div ref={cartRef} className="shoping-cart">
 
         </div> */}
-
-      <div
-        ref={menueRef}
-        className={`menue-links ${isMenue ? "visible" : "hidden"}`}
-      >
+      <div className={`menue-links ${isMenue ? "visible" : "hidden"}`}>
         <ul className="nav-links">
           <li className="nav-item">
             <Link to="/" onClick={() => setIsMenue(false)}>
