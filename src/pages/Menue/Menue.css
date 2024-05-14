@@ -1,0 +1,76 @@
+.menue-sec {
+  h1 {
+    font-size: 2.5rem;
+    text-align: center;
+  }
+
+  .cats {
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    align-items: center;
+    .btn {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 0;
+      outline: none;
+      font-size: 1.3rem;
+      transition: 0.3s;
+      color: black;
+      background-color: yellow;
+      cursor: pointer;
+      /* padding: 10px 25px; */
+      width: 115px;
+      min-height: 45px;
+      border-radius: 10px;
+    }
+    .btn:hover {
+      /* scale: 1.05; */
+      /* padding-right: 35px; */
+      background-color: white;
+      border: 1px solid var(--primary-color);
+    }
+    .btn2 {
+      background-color: green;
+    }
+  }
+  .cards {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+}
+
+
+.card-label {
+    margin-top: 30px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    /* border: 1px solid #6b6464; */
+    padding: 10px;
+    border-radius: 8px;
+    background-color: var(--primary-color);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    width: 170px; 
+    max-width: 500px; 
+}
+
+.card-label .card-image {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 20px; /* space between image and title */
+}
+
+.card-label .card-title {
+    margin: 0;
+    font-size: .9rem;
+    color: #ffffff;
+    flex-grow: 1; /* ensures the title can expand as needed */
+}

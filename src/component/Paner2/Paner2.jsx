@@ -17,7 +17,7 @@ const Paner2 = () => {
                             <span className="highlight">Im Wangen's Pizza</span> geniessen Sie exzellente Speisen und Getränke in einem entspannten Ambiente.
                             Wir vereinen gekonnt die raffinierte italienische Esskultur mit dem Schweizer Lebensstil.
                         </h2>
-                        <button className="view__more-btn">Order Now</button>
+                        {/* <button className="view__more-btn">Order Now</button> */}
                     </div>
                 </div>
             </div>

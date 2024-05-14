@@ -1,6 +1,6 @@
 
 .card {
-  height: 400px;
+  min-height: 400px;
   width: 30%;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   background: transparent;
@@ -14,7 +14,7 @@
 .card-image {
   width: 100%;
   height: 250px;
-  object-fit: contain;
+  object-fit: cover;
 }
 
 .card-content {

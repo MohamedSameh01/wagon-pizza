@@ -1,0 +1,30 @@
+
+.angebote{
+    /* background-image:url("../../assets/background/offer.jpg") ; */
+    background-position: center;
+    background-repeat: no-repeat;
+    h1{
+        font-size: 2.5rem;
+        text-align: center;
+    }
+}
+.cards{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.offers{
+    margin-top: 70px;
+}
+@media (max-width: 480px) {
+    .card {
+        width: 90vw; 
+    }
+}
+
+@media (max-width: 640px) {
+    .swiper-slide {
+        padding: 5px;
+    }
+}

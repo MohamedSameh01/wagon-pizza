@@ -3,9 +3,9 @@
 import "./MealCard.css";
 import { FaCartShopping } from "react-icons/fa6";
 
-const MealCard = ({ imageSrc, mealName, price,description }) => {
+const MealCard = ({ imageSrc, mealName, price,description,width }) => {
   return (
-    <div className="card">
+    <div className="card" style={{width:width}}>
       <img src={imageSrc} alt={mealName} className="card-image" />
       <div className="card-content">
         <h2 className="meal-name">{mealName}</h2>
