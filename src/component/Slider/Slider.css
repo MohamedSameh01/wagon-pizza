@@ -58,3 +58,16 @@
     line-height: 50px;
   }
 }
+
+@media only screen and (max-width: 440px) {
+  .slider .slider-info {
+    h1 {
+    font-size: 2rem;
+ 
+  }
+  p {
+    font-size: 1rem;
+   
+  }
+  }
+}
