@@ -6,12 +6,44 @@ import { FaCartShopping } from "react-icons/fa6";
 import { CiMenuBurger } from "react-icons/ci";
 import { CgProfile } from "react-icons/cg";
 import { Link } from "react-router-dom";
-import { useState } from "react";
-
+import { useEffect, useRef, useState } from "react";
 
 const Nav = () => {
-  const [isMenue,setIsMenue]=useState(false)
-  const [isCart,setIsCart]=useState(false)
+  const [isMenue, setIsMenue] = useState(false);
+  const [isCart, setIsCart] = useState(false);
+  const menueRef = useRef(null);
+  const cartRef = useRef(null);
+
+  const handleClickOutside = (event) => {
+    if (menueRef.current && !menueRef.current.contains(event.target)) {
+      setIsMenue(false);
+    }
+  };
+  useEffect(() => {
+    document.addEventListener("click", handleClickOutside, true);
+    return () => {
+      document.removeEventListener("click", handleClickOutside, true);
+    };
+  }, []);
+
+
+
+  // const handleClickOutsideCart = (event) => {
+  //   if (cartRef.current && !cartRef.current.contains(event.target)) {
+  //     setIsMenue(false);
+  //   }
+  // };
+
+
+
+  useEffect(() => {
+    document.addEventListener("click", handleClickOutside, true);
+    return () => {
+      document.removeEventListener("click", handleClickOutside, true);
+    };
+  }, []);
+
+
   return (
     <header className="header">
       <nav className="nav">
@@ -58,29 +90,41 @@ const Nav = () => {
           </div>
         </div>
       </nav>
+
       {/* shoping cart */}
-      {/* <div className="shoping-cart">
+      {/* <div ref={cartRef} className="shoping-cart">
 
         </div> */}
 
-
-        
-      <div className={`menue-links ${isMenue ? "visible" : "hidden"}`}>
+      <div
+        ref={menueRef}
+        className={`menue-links ${isMenue ? "visible" : "hidden"}`}
+      >
         <ul className="nav-links">
           <li className="nav-item">
-            <Link to="/">Home</Link>
+            <Link to="/" onClick={() => setIsMenue(false)}>
+              Home
+            </Link>
           </li>
           <li className="nav-item">
-            <Link to="menue">Menue</Link>
+            <Link to="menue" onClick={() => setIsMenue(false)}>
+              Menue
+            </Link>
           </li>
           <li className="nav-item">
-            <Link to="reservation">Reservation</Link>
+            <Link to="reservation" onClick={() => setIsMenue(false)}>
+              Reservation
+            </Link>
           </li>
           <li className="nav-item">
-            <Link to="angebote">Angebote & Gustscheine</Link>
+            <Link to="angebote" onClick={() => setIsMenue(false)}>
+              Angebote & Gustscheine
+            </Link>
           </li>
           <li className="nav-item">
-            <Link to="kontakt">Kontakt</Link>
+            <Link to="kontakt" onClick={() => setIsMenue(false)}>
+              Kontakt
+            </Link>
           </li>
         </ul>
       </div>
