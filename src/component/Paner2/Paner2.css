@@ -14,13 +14,13 @@
   height: 400px;
   object-fit: contain;
 }
-.offer__content h2{
-     font-size: 1.5rem;
+.offer__content h2 {
+  font-size: 1.5rem;
   line-height: 40px;
   margin-bottom: 30px;
 }
 
-.offer__content h2 span{
+.offer__content h2 span {
   font-size: 2.5rem;
   line-height: 50px;
   margin-bottom: 30px;
@@ -39,9 +39,9 @@
   font-size: 1rem;
   font-weight: 600;
   color: var(--secondary-color);
-  transition: .3s ease-in-out;
+  transition: 0.3s ease-in-out;
 }
-.view__more-btn:hover{
+.view__more-btn:hover {
   scale: 1.1;
 }
 
@@ -52,11 +52,21 @@
   }
 }
 @media only screen and (max-width: 576px) {
-     .offer__wrapper,
-     .offer__content {
+  .offer__wrapper,
+  .offer__content {
     flex-wrap: wrap;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
   }
- .offer__content {
+  .offer__wrapper {
+    margin-top: -50px;
+  }
+  .offer__img {
+  width: 100%;}
+  .offer__content {
     margin-bottom: 40px;
   }
 }

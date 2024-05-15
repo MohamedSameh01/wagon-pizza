@@ -72,6 +72,10 @@
 .login .returnF .return {
     margin: 20px 0;
     text-transform: capitalize;
+    h4{
+        text-decoration: underline;
+        color: var(--primary-color);
+    }
 }
 
 .login .returnF .return span {
@@ -79,5 +83,6 @@
     color: var(--primary-color);
     letter-spacing: 1.5px;
     margin-left: 5px;
+    /* text-decoration: underline; */
 
 }

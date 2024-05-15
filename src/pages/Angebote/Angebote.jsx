@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import MealCard from "../../component//MealCard/MealCard";
 import "./Angebote.css";
-import { Navigation, Pagination} from "swiper/modules";
+import { Navigation, Pagination } from "swiper/modules";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -61,22 +61,36 @@ const Angebote = () => {
           <div className="cards">
             <Swiper
               slidesPerView={3}
-              spaceBetween={30}
+              spaceBetween={50}
               centeredSlides={true}
+              loop={true}
               pagination={{
                 clickable: true,
               }}
-              loop={true}
               navigation={true}
               modules={[Pagination, Navigation]}
               className="mySwiper"
+              breakpoints={{
+                "@0.00": {
+                  slidesPerView: 1,
+                  spaceBetween: 10,
+                },
+                "@0.75": {
+                  slidesPerView: 2,
+                  spaceBetween: 20,
+                },
+                "@1.00": {
+                  slidesPerView: 3,
+                  spaceBetween: 40,
+                },
+              }}
             >
               {todayProductsData.data &&
                 todayProductsData?.data?.map((product) => {
                   return (
                     <SwiperSlide key={product.id}>
                       <MealCard
-                        width={'100%'}
+                        width={"100%"}
                         mealName={product.name}
                         imageSrc={`${server}Images/${product.photoName}`}
                         description={product.description}

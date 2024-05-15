@@ -1,7 +1,7 @@
-.hidden{
+.hidden {
   display: none;
 }
-.visible{
+.visible {
   display: block;
 }
 header {
@@ -122,40 +122,77 @@ header {
   }
   /* shoping cart */
   .shoping-cart {
-    width: 20%;
-    min-height: 400px;
+    width: 500px;
+    min-height: 500px;
+    overflow-y: scroll;
     position: absolute;
-    background-color: white;
-    right: 37px;
-    background-color: var(--primary-color);
+    right: 10px;
+    top: 85px;
+    background-color: var(--body-bg);
+    .cart-item {
+      display: flex;
+      align-items: center;
+      background-color: var(--body-bg);
+      color: orange;
+      padding: 30px;
+      height: 130px;
+      border-bottom: 1px solid rgb(255, 174, 0);
+    }
+    .product-image {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      margin-right: 10px;
+      object-fit: contain;
+    }
+    .item-details {
+      flex-grow: 1;
+      text-align: left;
+      margin-left: 20px; 
+      span{
+        font-size: 16px ;
+      }
+    }
+    .product-name {
+      font-size: 18px;
+      font-weight: bold; 
+    }
+   .control-btns{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 30px;
+   }
+    .pointer{
+      cursor: pointer;
+    }
   }
-  .menue-links{
+
+  .menue-links {
     width: 25%;
     min-height: 200px;
     position: absolute;
     border: 0;
     outline: none;
+    z-index: 10;
     background-color: white;
     right: 10px;
-    transition: .2s ease-in-out;
+    transition: 0.2s ease-in-out;
     background-color: var(--primary-color);
-    ul{
-      li{
+    ul {
+      li {
         color: black;
         text-align: center;
         padding: 10px;
         font-size: 3vw;
         font-weight: 600;
       }
-      li:hover{
+      li:hover {
         border-bottom: 1px solid black;
       }
     }
   }
 }
-
-
-
 
 /* media */
 @media only screen and (max-width: 880px) {
@@ -169,19 +206,24 @@ header {
     display: block;
   }
 }
+@media only screen and (max-width: 600px) {
+ .header .shoping-cart {
+    width: 90%;
+  }
+}
 @media only screen and (max-width: 440px) {
-   nav .nav-buttons .login-btn {
+  nav .nav-buttons .login-btn {
     padding: 5px 7px;
   }
   nav .nav-buttons .cart-container .cart {
     width: 12px;
     height: 8px;
-  } 
-  nav .logo{
-    h1{
+  }
+  nav .logo {
+    h1 {
       font-size: 20px;
     }
-    img{
+    img {
       width: 8%;
       height: 8%;
     }

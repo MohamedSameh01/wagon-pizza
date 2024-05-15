@@ -20,7 +20,7 @@
       font-size: 1.3rem;
       transition: 0.3s;
       color: black;
-      background-color: yellow;
+      background-color: rgb(255, 157, 0);
       cursor: pointer;
       /* padding: 10px 25px; */
       width: 115px;
@@ -58,8 +58,11 @@
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     width: 170px; 
     max-width: 500px; 
+    transition: .3s;
 }
-
+.card-label:hover{
+  background-color: rgb(145, 61, 31);
+}
 .card-label .card-image {
     width: 40px;
     height: 40px;

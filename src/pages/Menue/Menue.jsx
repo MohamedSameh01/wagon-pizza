@@ -6,34 +6,33 @@ import MealCard from "../../component/MealCard/MealCard";
 import Spiner from "../../component/spiner/Spiner";
 import LabelCard from "../../component/LabelCard/LabelCard";
 const Menue = () => {
-
   const server = "https://admin.lightsoft.ch/";
   const [categories, setCategories] = useState({});
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading1, setIsLoading1] = useState(false);
+  const [isLoading2, setIsLoading2] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedSubCategory, setSelectedSubCategory] = useState("");
   const [prodOfSubCats, setProdOfSubCats] = useState({});
   const sectionRef = useRef(null);
-  const sectionRef2 = useRef(null);
+  // const sectionRef2 = useRef(null);
 
+  const scrollToSection = () => {
+    sectionRef.current.scrollIntoView({ behavior: "smooth" });
+  };
+  const scrollToMeals = () => {
+    sectionRef.current.scrollIntoView({ behavior: "smooth" });
+  };
 
-   const scrollToSection = () => {
-     sectionRef.current.scrollIntoView({ behavior: "smooth" });
-   };
-   const scrollToMeals = () => {
-     sectionRef.current.scrollIntoView({ behavior: "smooth" });
-   };
-    const scrollToTop = () => {
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
-    };
-  scrollToTop();
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
 
   useEffect(() => {
     const fetchProducts = async () => {
-      setIsLoading(true); // Start loading
+      setIsLoading1(true);
       try {
         const response = await fetch(`${server}api/Category/GetAllCategorys`);
         if (!response.ok) {
@@ -44,42 +43,42 @@ const Menue = () => {
       } catch (error) {
         // console.error("Failed to fetch products:", error);
       }
-      setIsLoading(false); // End loading
+      setIsLoading1(false);
+    };
+    fetchProducts();
+    scrollToTop();
+  }, []);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      setIsLoading2(true);
+      try {
+        const response = await fetch(
+          `${server}api/Product/GetAllProductsBySubCategoryId?id=${selectedSubCategory}`
+        );
+        if (!response.ok) {
+          // throw new Error("Network response was not ok");
+        }
+        const data = await response.json();
+        setProdOfSubCats(data);
+      } catch (error) {
+        console.error("Failed to fetch products:", error);
+      }
+      setIsLoading2(false);
     };
 
     fetchProducts();
-  }, []);
-
-  // useEffect(() => {
-  //   const fetchProducts = async () => {
-  //     setIsLoading(true); // Start loading
-  //     try {
-  //       const response = await fetch(
-  //         `${server}api/Product/${selectedSubCategory}`
-  //       );
-  //       if (!response.ok) {
-  //         // throw new Error("Network response was not ok");
-  //       }
-  //       const data = await response.json();
-  //       setProdOfSubCats(data);
-  //     } catch (error) {
-  //       console.error("Failed to fetch products:", error);
-  //     }
-  //     setIsLoading(false); // End loading
-  //   };
-
-  //   fetchProducts();
-  // }, [selectedSubCategory]);
+  }, [selectedSubCategory]);
 
   const getSelectedCat = (id) => {
     setSelectedCategory(id);
     scrollToSection();
+    setSelectedSubCategory("");
   };
   const getSelectedSubCat = (id) => {
     setSelectedSubCategory(id);
-     scrollToMeals();
+    scrollToMeals();
   };
-
 
   console.log("cats", categories.data);
   console.log("selectedCategory", selectedCategory);
@@ -93,7 +92,7 @@ const Menue = () => {
         </h1>
 
         <div className="cats">
-          {isLoading ? (
+          {isLoading1 ? (
             <Spiner />
           ) : (
             categories?.data?.map((cat) => {
@@ -116,7 +115,7 @@ const Menue = () => {
         </div>
 
         <div className="cats" ref={sectionRef}>
-          {selectedCategory&&isLoading ? (
+          {selectedCategory && isLoading2 ? (
             <Spiner />
           ) : (
             categories?.data
@@ -126,7 +125,7 @@ const Menue = () => {
                   <button
                     key={ele.id}
                     className="btn"
-                    onClick={()=>getSelectedSubCat(ele.id)}
+                    onClick={() => getSelectedSubCat(ele.id)}
                   >
                     {ele.name}
                   </button>
@@ -135,7 +134,7 @@ const Menue = () => {
           )}
         </div>
 
-        {/* <div className="cards">
+        <div className="cards">
           {prodOfSubCats.data &&
             prodOfSubCats?.data?.map((product) => {
               return (
@@ -148,7 +147,7 @@ const Menue = () => {
                 />
               );
             })}
-        </div> */}
+        </div>
         <div></div>
       </div>
     </section>

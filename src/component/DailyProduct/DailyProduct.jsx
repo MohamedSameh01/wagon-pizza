@@ -21,7 +21,7 @@ const DailyProduct = () => {
     };
     fetchProducts();
   }, []);
-  console.log("dailyProducts", dailyProduct.data);
+  // console.log("dailyProducts", dailyProduct.data);
   return (
     <div className="dailyProduct container">
       <h1>

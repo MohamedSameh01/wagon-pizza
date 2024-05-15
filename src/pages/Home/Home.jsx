@@ -2,10 +2,12 @@
 
 import About from "../../component/About/About";
 import DailyProduct from "../../component/DailyProduct/DailyProduct";
+import Delivery from "../../component/Delivery/Delivery";
 import Garage from "../../component/Garage/Garage";
 // import Footer from "../../component/Footer/Footer";
 // import Location from "../../component/Location/Location";
 // import Nav from "../../component/Nav/Nav";
+// import ReservationForm from "../../component/ReservationForm/ReservationForm";
 import Paner from "../../component/Paner/Paner";
 import Paner2 from "../../component/Paner2/Paner2";
 import Sign from "../../component/Sign/Sign";
@@ -21,6 +23,8 @@ const Home = () => {
       <Paner2 />
       <Paner />
       <Garage />
+      <Delivery/>
+      {/* <ReservationForm/> */}
       {/* <Location /> */}
       {/* <Footer /> */}
     </div>

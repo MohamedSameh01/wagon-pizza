@@ -1,0 +1,52 @@
+.postbox-container {
+  padding: 20px;
+  background-color: #333;
+  color: white;
+}
+
+.postbox-item {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  border: 2px solid orange;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+}
+.postbox-details {
+  width: 30%;
+}
+/* .postbox-item:hover {
+    transform: scale(1.05);
+} */
+
+.postbox-details h2 {
+  color: orange;
+  font-size: 1.5rem;
+}
+.postbox-details p {
+  font-size: 1rem;
+}
+
+@media (max-width: 600px) {
+  /* .postbox-details{
+        width: 45%;
+    } */
+  /* .postbox-item {
+        width: 90%; 
+        margin: 0 auto; 
+    } */
+  .postbox-details h2 {
+      font-size: .7rem;
+    }
+    .postbox-details p{
+        font-size: .5rem;
+    }
+}
+@media (max-width: 311px) {
+   .postbox-details h2 {
+      font-size: .6rem;
+    }
+    
+}

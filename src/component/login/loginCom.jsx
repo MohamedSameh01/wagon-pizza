@@ -24,9 +24,9 @@ function LoginCom() {
                 <button type="submit">Submit</button>
             </form>
             <div className="returnF">
-                <Link to={"/ForgetPass"}> <h4 className="return">forget <span>password</span> </h4></Link>
-                <Link to={"/Register"}> <h4 className="return">create <span>account</span> </h4></Link>
-                <Link to={"/"}> <h4 className="return">return to <span>  Home page</span></h4></Link>
+                <Link to={"/ForgetPass"}> <h4 className="return">forget<span>password</span> </h4></Link>
+                <Link to={"/Register"}> <h4 className="return">create<span>account</span> </h4></Link>
+                <Link to={"/"}> <h4 className="return">return to<span>Home page</span></h4></Link>
             </div>
             <Toaster
                 position="top-center"
