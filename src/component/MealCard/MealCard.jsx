@@ -4,6 +4,7 @@ import "./MealCard.css";
 import { FaCartShopping } from "react-icons/fa6";
 
 const MealCard = ({ imageSrc, mealName, price,description,width }) => {
+  price = price.toFixed(2);
   return (
     <div className="card" style={{width:width}}>
       <img src={imageSrc} alt={mealName} className="card-image" />
