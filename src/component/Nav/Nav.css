@@ -46,10 +46,10 @@ header {
           width: 100%;
           height: 4px;
           border-radius: 4px;
-
-          background-color: var(--primary-color);
-          bottom: 0;
           left: 0;
+          bottom: -10px;
+          background-color: var(--primary-color);
+
           transform-origin: right;
           transform: scaleX(0);
           transition: transform 0.3s ease-in-out;
@@ -60,6 +60,20 @@ header {
         }
         a:hover {
           color: var(--primary-color);
+        }
+        .active{
+          color: var(--primary-color);
+        }
+        .active::before{
+            content: "";
+          position: absolute;
+          width: 100%;
+          height: 4px;
+          border-radius: 4px;
+          left: 0;
+          bottom: -10px;
+          background-color: var(--primary-color);
+           transform: scaleX(1);
         }
       }
     }
@@ -123,16 +137,17 @@ header {
   /* shoping cart */
   .shoping-cart {
     width: 500px;
-    min-height: 500px;
+    height: 500px;
+    z-index: 1000;
     overflow-y: scroll;
     position: absolute;
     right: 10px;
     top: 85px;
-    background-color: var(--body-bg);
+    background-color: transparent;
     .cart-item {
       display: flex;
       align-items: center;
-      background-color: var(--body-bg);
+      background-color: grey;
       color: orange;
       padding: 30px;
       height: 130px;

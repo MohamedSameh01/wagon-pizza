@@ -25,7 +25,6 @@ const Delivery = () => {
     fetchProducts();
   }, []);
 
-  console.log(delivers);
   return (
     <div className="postbox-container">
       <div className="postbox-item">

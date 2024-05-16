@@ -91,10 +91,7 @@ const Angebote = () => {
                     <SwiperSlide key={product.id}>
                       <MealCard
                         width={"100%"}
-                        mealName={product.name}
-                        imageSrc={`${server}Images/${product.photoName}`}
-                        description={product.description}
-                        price={product.price}
+                        meal={product}
                       />
                     </SwiperSlide>
                   );
@@ -112,10 +109,10 @@ const Angebote = () => {
                 return (
                   <MealCard
                     key={offer.id}
-                    mealName={offer.name}
-                    imageSrc={`${server}Images/${offer.photoName}`}
-                    description={offer.description}
-                    price={offer.price}
+                    meal={offer}
+                    // imageSrc={`${server}Images/${offer.photoName}`}
+                    // description={offer.description}
+                    // price={offer.price}
                   />
                 );
               })}

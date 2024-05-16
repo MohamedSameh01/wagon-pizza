@@ -4,7 +4,7 @@ const ReservationForm = () => {
   return (
     <div className="reservation">
       <form id="contactForm">
-        <h2 className="contact-us">Contact Us</h2>
+        <h2 className="contact-us">Reservation</h2>
         <div className="form-group">
           <label htmlFor="name">Name:</label>
           <input type="text" id="name" name="name" required />

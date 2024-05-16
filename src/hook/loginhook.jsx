@@ -45,7 +45,7 @@ function Loginhook() {
                         setUserName("")
                         setTimeout(() => {
                             navigate("/")
-                        }, 1500);
+                        }, 500);
                     }
                 }
             } else {

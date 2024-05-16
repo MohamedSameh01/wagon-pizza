@@ -3,10 +3,16 @@
 import { useEffect, useState } from "react";
 import "./ContactForm.css";
 import CardInfo from "../CardInfo/CardInfo";
+import axios from "axios";
+import toast, { Toaster } from "react-hot-toast";
+
 const ContactForm = () => {
   const [companyData, setCompanyData] = useState({});
   const [isLoading, setIsLoading] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [sent, setSent] = useState(false);
   const server = "https://admin.lightsoft.ch/";
+
   useEffect(() => {
     const fetchProducts = async () => {
       setIsLoading(true);
@@ -23,9 +29,8 @@ const ContactForm = () => {
       setIsLoading(false);
     };
     fetchProducts();
-    
   }, []);
-  console.log(companyData.data)
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -34,21 +39,33 @@ const ContactForm = () => {
   });
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!formData.email.match(/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/)) {
-      alert("Please enter a valid email address.");
-      return;
+    setSending(true);
+    try {
+      const response = await axios.post(
+        "https://admin.lightsoft.ch/api/Contact/Contact",
+        formData
+      );
+       toast.success("check your email");
+      setSent(true);
+      setFormData({
+        name: "",
+        email: "",
+        message: "",
+        phone: "",
+      });
+    } catch (error) {
+      toast.error("email is false",error);
+    } finally {
+      setSending(false);
     }
-    console.log("Form data submitted: ", formData);
-    alert("Form submitted successfully!");
   };
 
   return (
@@ -58,7 +75,7 @@ const ContactForm = () => {
         <div className="contact-info">
           <CardInfo
             tel={companyData?.data?.phone2}
-            pho={companyData?.data?.phone}
+            pho={companyData?.data?.phone1}
             address={companyData?.data?.city + companyData?.data?.street}
             email={companyData?.data?.email}
             whatsapp={companyData?.data?.phone1}
@@ -109,9 +126,17 @@ const ContactForm = () => {
               required
             />
           </div>
-          <button type="submit">Submit</button>
+          <button type="submit" disabled={sending}>
+            {sending ? "Sending..." : "Send Message"}
+          </button>
+          {sent && (
+            <div>
+              <p>Message sent successfully!</p>
+            </div>
+          )}
         </form>
       </div>
+      <Toaster position="top-center" reverseOrder={false} />
     </div>
   );
 };

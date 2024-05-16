@@ -33,10 +33,7 @@ const DailyProduct = () => {
             return (
               <MealCard
                 key={product.id}
-                mealName={product.name}
-                imageSrc={`${server}Images/${product.photoName}`}
-                description={product.description}
-                price={product.price}
+                meal={product}
               />
             );
           })}

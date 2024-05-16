@@ -9,6 +9,7 @@ const initialState = {
     error: null,
     forget: [],
     reset: [],
+    contact:[],
 }
 
 export const RegisterPage = createAsyncThunk(
@@ -57,6 +58,17 @@ export const ResetPasswrod = createAsyncThunk(
     }
 )
 
+export const sendContact=createAsyncThunk(
+    "contact",
+    async(data,thunkAPI)=>{
+        try{
+            const resp = await usePostData("/api/Auth/ResetPassword", data);
+            return resp
+        }catch(error){
+              return thunkAPI.rejectWithValue(error);
+        }
+    }
+)
 
 const AuthSlice = createSlice({
     name: "authentication",
@@ -64,65 +76,79 @@ const AuthSlice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder
-            // .register Page
-            .addCase(RegisterPage.pending, (state) => {
-                state.isloading = true
-            })
-            .addCase(RegisterPage.fulfilled, (state, action) => {
-                state.Registeruser = action.payload
-                state.status = action.payload.status
-                state.isloading = false
-                state.error = null
-            })
-            .addCase(RegisterPage.rejected, (state, action) => {
-                state.error = action.payload.response.data
-                state.isloading = false
-            })
+          // .register Page
+          .addCase(RegisterPage.pending, (state) => {
+            state.isloading = true;
+          })
+          .addCase(RegisterPage.fulfilled, (state, action) => {
+            state.Registeruser = action.payload;
+            state.status = action.payload.status;
+            state.isloading = false;
+            state.error = null;
+          })
+          .addCase(RegisterPage.rejected, (state, action) => {
+            state.error = action.payload.response.data;
+            state.isloading = false;
+          })
 
-            // .login Page
-            .addCase(LoginPage.pending, (state) => {
-                state.isloading = true
-            })
-            .addCase(LoginPage.fulfilled, (state, action) => {
-                state.loginUser = action.payload
-                state.status = action.payload.status
-                state.isloading = false
-                state.error = null
-            })
-            .addCase(LoginPage.rejected, (state, action) => {
-                state.error = action.payload.response.data
-                state.isloading = false
-            })
+          // .login Page
+          .addCase(LoginPage.pending, (state) => {
+            state.isloading = true;
+          })
+          .addCase(LoginPage.fulfilled, (state, action) => {
+            state.loginUser = action.payload;
+            state.status = action.payload.status;
+            state.isloading = false;
+            state.error = null;
+          })
+          .addCase(LoginPage.rejected, (state, action) => {
+            state.error = action.payload.response.data;
+            state.isloading = false;
+          })
 
-            // .Forget password
-            .addCase(ForgetPasswrod.pending, (state) => {
-                state.isloading = true
-            })
-            .addCase(ForgetPasswrod.fulfilled, (state, action) => {
-                state.forget = action.payload
-                state.status = action.payload.status
-                state.isloading = false
-                state.error = null
-            })
-            .addCase(ForgetPasswrod.rejected, (state, action) => {
-                state.error = action.payload
-                state.isloading = false
-            })
+          // .Forget password
+          .addCase(ForgetPasswrod.pending, (state) => {
+            state.isloading = true;
+          })
+          .addCase(ForgetPasswrod.fulfilled, (state, action) => {
+            state.forget = action.payload;
+            state.status = action.payload.status;
+            state.isloading = false;
+            state.error = null;
+          })
+          .addCase(ForgetPasswrod.rejected, (state, action) => {
+            state.error = action.payload;
+            state.isloading = false;
+          })
 
-            // .reset password
-            .addCase(ResetPasswrod.pending, (state) => {
-                state.isloading = true
-            })
-            .addCase(ResetPasswrod.fulfilled, (state, action) => {
-                state.reset = action.payload
-                state.status = action.payload.status
-                state.isloading = false
-                state.error = null
-            })
-            .addCase(ResetPasswrod.rejected, (state, action) => {
-                state.error = action.payload
-                state.isloading = false
-            })
+          // .reset password
+          .addCase(ResetPasswrod.pending, (state) => {
+            state.isloading = true;
+          })
+          .addCase(ResetPasswrod.fulfilled, (state, action) => {
+            state.reset = action.payload;
+            state.status = action.payload.status;
+            state.isloading = false;
+            state.error = null;
+          })
+          .addCase(ResetPasswrod.rejected, (state, action) => {
+            state.error = action.payload;
+            state.isloading = false;
+          })
+          // sendContact
+          .addCase(sendContact.pending, (state) => {
+            state.isloading = true;
+          })
+          .addCase(sendContact.fulfilled, (state, action) => {
+            state.contact = action.payload;
+            state.status = action.payload.status;
+            state.isloading = false;
+            state.error = null;
+          })
+          .addCase(sendContact.rejected, (state, action) => {
+            state.error = action.payload;
+            state.isloading = false;
+          });
 
     }
 })

@@ -24,10 +24,10 @@ function App() {
         <Route path="angebote" element={<Angebote />} />
         <Route path="kontakt" element={<Kontakt />} />
 
-        <Route path="/Login" element={<LoginPage />} />
+        {/* <Route path="/Login" element={<LoginPage />} />
         <Route path="/Register" element={<RegisterPage />} />
         <Route path="/ForgetPass" element={<ForgetPassPage />} />
-        <Route path="/ResetPassword" element={<ResetPassPage />} />
+        <Route path="/ResetPassword" element={<ResetPassPage />} /> */}
       </Routes>
       <Location />
       <Footer />
