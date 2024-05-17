@@ -33,9 +33,9 @@ const Delivery = () => {
         ) : delivers?.data && Array.isArray(delivers.data) ? (
           delivers.data.map((deliver) => (
             <div key={deliver?.id} className="postbox-details">
-              <h2>City: {deliver?.city}</h2>
-              <p>PostBox: {deliver?.postBox}</p>
-              <p>OrderAb: {deliver?.orderAb}</p>
+              <h2>{deliver?.city},</h2>
+              <p>{deliver?.postBox}, </p>
+              <p>{deliver?.orderAb.toFixed(2)} CHF</p>
             </div>
           ))
         ) : (

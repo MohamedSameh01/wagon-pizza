@@ -1,14 +1,38 @@
+/* eslint-disable no-unused-vars */
 // import React from 'react'
-import "./ReservationForm.css"
+import { useState } from "react";
+import "./ReservationForm.css";
+import { format } from "date-fns";
+
 const ReservationForm = () => {
+  const [selectedDate, setSelectedDate] = useState("");
+  const handleDateChange = (e) => {
+    setSelectedDate(e.target.value);
+  };
+
+  const formatSelectedDate = (dateString) => {
+    const date = new Date(dateString);
+    const day = String(date.getDate()).padStart(2, "0");
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const year = date.getFullYear();
+    return `${day}-${month}-${year}`;
+  };
   return (
     <div className="reservation">
+      <h1>
+        {" "}
+        <span className="highlight">Reserve</span> Your Table any time and for
+        any occeasion
+      </h1>
       <form id="contactForm">
         <h2 className="contact-us">Reservation</h2>
         <div className="form-group">
           <label htmlFor="name">Name:</label>
           <input type="text" id="name" name="name" required />
         </div>
+        {/* {selectedDate && (
+          <p>Selected Date: {formatSelectedDate(selectedDate)}</p>
+        )} */}
         <div className="form-group">
           <label htmlFor="email">Email:</label>
           <input type="email" id="email" name="email" required />
@@ -23,7 +47,13 @@ const ReservationForm = () => {
         </div>
         <div className="form-group">
           <label htmlFor="date">Datum:</label>
-          <input type="date" id="date" name="date" />
+          <input
+            type="date"
+            id="dateInput"
+            name="date"
+            value={selectedDate}
+            onChange={handleDateChange}
+          />
         </div>
         <div className="form-group">
           <label htmlFor="time">Time:</label>
@@ -33,6 +63,6 @@ const ReservationForm = () => {
       </form>
     </div>
   );
-}
+};
 
-export default ReservationForm
+export default ReservationForm;

@@ -25,7 +25,7 @@ export const CartSlice = createSlice({
             totalPrice: meal.price,
             price: parseFloat(meal.price),
             name: meal.name,
-            phophotoName: meal.photoName,
+            photoName: meal.photoName,
             offerNr: meal.offerNr,
             description1: meal.description1,
             description2: meal.description2,

@@ -5,7 +5,7 @@ import "./ContactForm.css";
 import CardInfo from "../CardInfo/CardInfo";
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
-
+import Logo from "../../assets/85a30340-f824-4e4a-b2a5-c5d808affecc.jpg"
 const ContactForm = () => {
   const [companyData, setCompanyData] = useState({});
   const [isLoading, setIsLoading] = useState(false);
@@ -73,6 +73,10 @@ const ContactForm = () => {
       <h1 className="highlight">Kontakt</h1>
       <div className="container">
         <div className="contact-info">
+          <div className="company-logo-name">
+            <img src={Logo} alt="logo" />
+            <h1 className="highlight">Wangen Pizza, Kebab und Kurier</h1>
+          </div>
           <CardInfo
             tel={companyData?.data?.phone2}
             pho={companyData?.data?.phone1}

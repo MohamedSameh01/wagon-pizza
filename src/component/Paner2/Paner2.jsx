@@ -6,6 +6,7 @@ import PanerBoy from "../../assets/images/panerBoy2.jpg"
 const Paner2 = () => {
     return (
         <section className="section">
+        <h1 className="component-label highlight"> paner </h1>
             <div className="container">
                 <div className="offer__wrapper">
                     <div className="offer__img">

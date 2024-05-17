@@ -143,15 +143,18 @@ header {
     position: absolute;
     right: 10px;
     top: 85px;
-    background-color: transparent;
+    background-color: #898121;
     .cart-item {
       display: flex;
       align-items: center;
-      background-color: grey;
-      color: orange;
+      background-color: #E5C287;
+      color: black;
       padding: 30px;
       height: 130px;
       border-bottom: 1px solid rgb(255, 174, 0);
+      .quantity,.price{
+        color: rgb(0, 103, 105);
+      }
     }
     .product-image {
       width: 70px;
@@ -171,6 +174,7 @@ header {
     .product-name {
       font-size: 18px;
       font-weight: bold; 
+      color: rgb(0, 103, 105);
     }
    .control-btns{
     display: flex;

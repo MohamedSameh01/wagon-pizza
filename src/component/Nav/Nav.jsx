@@ -7,8 +7,8 @@ import { CiMenuBurger } from "react-icons/ci";
 import { CgProfile } from "react-icons/cg";
 import { Link,NavLink } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
-import { CiCirclePlus } from "react-icons/ci";
-import { CiCircleMinus } from "react-icons/ci";
+import { FaPlus } from "react-icons/fa6";
+import { FaMinus } from "react-icons/fa6";
 import { MdDelete } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import { addMeal, deleteMeal, removeMeal } from "../../reduxTool/CartSlice";
@@ -117,16 +117,19 @@ const Nav = () => {
                   <div className="item-details">
                     <p className="product-name">{item.name}</p>
                     <span>Qty : </span>
-                    <span>{item.quantity}</span>
+                    <span className="quantity">{item.quantity}</span>
                     <br />
-                    <span>price : {item.price.toFixed(2)} $</span>
+                    <span>
+                      price :{" "}
+                      <span className="price">{item.price.toFixed(2)}</span> CHF
+                    </span>
                   </div>
                   <div className="control-btns">
-                    <CiCirclePlus
+                    <FaPlus
                       className="plus pointer"
                       onClick={() => dispatch(addMeal(item))}
                     />
-                    <CiCircleMinus
+                    <FaMinus
                       className="minus pointer"
                       onClick={() => dispatch(deleteMeal(item))}
                     />

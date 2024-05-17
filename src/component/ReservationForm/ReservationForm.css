@@ -1,20 +1,21 @@
-.reservation {
+.reservation  {
   background-image: url("../../assets/background/reservation.jpg");
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
+  gap: 100px;
+  /* height: 120vh; */
+  padding: 80px 200px 200px 200px;
 
-  height: 100vh;
   background-position: center;
   background-repeat: no-repeat;
   /* margin-top: 50px; */
   form {
-    background-color: #222;
+    background-color: #7c7c7c;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     width: 100%;
-    max-width: 400px;
     .contact-us{
         color: var(--primary-color);
         font-size: 2rem;
@@ -30,6 +31,7 @@
   .form-group label {
     display: block;
     margin-bottom: 5px;
+    margin-top: 20px;
     color: white;
   }
 
@@ -57,9 +59,20 @@
     cursor: pointer;
     font-size: 16px;
     transition: background-color 0.3s;
+    margin-top: 40px;
   }
 
   button:hover {
     background-color: #e96e00;
+  }
+}
+@media only screen and (max-width: 1200px) {
+  .reservation{
+    flex-direction: column;
+    padding-left: 10px;
+    padding-right: 10px;
+    form{
+      width: 90%;
+    }
   }
 }

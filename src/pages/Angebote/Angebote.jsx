@@ -49,7 +49,6 @@ const Angebote = () => {
     };
     fetchProducts();
   }, []);
-  console.log("dailyProducts", offers.data);
 
   return (
     <section className="angebote">

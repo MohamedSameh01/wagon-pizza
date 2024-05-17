@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 const Paner = () => {
   return (
     <section className="section">
+    <h1 className="component-label highlight">paner</h1>
       <div className="container">
         <div className="offer__wrapper">
           <div className="offer__content">

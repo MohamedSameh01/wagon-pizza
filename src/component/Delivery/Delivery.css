@@ -7,7 +7,7 @@
 .postbox-item {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-between;
   align-items: flex-start;
   border: 2px solid orange;
   border-radius: 8px;
@@ -16,6 +16,10 @@
 }
 .postbox-details {
   width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
 }
 /* .postbox-item:hover {
     transform: scale(1.05);
@@ -24,6 +28,7 @@
 .postbox-details h2 {
   color: orange;
   font-size: 1.5rem;
+  display: inline;
 }
 .postbox-details p {
   font-size: 1rem;
