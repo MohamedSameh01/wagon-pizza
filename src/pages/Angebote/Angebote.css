@@ -17,6 +17,14 @@
 .offers{
     margin-top: 70px;
 }
+.swiper-slide {
+    padding:0 50px;
+}
+.swiper-button-next,
+.swiper-button-prev{
+    color: var(--primary-color);
+    
+}
 @media (max-width: 480px) {
     .card {
         width: 90vw; 

@@ -60,7 +60,7 @@ const Angebote = () => {
           <div className="cards">
             <Swiper
               slidesPerView={3}
-              spaceBetween={50}
+              spaceBetween={0}
               centeredSlides={true}
               loop={true}
               pagination={{
