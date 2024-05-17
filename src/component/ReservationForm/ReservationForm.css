@@ -27,7 +27,14 @@
   .form-group {
     margin-bottom: 15px;
   }
-
+  .dateContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    #date{
+      width: 45px;
+    }
+  }
   .form-group label {
     display: block;
     margin-bottom: 5px;

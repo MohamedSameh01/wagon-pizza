@@ -15,7 +15,9 @@ const ReservationForm = () => {
     const day = String(date.getDate()).padStart(2, "0");
     const month = String(date.getMonth() + 1).padStart(2, "0");
     const year = date.getFullYear();
-    return `${day}-${month}-${year}`;
+    if(day&&month&&year){
+      return `${day}-${month}-${year}`;
+    }
   };
   return (
     <div className="reservation">
@@ -45,15 +47,23 @@ const ReservationForm = () => {
           <label htmlFor="address">Anzaani Personen:</label>
           <input type="text" id="address" name="address" />
         </div>
-        <div className="form-group">
+        <div className="form-group ">
           <label htmlFor="date">Datum:</label>
-          <input
-            type="date"
-            id="dateInput"
-            name="date"
-            value={selectedDate}
-            onChange={handleDateChange}
-          />
+          <div className="dateContainer">
+            <input
+              type="text"
+              placeholder="DD-MM-YYYY"
+              disabled
+              value={formatSelectedDate(selectedDate)?formatSelectedDate(selectedDate):"DD-MM-YYYY"}
+            />
+            <input
+              type="date"
+              id="date"
+              name="date"
+              value={selectedDate}
+              onChange={handleDateChange}
+            />
+          </div>
         </div>
         <div className="form-group">
           <label htmlFor="time">Time:</label>
