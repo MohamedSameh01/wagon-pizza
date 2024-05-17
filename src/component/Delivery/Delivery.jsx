@@ -27,15 +27,15 @@ const Delivery = () => {
 
   return (
     <div className="postbox-container">
-      <div className="postbox-item">
+      <div className="postbox-item container">
         {delivers?.data && isLoading ? (
           <Spiner />
         ) : delivers?.data && Array.isArray(delivers.data) ? (
           delivers.data.map((deliver) => (
             <div key={deliver?.id} className="postbox-details">
               <h2>{deliver?.city}</h2>
-              <p>PostBox: {deliver?.postBox}</p>
-              <p>OrderAb: {deliver?.orderAb}</p>
+              <p>{deliver?.postBox}</p>
+              <p>OrderAb: {deliver?.orderAb.toFixed(2)} CHF</p>
             </div>
           ))
         ) : (

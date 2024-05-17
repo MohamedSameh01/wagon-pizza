@@ -1,6 +1,6 @@
 .postbox-container {
   padding: 20px;
-  background-color: #333;
+  background-color: var(--body-bg);
   color: white;
 }
 
@@ -9,13 +9,13 @@
   flex-wrap: wrap;
   justify-content: flex-start;
   align-items: flex-start;
-  border: 2px solid orange;
+  /* border: 2px solid orange; */
   border-radius: 8px;
   padding: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 4px 8px rgb(72, 71, 71);
 }
 .postbox-details {
-  width: 30%;
+  width: 20%;
 }
 /* .postbox-item:hover {
     transform: scale(1.05);
@@ -27,6 +27,7 @@
 }
 .postbox-details p {
   font-size: .8rem;
+  line-height: 16px;
 }
 
 @media (max-width: 600px) {

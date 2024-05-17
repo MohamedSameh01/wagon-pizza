@@ -1,38 +1,38 @@
-
-.angebote{
-    /* background-image:url("../../assets/background/offer.jpg") ; */
-    background-position: center;
-    background-repeat: no-repeat;
-    h1{
-        font-size: 2.5rem;
-        text-align: center;
-    }
+.angebote {
+  /* background-image:url("../../assets/background/offer.jpg") ; */
+  background-position: center;
+  background-repeat: no-repeat;
+  h1 {
+    font-size: 2.5rem;
+    text-align: center;
+  }
 }
-.cards{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-wrap: wrap;
+.cards {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
 }
-.offers{
-    margin-top: 70px;
+.offers {
+  margin-top: 70px;
 }
-.swiper-slide {
-    padding:0 50px;
-}
-.swiper-button-next,
-.swiper-button-prev{
+.today-bonus {
+  .swiper-slide {
+    padding: 0 50px;
+  }
+  .swiper-button-next,
+  .swiper-button-prev {
     color: var(--primary-color);
-    
+  }
 }
 @media (max-width: 480px) {
-    .card {
-        width: 90vw; 
-    }
+  .card {
+    width: 90vw;
+  }
 }
 
 @media (max-width: 640px) {
-    .swiper-slide {
-        padding: 5px;
-    }
+  .swiper-slide {
+    padding: 5px;
+  }
 }
