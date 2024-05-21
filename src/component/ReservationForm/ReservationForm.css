@@ -42,7 +42,7 @@
     color: white;
   }
 
-  .form-group input {
+  .form-group input,.form-group textarea {
     width: 100%;
     padding: 10px;
     border: none;
@@ -51,11 +51,12 @@
     font-size: 20px;
   }
 
-  .form-group input:focus {
+  .form-group input,.form-group textarea:focus {
     box-shadow: 0 0 5px orange;
     outline: none;
   }
 
+    
   button {
     width: 100%;
     padding: 10px;

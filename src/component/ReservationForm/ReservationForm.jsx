@@ -1,22 +1,40 @@
 /* eslint-disable no-unused-vars */
 // import React from 'react'
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./ReservationForm.css";
 import { format } from "date-fns";
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
-
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 const ReservationForm = () => {
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+  useEffect(() => {
+    scrollToTop();
+  }, []);
+
+  const { ref, inView } = useInView({
+    triggerOnce: true, // Animation triggers only once
+    threshold: 0.1, // Trigger when 10% of the component is visible
+  });
+
   const [selectedDate, setSelectedDate] = useState("");
   const [sending, setSending] = useState(false);
   const [sent, setSent] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
-    eamil: "",
+    email: "",
     phone: "",
-    date: "",
-    time: "",
-    address: "",
+    rDate: "",
+    rTime: "",
+    street: "",
+    notes: "",
+    salute: "",
   });
   const handleDateChange = (e) => {
     setSelectedDate(e.target.value);
@@ -30,16 +48,21 @@ const ReservationForm = () => {
     e.preventDefault();
     setSending(true);
     try {
-      const response = await axios.post("link", formData);
+      const response = await axios.post(
+        "https://admin.lightsoft.ch/api/Reservation/Reservation",
+        formData
+      );
       toast.success("check your email");
       setSent(true);
       setFormData({
         name: "",
-        eamil: "",
+        email: "",
         phone: "",
-        date: "",
-        time: "",
-        address: "",
+        rDate: "",
+        rTime: "",
+        street: "",
+        notes: "",
+        salute: "",
       });
     } catch (error) {
       toast.error("email is false", error);
@@ -54,9 +77,10 @@ const ReservationForm = () => {
     const month = String(date.getMonth() + 1).padStart(2, "0");
     const year = date.getFullYear();
     if (day && month && year) {
-      return `${day}-${month}-${year}`;
+      return `${day}.${month}.${year}`;
     }
   };
+  console.log("formData", formData);
   return (
     <div className="reservation">
       <h1>
@@ -84,7 +108,7 @@ const ReservationForm = () => {
           <input
             type="email"
             id="email"
-            name="eamil"
+            name="email"
             required
             onChange={handelChange}
           />
@@ -94,11 +118,20 @@ const ReservationForm = () => {
           <input type="tel" id="phone" name="phone" onChange={handelChange} />
         </div>
         <div className="form-group">
-          <label htmlFor="address">Anzaani Personen:</label>
+          <label htmlFor="salute">Salute:</label>
           <input
             type="text"
-            id="address"
-            name="address"
+            id="salute"
+            name="salute"
+            onChange={handelChange}
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="street">Anzaani Personen:</label>
+          <input
+            type="text"
+            id="street"
+            name="street"
             onChange={handelChange}
           />
         </div>
@@ -108,25 +141,30 @@ const ReservationForm = () => {
             <input
               type="text"
               placeholder="DD-MM-YYYY"
+              // name="rDate"
               disabled
               value={
                 formatSelectedDate(selectedDate)
                   ? formatSelectedDate(selectedDate)
-                  : "DD-MM-YYYY"
+                  : "DD.MM.YYYY"
               }
             />
             <input
               type="date"
               id="date"
-              name="date"
+              name="rDate"
               value={selectedDate}
               onChange={handleDateChange}
             />
           </div>
         </div>
         <div className="form-group">
-          <label htmlFor="time">Time:</label>
-          <input type="time" id="time" name="time" onChange={handelChange} />
+          <label htmlFor="rTime">Time:</label>
+          <input type="time" id="rTime" name="rTime" onChange={handelChange} />
+        </div>
+        <div className="form-group">
+          <label htmlFor="notes">Notes</label>
+          <textarea onChange={handelChange} name="notes" />
         </div>
         <button type="submit" disabled={sending}>
           {sending ? "Sending..." : "Send Message"}
@@ -137,7 +175,7 @@ const ReservationForm = () => {
           </div>
         )}
       </form>
-      <Toaster position="top-center" reverseOrder={false} />
+      <Toaster position="bottom-center" reverseOrder={false} />
     </div>
   );
 };

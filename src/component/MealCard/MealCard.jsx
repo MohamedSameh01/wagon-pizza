@@ -1,30 +1,119 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-// import React from 'react'
 import { useDispatch } from "react-redux";
-import "./MealCard.css";
+import { useState } from "react";
+import { Button, Modal } from "antd";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 import { FaCartShopping } from "react-icons/fa6";
 import { addMeal } from "../../reduxTool/CartSlice";
+import "./MealCard.css";
+import Image from "../../assets/images/paner.png";
 
 const MealCard = ({ meal, width }) => {
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
+   const [selectedExtensions, setSelectedExtensions] = useState([]);
   const dispatch = useDispatch();
+  const [open, setOpen] = useState(false);
   const server = "https://admin.lightsoft.ch/";
+  const showModal = () => setOpen(true);
+  const handleOk = () => setOpen(false);
+  const handleCancel = () => setOpen(false);
+
+
+
+
+   const handleExtensionsChange = (topping) => {
+     setSelectedExtensions((prevToppings) =>
+       prevToppings.includes(topping)
+         ? prevToppings.filter((t) => t !== topping)
+         : [...prevToppings, topping]
+     );
+   };
+
+  
+
   return (
     <div className="card" style={{ width: width }}>
-      <img
-        src={`${server}Images/${meal.photoName}`}
-        alt={meal.name}
-        className="card-image"
-      />
-      <div className="card-content">
-        <h2 className="meal-name">{meal.name}</h2>
-        <p>{meal.description1}</p>
-        <div className="card-footer">
-          <span className="price">{meal.price.toFixed(2)} CHF</span>
-          <span className="cart-icon">
-            <FaCartShopping onClick={() => dispatch(addMeal(meal))} />
-          </span>
+      <motion.div
+        ref={ref}
+        initial={{ opacity: 0, y: 200 }}
+        animate={inView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.6 }}
+        className="animated-component"
+        onClick={showModal}
+      >
+        <img
+          src={`${server}Images/${meal.photoName}`}
+          alt={meal.name}
+          className="card-image"
+        />
+        <div className="card-content">
+          <h2 className="meal-name">{meal.name}</h2>
+          <p>{meal.description1}</p>
+          <div className="card-footer">
+            <span className="price">{meal.price.toFixed(2)} CHF</span>
+            <span className="cart-icon">
+              <FaCartShopping />
+            </span>
+          </div>
         </div>
-      </div>
+      </motion.div>
+
+      <Modal
+        className="modal"
+        open={open}
+        title={meal.name}
+        onOk={handleOk}
+        onCancel={handleCancel}
+        width={"70%"}
+        footer={
+          [
+            // <Button key="add" onClick={() => dispatch(addMeal(meal))}>
+            //   Add to cart
+            // </Button>,
+          ]
+        }
+      >
+        <div className="pizza-customizer">
+          <div className="pizza-image">
+            <img src={`${server}Images/${meal.photoName}`} alt={meal.name} />
+          </div>
+          <div className="pizza-details">
+            <h1>{meal.name}</h1>
+            <p className="price">{meal.price.toFixed(2)} CHF </p>
+            <p>{meal.description1}</p>
+            <h3>extras</h3>
+            <div className="toppings">
+              {meal?.extensions &&
+                meal?.extensions?.map((topping) => (
+                  <label key={topping.name}>
+                    <input
+                      type="checkbox"
+                      value={topping.name}
+                      onChange={() => handleExtensionsChange(topping)}
+                    />
+                    {topping.name} {topping.price.toFixed(2)} + CHF
+                  </label>
+                ))}
+            </div>
+            {/* <div className="quantity">
+              <button>-</button>
+              <span>1</span>
+              <button>+</button>
+            </div> */}
+            <button
+              className="add-to-cart"
+              onClick={() => dispatch(addMeal({ meal, selectedExtensions }))}
+            >
+              In den Warenkorb
+            </button>
+          </div>
+        </div>
+      </Modal>
     </div>
   );
 };

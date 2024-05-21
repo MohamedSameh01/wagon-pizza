@@ -12,7 +12,24 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 const Angebote = () => {
+   const scrollToTop = () => {
+     window.scrollTo({
+       top: 0,
+       behavior: "smooth",
+     });
+   };
+
+   scrollToTop();
+
+
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+    threshold: 0.1, 
+  });
+  
   const server = "https://admin.lightsoft.ch/";
   const [todayProductsData, setTodayProductsData] = useState({});
   const [offers, setOffers] = useState({});
@@ -49,7 +66,7 @@ const Angebote = () => {
     };
     fetchProducts();
   }, []);
-
+  // console.log("offers", offers);
   return (
     <section className="angebote">
       <div className="container">
@@ -88,10 +105,7 @@ const Angebote = () => {
                 todayProductsData?.data?.map((product) => {
                   return (
                     <SwiperSlide key={product.id}>
-                      <MealCard
-                        width={"100%"}
-                        meal={product}
-                      />
+                      <MealCard width={"100%"} meal={product} />
                     </SwiperSlide>
                   );
                 })}
@@ -99,23 +113,31 @@ const Angebote = () => {
           </div>
         </div>
         <div className="offers">
-          <h1>
-            Today<span className="highlight">offers</span>
-          </h1>
-          <div className="cards">
-            {offers.data &&
-              offers?.data?.map((offer) => {
-                return (
-                  <MealCard
-                    key={offer.id}
-                    meal={offer}
-                    // imageSrc={`${server}Images/${offer.photoName}`}
-                    // description={offer.description}
-                    // price={offer.price}
-                  />
-                );
-              })}
-          </div>
+          <motion.div
+            ref={ref}
+            initial={{ opacity: 0, y: 200 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6 }}
+            className="animated-component"
+          >
+            <h1>
+              Today<span className="highlight">offers</span>
+            </h1>
+            <div className="cards">
+              {offers.data &&
+                offers?.data?.map((offer) => {
+                  return (
+                    <MealCard
+                      key={offer.id}
+                      meal={offer}
+                      // imageSrc={`${server}Images/${offer.photoName}`}
+                      // description={offer.description}
+                      // price={offer.price}
+                    />
+                  );
+                })}
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>

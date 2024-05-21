@@ -1,3 +1,6 @@
+.panner{
+  padding: 0;
+}
 .offer__wrapper {
   display: flex;
   column-gap: 2rem;

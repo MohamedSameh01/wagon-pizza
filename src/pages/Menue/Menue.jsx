@@ -5,6 +5,8 @@ import { useEffect, useRef, useState } from "react";
 import MealCard from "../../component/MealCard/MealCard";
 import Spiner from "../../component/spiner/Spiner";
 import LabelCard from "../../component/LabelCard/LabelCard";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 const Menue = () => {
   const server = "https://admin.lightsoft.ch/";
   const [categories, setCategories] = useState({});
@@ -62,7 +64,7 @@ const Menue = () => {
         const data = await response.json();
         setProdOfSubCats(data);
       } catch (error) {
-        console.error("Failed to fetch products:", error);
+        // console.error("Failed to fetch products:", error);
       }
       setIsLoading2(false);
     };
@@ -80,40 +82,47 @@ const Menue = () => {
     scrollToMeals();
   };
 
-  console.log("cats", categories.data);
-  console.log("selectedCategory", selectedCategory);
-  console.log("selectedSubCategory", selectedSubCategory);
 
+  const { ref, inView } = useInView({
+    triggerOnce: true, 
+    threshold: 0.1, 
+  });
   return (
     <section className="menue-sec">
       <div className="container">
         <h1>
           <span className="highlight">Men</span>ue
         </h1>
-
-        <div className="cats">
-          {isLoading1 ? (
-            <Spiner />
-          ) : (
-            categories?.data?.map((cat) => {
-              return (
-                <div
-                  className="card-label"
-                  key={cat.id}
-                  onClick={() => getSelectedCat(cat.id)}
-                >
-                  <img
-                    src={`${server}Images/${cat.photoName}`}
-                    alt="label Image"
-                    className="card-image"
-                  />
-                  <h4 className="card-title">{cat.name}</h4>
-                </div>
-              );
-            })
-          )}
-        </div>
-
+        <motion.div
+          ref={ref}
+          initial={{ opacity: 0, y: 200 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          className="animated-component"
+        >
+          <div className="cats">
+            {isLoading1 ? (
+              <Spiner />
+            ) : (
+              categories?.data?.map((cat) => {
+                return (
+                  <div
+                    className="card-label"
+                    key={cat.id}
+                    onClick={() => getSelectedCat(cat.id)}
+                  >
+                    <img
+                      src={`${server}Images/${cat.photoName}`}
+                      alt="label Image"
+                      className="card-image"
+                    />
+                    <h4 className="card-title">{cat.name}</h4>
+                  </div>
+                );
+              })
+            )}
+          </div>
+        </motion.div>
         <div className="cats" ref={sectionRef}>
           {selectedCategory && isLoading2 ? (
             <Spiner />
@@ -133,21 +142,24 @@ const Menue = () => {
               })
           )}
         </div>
-
-        <div className="cards">
-          {prodOfSubCats.data &&
-            prodOfSubCats?.data?.map((product) => {
-              return (
-                <MealCard
-                  key={product.id}
-                  meal={product}
-                />
-              );
-            })}
-        </div>
+        <motion.div
+          ref={ref}
+          initial={{ opacity: 0, y: 200 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          className="animated-component"
+        >
+          <div className="cards">
+            {prodOfSubCats.data &&
+              prodOfSubCats?.data?.map((product) => {
+                return <MealCard key={product.id} meal={product} />;
+              })}
+          </div>
+        </motion.div>
         <div></div>
       </div>
     </section>
+    
   );
 };
 

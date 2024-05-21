@@ -2,8 +2,15 @@
 import { useEffect, useState } from "react";
 import "./DailyProduct.css";
 import MealCard from "../MealCard/MealCard";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 const DailyProduct = () => {
+  const { ref, inView } = useInView({
+    triggerOnce: true, // Animation triggers only once
+    threshold: 0.1, // Trigger when 10% of the component is visible
+  });
+
   const server = "https://admin.lightsoft.ch/";
   const [dailyProduct, setDailyProducts] = useState({});
   useEffect(() => {
@@ -23,22 +30,25 @@ const DailyProduct = () => {
   }, []);
   // console.log("dailyProducts", dailyProduct.data);
   return (
-    <div className="dailyProduct container">
-      <h1>
-        <span>Daily</span> Products
-      </h1>
-      <div className="cards">
-        {dailyProduct.data &&
-          dailyProduct?.data?.map((product) => {
-            return (
-              <MealCard
-                key={product.id}
-                meal={product}
-              />
-            );
-          })}
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 200 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.6 }}
+      className="animated-component"
+    >
+      <div className="dailyProduct container">
+        <h1>
+          <span>Daily</span> Products
+        </h1>
+        <div className="cards">
+          {dailyProduct.data &&
+            dailyProduct?.data?.map((product) => {
+              return <MealCard key={product.id} meal={product} />;
+            })}
+        </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

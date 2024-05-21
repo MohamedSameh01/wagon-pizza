@@ -5,7 +5,7 @@ import Logo from "../../assets/85a30340-f824-4e4a-b2a5-c5d808affecc.jpg";
 import { FaCartShopping } from "react-icons/fa6";
 import { CiMenuBurger } from "react-icons/ci";
 import { CgProfile } from "react-icons/cg";
-import { Link,NavLink } from "react-router-dom";
+import { Link,NavLink, useNavigate } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import { FaPlus } from "react-icons/fa6";
 import { FaMinus } from "react-icons/fa6";
@@ -21,6 +21,7 @@ const Nav = () => {
   const cartRef = useRef(null);
   const dispatch=useDispatch();
   const cart=useSelector((state)=>state.cart)
+  const navigate=useNavigate();
   const handleClickOutside = (event) => {
     if (menueRef.current && !menueRef.current.contains(event.target)) {
       setIsMenue(false);
@@ -89,8 +90,8 @@ const Nav = () => {
             <Link to="Login">Login</Link>
           </button> */}
           <div className="cart-container">
-            <FaCartShopping className="cart" onClick={toggleCart} />
-            <span className="quantity">{cart.cart.length}</span>
+            <FaCartShopping className="cart" onClick={()=>navigate("/cart")} />
+            <span className="nomOfMeals">{cart.totalItems}</span>
           </div>
           <div className="menu-btn">
             <CiMenuBurger
@@ -102,7 +103,7 @@ const Nav = () => {
       </nav>
 
       {/* shoping cart */}
-      {isCart && (
+      {/* {isCart && (
         <div ref={cartRef} className="shoping-cart ">
           {
             cart.cart&&
@@ -143,7 +144,7 @@ const Nav = () => {
             })
           }
         </div>
-      )}
+      )} */}
 
       {/* menue button */}
       {isMenue && (

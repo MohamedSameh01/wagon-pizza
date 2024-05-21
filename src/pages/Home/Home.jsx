@@ -13,6 +13,15 @@ import Paner2 from "../../component/Paner2/Paner2";
 import Sign from "../../component/Sign/Sign";
 import Slider from "../../component/Slider/Slider";
 const Home = () => {
+   const scrollToTop = () => {
+     window.scrollTo({
+       top: 0,
+       behavior: "smooth",
+     });
+   };
+
+   scrollToTop();
+
   return (
     <div className="home">
       {/* <Nav /> */}
