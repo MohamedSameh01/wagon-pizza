@@ -15,6 +15,8 @@ import {
 } from "../../reduxTool/CartSlice";
 import emptyCart from "../../assets/images/emptyCart.png";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import toast, { Toaster } from "react-hot-toast";
 const ShoppingCart = ({ setCheckoutAllowed }) => {
   const [cartData, setCartData] = useState([]);
   const [delivers, setDilevers] = useState({});
@@ -24,11 +26,24 @@ const ShoppingCart = ({ setCheckoutAllowed }) => {
   const server = import.meta.env.VITE_SERVER;
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [sending, setSending] = useState(false);
+  const [sent, setSent] = useState(false);
 
-    const handleOrderClick = () => {
+  const handleOrderClick = async (e) => {
+    // e.preventDefault();
+    // setSending(true);
+    // try {
+    //   const response = await axios.post(`${server}/api/Contact/Contact`, cart);
+    //   toast.success("success");
+    //   setSent(true);
       setCheckoutAllowed(true);
       navigate("/cart/checkOut");
-    };
+    // } catch (err) {
+    //   toast.error("Failed to send");
+    // }finally{
+    //    setSending(false);
+    // }
+  };
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -40,9 +55,6 @@ const ShoppingCart = ({ setCheckoutAllowed }) => {
   useEffect(() => {
     scrollToTop();
   }, []);
-  // console.log(cart);
-
-  console.log("minimumOrderAb", typeof(minimumOrderAb));
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -61,6 +73,8 @@ const ShoppingCart = ({ setCheckoutAllowed }) => {
     };
     fetchProducts();
   }, []);
+
+  console.log("cart", cart);
 
   return (
     <div className="cart-container">
@@ -149,30 +163,29 @@ const ShoppingCart = ({ setCheckoutAllowed }) => {
               {cart.totalPrice.toFixed(2)}{" "}
             </span>{" "}
           </h2>
-          {/* <input
-            className="copon"
-            type="text"
-            placeholder="Do u have copon.... ?"
-          /> */}
-          {minimumOrderAb === "" && <p className="minimumOrderAb">You must select area ....</p>}
+          {minimumOrderAb === "" && (
+            <p className="minimumOrderAb">You must select area ....</p>
+          )}
           {cart.totalPrice < minimumOrderAb && minimumOrderAb !== "" && (
             <p className="minimumOrderAb">
-              you must request order more than or equal the minimumOrderAb CHF {parseFloat(minimumOrderAb).toFixed(2)}
+              you must request order more than or equal the minimum OrderAb CHF{" "}
+              {parseFloat(minimumOrderAb).toFixed(2)}...
             </p>
           )}
           <button
             className="shopping-cart-order"
             onClick={handleOrderClick}
             disabled={
-              cart.totalPrice < minimumOrderAb || minimumOrderAb === ""
+              cart.totalPrice < minimumOrderAb || minimumOrderAb === ""||sending
                 ? true
                 : false
             }
           >
-            Order
+            {sending?"sending":"Order"}
           </button>
         </>
       )}
+      <Toaster position="bottom-center" reverseOrder={false} />
     </div>
   );
 };

@@ -48,9 +48,9 @@ const Delivery = () => {
             delivers.data.map((deliver) => (
               <div key={deliver?.id} className="postbox-details">
                 <h2>
-                  {deliver?.city},{deliver?.postBox}
+                 {deliver?.postBox} {deliver?.city}
                 </h2>
-                <p>Ab: CHF {deliver?.orderAb.toFixed(2)}</p>
+                <p>ab CHF {deliver?.orderAb.toFixed(2)}</p>
               </div>
             ))
           ) : (

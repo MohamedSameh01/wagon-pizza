@@ -15,6 +15,18 @@ const CheckOutForm = () => {
   const [delivers, setDilevers] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [selectedCity, setSelectedCity] = useState("");
+  const [formData, setFormData] = useState({
+    name: "",
+    street: "",
+    address: "",
+    time: "",
+    discountCode: "",
+    notes: "",
+  });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -34,6 +46,16 @@ const CheckOutForm = () => {
     fetchProducts();
   }, []);
 
+   useEffect(() => {
+     setFormData((prevFormData) => ({
+       ...prevFormData,
+       address: selectedCity,
+     }));
+   }, [selectedCity]);
+
+   
+   
+
   return (
     <motion.div
       ref={ref}
@@ -41,7 +63,6 @@ const CheckOutForm = () => {
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.6 }}
       className="animated-component"
-      // onClick={showModal}
     >
       <div className="check-out">
         <div className="check-out-image">
@@ -52,11 +73,23 @@ const CheckOutForm = () => {
             <h2>Order Form</h2>
             <div className="form-group">
               <label htmlFor="name">Name:</label>
-              <input type="text" id="name" name="name" required />
+              <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                onChange={handleChange}
+              />
             </div>
             <div className="form-group">
               <label htmlFor="street">Street:</label>
-              <input type="text" id="street" name="street" required />
+              <input
+                type="text"
+                id="street"
+                name="street"
+                required
+                onChange={handleChange}
+              />
             </div>
 
             <div className="form-group">
@@ -64,13 +97,14 @@ const CheckOutForm = () => {
               {delivers?.data && (
                 <select
                   className="select-city"
+                  name="address"
                   onChange={(e) => setSelectedCity(e.target.value)}
                 >
                   <option value={""}>select City</option>
                   {delivers.data &&
                     delivers.data.map((del) => {
                       return (
-                        <option value={del.orderAb} key={del.id}>
+                        <option value={[del.postBox, del.city]} key={del.id}>
                           {" "}
                           {del.postBox} , {del.city}
                         </option>
@@ -82,20 +116,30 @@ const CheckOutForm = () => {
 
             <div className="form-group">
               <label htmlFor="discountCode">Discount Code:</label>
-              <input type="text" id="discountCode" name="discountCode" />
+              <input
+                type="text"
+                id="discountCode"
+                name="discountCode"
+                onChange={handleChange}
+              />
             </div>
             <div className="form-group">
               <label htmlFor="deliveryTime">Delivery Time:</label>
               <input
                 type="time"
                 id="deliveryTime"
-                name="deliveryTime"
+                name="time"
                 required
+                onChange={handleChange}
               />
             </div>
             <div className="form-group">
               <label htmlFor="notes">Notes:</label>
-              <textarea id="notes" name="notes"></textarea>
+              <textarea
+                id="notes"
+                name="notes"
+                onChange={handleChange}
+              ></textarea>
             </div>
             <button type="submit">Submit</button>
           </form>

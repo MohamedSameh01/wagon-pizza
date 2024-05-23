@@ -64,9 +64,21 @@ const Footer = () => {
                 </a>
               </div>
             </div>
-
             <div className="footer__box">
-              <h3 className="footer__link-title">Times</h3>
+              <h3 className="footer__link-title">Uber Uns...</h3>
+              <ul className="footer__menu">
+                <li className="footer__menu-item">
+                  <p className="footer__link">
+                    {" "}
+                    is a long established fact that a reader will be distracted
+                    by the readable content of a page when looking at its
+                    layout. The point of using Lorem Ipsum is that it has a
+                  </p>
+                </li>
+              </ul>
+            </div>
+            <div className="footer__box">
+              <h3 className="footer__link-title">Arbeitszeiten</h3>
               <ul className="footer__menu">
                 <li className="footer__menu-item">
                   <p className="footer__link">{delivers?.data?.openTime1}</p>
@@ -80,7 +92,7 @@ const Footer = () => {
               </ul>
             </div>
             <div className="footer__box">
-              <h3 className="footer__link-title">-</h3>
+              <h3 className="footer__link-title">Lieferzeiten</h3>
               <ul className="footer__menu">
                 <li className="footer__menu-item">
                   <p className="footer__link">{delivers?.data?.delivery1}</p>
@@ -96,34 +108,8 @@ const Footer = () => {
                 </li>
               </ul>
             </div>
-            <div className="footer__box">
-              <h3 className="footer__link-title">About</h3>
-              <ul className="footer__menu">
-                <li className="footer__menu-item">
-                  <p className="footer__link">
-                    {" "}
-                    is a long established fact that a reader will be distracted
-                    by the readable content of a page when looking at its
-                    layout. The point of using Lorem Ipsum is that it has a
-                  </p>
-                </li>
-              </ul>
-            </div>
           </div>
-          {/* <div className="info-company">
-            <div className="part1">
-              <span className="highlight">part1</span>
-              <p>
-                {" "}
-                is a long established fact that a reader will be distracted by
-                the readable content of a page when looking at its layout. The
-                point of using Lorem Ipsum is that it has a more-or-less normal
-                distribution of letters, as opposed to using 'Content here,
-                content here', making it look like readable English. Many
-                desktop
-              </p>
-            </div>
-          </div> */}
+      
           <hr />
           <p className="light-soft">
             Copy Rights @<span className="highlight">Light Soft</span>

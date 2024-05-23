@@ -1,4 +1,4 @@
- .postbox-container {
+ /* .postbox-container {
   padding: 20px;
   background-color: var(--body-bg);
   color: white;
@@ -59,12 +59,12 @@
       font-size: .6rem;
     }
     
-} 
+}  */
 
 
 
 
-/* .postbox-container {
+.postbox-container {
   padding: 20px;
   background-color: var(--body-bg);
   color: white;
@@ -101,11 +101,11 @@
   .postbox-item {
     grid-template-columns: repeat(2, 1fr);
   }
-} */
+} 
 
-/* @media (max-width: 600px) {
+ @media (max-width: 600px) {
   .postbox-item {
-    grid-template-columns: 1fr; 
+    grid-template-columns: 1fr 1fr;
   }
 
   .postbox-details h2 {
@@ -115,9 +115,9 @@
   .postbox-details p {
     font-size: 0.5rem;
   }
-} */
+} 
 
-/* @media (max-width: 311px) {
+ @media (max-width: 311px) {
   .postbox-details h2 {
     font-size: 0.6rem;
   }
@@ -125,5 +125,5 @@
   .postbox-details p {
     font-size: 0.4rem;
   }
-} */
+}
 
