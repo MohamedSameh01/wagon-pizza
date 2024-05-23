@@ -1,12 +1,14 @@
+/* eslint-disable react/prop-types */
 // import React from 'react'
 import ShoppingCart from '../../component/ShoppingCart/ShoppingCart'
-
-const CartPage = () => {
+import Delivery from "../../component/Delivery/Delivery"
+const CartPage = ({ setCheckoutAllowed }) => {
   return (
     <div>
-        <ShoppingCart/>
+      <ShoppingCart setCheckoutAllowed={setCheckoutAllowed} />
+      <Delivery />
     </div>
-  )
-}
+  );
+};
 
 export default CartPage

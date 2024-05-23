@@ -11,6 +11,7 @@ import "./MealCard.css";
 import Image from "../../assets/images/paner.png";
 
 const MealCard = ({ meal, width }) => {
+  
   const { ref, inView } = useInView({
     triggerOnce: true,
     threshold: 0.1,
@@ -18,7 +19,7 @@ const MealCard = ({ meal, width }) => {
    const [selectedExtensions, setSelectedExtensions] = useState([]);
   const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
-  const server = "https://admin.lightsoft.ch/";
+  const server = import.meta.env.VITE_SERVER;
   const showModal = () => setOpen(true);
   const handleOk = () => setOpen(false);
   const handleCancel = () => setOpen(false);
@@ -47,7 +48,7 @@ const MealCard = ({ meal, width }) => {
         onClick={showModal}
       >
         <img
-          src={`${server}Images/${meal.photoName}`}
+          src={`${server}/Images/${meal.photoName}`}
           alt={meal.name}
           className="card-image"
         />
@@ -55,7 +56,7 @@ const MealCard = ({ meal, width }) => {
           <h2 className="meal-name">{meal.name}</h2>
           <p>{meal.description1}</p>
           <div className="card-footer">
-            <span className="price">{meal.price.toFixed(2)} CHF</span>
+            <span className="price"> CHF {meal.price.toFixed(2)}</span>
             <span className="cart-icon">
               <FaCartShopping />
             </span>
@@ -80,13 +81,13 @@ const MealCard = ({ meal, width }) => {
       >
         <div className="pizza-customizer">
           <div className="pizza-image">
-            <img src={`${server}Images/${meal.photoName}`} alt={meal.name} />
+            <img src={`${server}/Images/${meal.photoName}`} alt={meal.name} />
           </div>
           <div className="pizza-details">
             <h1>{meal.name}</h1>
-            <p className="price">{meal.price.toFixed(2)} CHF </p>
+            <p className="price"> CHF {meal.price.toFixed(2)}</p>
             <p>{meal.description1}</p>
-            <h3>extras</h3>
+            {meal.extensions && <h1>extras :</h1>}
             <div className="toppings">
               {meal?.extensions &&
                 meal?.extensions?.map((topping) => (
@@ -96,15 +97,10 @@ const MealCard = ({ meal, width }) => {
                       value={topping.name}
                       onChange={() => handleExtensionsChange(topping)}
                     />
-                    {topping.name} {topping.price.toFixed(2)} + CHF
+                    {topping.name} - CHF {topping.price.toFixed(2)}
                   </label>
                 ))}
             </div>
-            {/* <div className="quantity">
-              <button>-</button>
-              <span>1</span>
-              <button>+</button>
-            </div> */}
             <button
               className="add-to-cart"
               onClick={() => dispatch(addMeal({ meal, selectedExtensions }))}

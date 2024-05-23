@@ -1,4 +1,4 @@
-.postbox-container {
+ .postbox-container {
   padding: 20px;
   background-color: var(--body-bg);
   color: white;
@@ -6,48 +6,124 @@
 
 .postbox-item {
   display: flex;
-  flex-wrap: wrap;
   justify-content: flex-start;
   align-items: flex-start;
-  /* border: 2px solid orange; */
   border-radius: 8px;
   padding: 20px;
+  flex-wrap: wrap;
   box-shadow: 0 4px 8px rgb(72, 71, 71);
 }
 .postbox-details {
   width: 20%;
-}
-/* .postbox-item:hover {
-    transform: scale(1.05);
-} */
+  margin-top: 20px;
+} 
 
-.postbox-details h2 {
+
+ .postbox-details h2 {
   color: orange;
   font-size: 1rem;
 }
 .postbox-details p {
   font-size: .8rem;
   line-height: 16px;
-}
+  color: white;
+} 
 
-@media (max-width: 600px) {
-  /* .postbox-details{
-        width: 45%;
-    } */
-  /* .postbox-item {
+ @media (max-width: 855px) {
+  .postbox-details{
+        width: 33%;
+    } 
+    .postbox-item {
         width: 90%; 
         margin: 0 auto; 
-    } */
-  .postbox-details h2 {
-      font-size: .7rem;
+    } 
+ }
+ @media (max-width: 549px) {
+   .postbox-details{
+        width: 45%;
+    } 
+   .postbox-item {
+        width: 90%; 
+        margin: 0 auto; 
+        justify-content: space-between;
+    } 
+   .postbox-details h2 {
+      font-size: 1rem;
     }
     .postbox-details p{
-        font-size: .5rem;
+        font-size: .9rem;
     }
-}
-@media (max-width: 311px) {
+} 
+ @media (max-width: 311px) {
    .postbox-details h2 {
       font-size: .6rem;
     }
     
+} 
+
+
+
+
+/* .postbox-container {
+  padding: 20px;
+  background-color: var(--body-bg);
+  color: white;
 }
+
+.postbox-item {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 20px;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgb(72, 71, 71);
+}
+
+.postbox-details {
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgb(72, 71, 71);
+  background-color: var(--card-bg);
+}
+
+.postbox-details h2 {
+  color: orange;
+  font-size: 1rem;
+}
+
+.postbox-details p {
+  font-size: 0.8rem;
+  line-height: 16px;
+  color: white;
+}
+
+@media (max-width: 900px) {
+  .postbox-item {
+    grid-template-columns: repeat(2, 1fr);
+  }
+} */
+
+/* @media (max-width: 600px) {
+  .postbox-item {
+    grid-template-columns: 1fr; 
+  }
+
+  .postbox-details h2 {
+    font-size: 0.7rem;
+  }
+
+  .postbox-details p {
+    font-size: 0.5rem;
+  }
+} */
+
+/* @media (max-width: 311px) {
+  .postbox-details h2 {
+    font-size: 0.6rem;
+  }
+
+  .postbox-details p {
+    font-size: 0.4rem;
+  }
+} */
+

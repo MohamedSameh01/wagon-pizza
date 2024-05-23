@@ -7,19 +7,20 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 const Delivery = () => {
   const { ref, inView } = useInView({
-    triggerOnce: true, // Animation triggers only once
-    threshold: 0.1, // Trigger when 10% of the component is visible
+    triggerOnce: true, 
+    threshold: 0.1, 
   });
-  const server = "https://admin.lightsoft.ch/";
+  // const server = "https://admin.lightsoft.ch/";
+    const server = import.meta.env.VITE_SERVER;
   const [delivers, setDilevers] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
     const fetchProducts = async () => {
       setIsLoading(true);
       try {
-        const response = await fetch(`${server}api/Delivery/GetAllDelivery`);
+        const response = await fetch(`${server}/api/Delivery/GetAllDelivery`);
         if (!response.ok) {
-          // throw new Error("Network response was not ok");
+          throw new Error("Network response was not ok");
         }
         const data = await response.json();
         setDilevers(data);
@@ -46,9 +47,10 @@ const Delivery = () => {
           ) : delivers?.data && Array.isArray(delivers.data) ? (
             delivers.data.map((deliver) => (
               <div key={deliver?.id} className="postbox-details">
-                <h2>{deliver?.city}</h2>
-                <p>{deliver?.postBox}</p>
-                <p>OrderAb: {deliver?.orderAb.toFixed(2)} CHF</p>
+                <h2>
+                  {deliver?.city},{deliver?.postBox}
+                </h2>
+                <p>Ab: CHF {deliver?.orderAb.toFixed(2)}</p>
               </div>
             ))
           ) : (

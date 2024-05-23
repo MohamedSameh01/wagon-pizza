@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react-refresh/only-export-components */
 import { createSlice } from "@reduxjs/toolkit";
 
@@ -13,9 +14,7 @@ export const CartSlice = createSlice({
       try {
         const meal = action.payload.meal;
         console.log("meal", meal);
-        meal.topings = action.payload.selectedExtensions
-          ? action.payload.selectedExtensions
-          : meal.topings;
+        meal.topings = action.payload.selectedExtensions || [];
         let priceOfTopings = 0;
         if (meal.topings.length > 0) {
           priceOfTopings = meal.topings.reduce((acc, obj) => {
@@ -28,14 +27,14 @@ export const CartSlice = createSlice({
         );
         if (exist) {
           exist.quantity++;
-          exist.totalPrice += parseFloat(exist.price);
+          exist.totalPrice += meal.price + priceOfTopings;
           state.totalItems++;
-          state.totalPrice += parseFloat(exist.totalPrice);
+          state.totalPrice += meal.price + priceOfTopings;
         } else {
           state.cart.push({
             id: meal.id,
             quantity: 1,
-            price: parseFloat(meal.price + priceOfTopings),
+            price: meal.price,
             totalPrice: meal.price + priceOfTopings,
             name: meal.name,
             photoName: meal.photoName,
@@ -46,12 +45,13 @@ export const CartSlice = createSlice({
             topings: meal.topings,
           });
           state.totalItems++;
-          state.totalPrice += parseFloat(meal.price);
+          state.totalPrice += meal.price + priceOfTopings;
         }
       } catch (err) {
         console.log("error in add meal", err);
       }
     },
+
     deleteMeal: (state, action) => {
       try {
         const meal = action.payload;
@@ -59,11 +59,19 @@ export const CartSlice = createSlice({
         const exist = state.cart.find(
           (x) => x.id === meal.id && arraysEqual(x.topings, meal.topings)
         );
+        if (!exist) return;
+
+        let priceOfTopings = 0;
+        if (meal.topings.length > 0) {
+          priceOfTopings = meal.topings.reduce((acc, obj) => {
+            return acc + obj.price;
+          }, 0);
+        }
         if (exist.quantity > 1) {
           exist.quantity--;
-          exist.totalPrice -= parseFloat(exist.price);
+          exist.totalPrice -= meal.price + priceOfTopings;
           state.totalItems--;
-          state.totalPrice -= parseFloat(exist.price);
+          state.totalPrice -= meal.price + priceOfTopings;
         } else if (exist.quantity === 1) {
           const arraysNotEqual = (a, b) =>
             JSON.stringify(a) !== JSON.stringify(b);
@@ -73,43 +81,56 @@ export const CartSlice = createSlice({
               (x.id === meal.id && arraysNotEqual(x.topings, meal.topings))
           );
           state.totalItems--;
-          state.totalPrice -= parseFloat(exist.totalPrice);
+          state.totalPrice -= meal.price + priceOfTopings;
         }
       } catch (err) {
         console.log("error in delete item", err);
       }
     },
+
     removeMeal: (state, action) => {
       try {
         const meal = action.payload;
-        const exist = state.cart.find((x) => x.id === meal.id);
+        const exist = state.cart.find(
+          (x) => x.id === meal.id && JSON.stringify(x.topings) === JSON.stringify(meal.topings)
+        );
+        if (!exist) return;
+
+        let priceOfTopings = 0;
+        if (meal.topings.length > 0) {
+          priceOfTopings = meal.topings.reduce((acc, obj) => {
+            return acc + obj.price;
+          }, 0);
+        }
         state.totalItems -= exist.quantity;
-        state.totalPrice -= exist.quantity * parseFloat(meal.price);
-        const arraysNotEqual = (a, b) =>
-          JSON.stringify(a) !== JSON.stringify(b);
+        state.totalPrice -= exist.totalPrice;
         state.cart = state.cart.filter(
-          (x) =>
-            x.id !== meal.id ||
-            (x.id === meal.id && arraysNotEqual(x.topings, meal.topings))
+          (x) => x.id !== meal.id || JSON.stringify(x.topings) !== JSON.stringify(meal.topings)
         );
       } catch (err) {
         console.log("can't remove this meal", err);
       }
     },
+
     addMealFromCart: (state, action) => {
       const meal = action.payload;
       const arraysEqual = (a, b) => JSON.stringify(a) === JSON.stringify(b);
       const exist = state.cart.find(
         (x) => x.id === meal.id && arraysEqual(x.topings, meal.topings)
       );
+      let priceOfTopings = 0;
+      if (meal.topings.length > 0) {
+        priceOfTopings = meal.topings.reduce((acc, obj) => {
+          return acc + obj.price;
+        }, 0);
+      }
       state.totalItems++;
-      state.totalPrice += meal.totalPrice;
+      state.totalPrice += meal.price + priceOfTopings;
       exist.quantity++;
-      exist.totalPrice += meal.price;
+      exist.totalPrice += meal.price + priceOfTopings;
     },
   },
 });
 
-export const { addMeal, deleteMeal, removeMeal, addTopings, addMealFromCart } =
-  CartSlice.actions;
+export const { addMeal, deleteMeal, removeMeal, addMealFromCart } = CartSlice.actions;
 export default CartSlice.reducer;

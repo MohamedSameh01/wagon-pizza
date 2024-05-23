@@ -2,7 +2,7 @@
 /* eslint-disable no-unused-vars */
 // import React from 'react'
 import { useEffect, useState } from "react";
-import Logo from "../../assets/85a30340-f824-4e4a-b2a5-c5d808affecc.jpg";
+import Logo from "../../assets/85a30340-f824-4e4a-b2a5-c5d808affecc.png";
 import "./Footer.css";
 import Instgram from "../../assets/images/instgram.jpg";
 import Twitter from "../../assets/images/Twitter.jpg";
@@ -16,14 +16,14 @@ const Footer = () => {
     threshold: 0.1, // Trigger when 10% of the component is visible
   });
 
-  const server = "https://admin.lightsoft.ch/";
+   const server = import.meta.env.VITE_SERVER;
   const [delivers, setDilevers] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
     const fetchProducts = async () => {
       setIsLoading(true);
       try {
-        const response = await fetch(`${server}api/Company/GetCompanyData`);
+        const response = await fetch(`${server}/api/Company/GetCompanyData`);
         if (!response.ok) {
           // throw new Error("Network response was not ok");
         }
@@ -69,24 +69,18 @@ const Footer = () => {
               <h3 className="footer__link-title">Times</h3>
               <ul className="footer__menu">
                 <li className="footer__menu-item">
-                  <p className="footer__menu-item">
-                    {delivers?.data?.openTime1}
-                  </p>
+                  <p className="footer__link">{delivers?.data?.openTime1}</p>
                 </li>
                 <li className="footer__menu-item">
-                  <p className="footer__menu-item">
-                    {delivers?.data?.openTime2}
-                  </p>
+                  <p className="footer__link">{delivers?.data?.openTime2}</p>
                 </li>
                 <li className="footer__menu-item">
-                  <p className="footer__menu-item">
-                    {delivers?.data?.openTime3}
-                  </p>
+                  <p className="footer__link">{delivers?.data?.openTime3}</p>
                 </li>
               </ul>
             </div>
             <div className="footer__box">
-              <h3 className="footer__link-title">Times</h3>
+              <h3 className="footer__link-title">-</h3>
               <ul className="footer__menu">
                 <li className="footer__menu-item">
                   <p className="footer__link">{delivers?.data?.delivery1}</p>
@@ -102,8 +96,21 @@ const Footer = () => {
                 </li>
               </ul>
             </div>
+            <div className="footer__box">
+              <h3 className="footer__link-title">About</h3>
+              <ul className="footer__menu">
+                <li className="footer__menu-item">
+                  <p className="footer__link">
+                    {" "}
+                    is a long established fact that a reader will be distracted
+                    by the readable content of a page when looking at its
+                    layout. The point of using Lorem Ipsum is that it has a
+                  </p>
+                </li>
+              </ul>
+            </div>
           </div>
-          <div className="info-company">
+          {/* <div className="info-company">
             <div className="part1">
               <span className="highlight">part1</span>
               <p>
@@ -113,30 +120,10 @@ const Footer = () => {
                 point of using Lorem Ipsum is that it has a more-or-less normal
                 distribution of letters, as opposed to using 'Content here,
                 content here', making it look like readable English. Many
-                desktop publishing packages and web page editors now use Lorem
-                Ipsum as their default model text, and a search for 'lorem
-                ipsum' will uncover many web sites still in their infancy.
-                Various versions have evolved over the years, sometimes by
-                accident, sometimes on purpose (injected humour and the like).
+                desktop
               </p>
             </div>
-            <div className="part2">
-              <span className="highlight">part2</span>
-              <p>
-                {" "}
-                is a long established fact that a reader will be distracted by
-                the readable content of a page when looking at its layout. The
-                point of using Lorem Ipsum is that it has a more-or-less normal
-                distribution of letters, as opposed to using 'Content here,
-                content here', making it look like readable English. Many
-                desktop publishing packages and web page editors now use Lorem
-                Ipsum as their default model text, and a search for 'lorem
-                ipsum' will uncover many web sites still in their infancy.
-                Various versions have evolved over the years, sometimes by
-                accident, sometimes on purpose (injected humour and the like).
-              </p>
-            </div>
-          </div>
+          </div> */}
           <hr />
           <p className="light-soft">
             Copy Rights @<span className="highlight">Light Soft</span>

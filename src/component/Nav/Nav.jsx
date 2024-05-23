@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 // import React from 'react'
 import "./Nav.css";
-import Logo from "../../assets/85a30340-f824-4e4a-b2a5-c5d808affecc.jpg";
+import Logo from "../../assets/85a30340-f824-4e4a-b2a5-c5d808affecc.png";
 import { FaCartShopping } from "react-icons/fa6";
 import { CiMenuBurger } from "react-icons/ci";
 import { CgProfile } from "react-icons/cg";
@@ -16,7 +16,7 @@ import { addMeal, deleteMeal, removeMeal } from "../../reduxTool/CartSlice";
 const Nav = () => {
   const [isMenue, setIsMenue] = useState(false);
   const [isCart, setIsCart] = useState(false);
-  const server = "https://admin.lightsoft.ch/";
+  const server = import.meta.env.VITE_SERVER;
   const menueRef = useRef(null);
   const cartRef = useRef(null);
   const dispatch=useDispatch();
@@ -111,7 +111,7 @@ const Nav = () => {
               return (
                 <div className="cart-item" key={item.id}>
                   <img
-                    src={`${server}Images/${item.photoName}`}
+                    src={`${server}/Images/${item.photoName}`}
                     alt="Product Image"
                     className="product-image"
                   />

@@ -8,6 +8,7 @@ import toast, { Toaster } from "react-hot-toast";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 const ReservationForm = () => {
+    const server = import.meta.env.VITE_SERVER;
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -49,7 +50,7 @@ const ReservationForm = () => {
     setSending(true);
     try {
       const response = await axios.post(
-        "https://admin.lightsoft.ch/api/Reservation/Reservation",
+        `${server}/api/Reservation/Reservation`,
         formData
       );
       toast.success("check your email");

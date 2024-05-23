@@ -3,15 +3,36 @@
   max-width: 800px;
   margin: 20px auto;
   padding: 50px 0;
+  .empty-cart{
+    width: 70%;
+    height: 70%;
+    display: block;
+    margin: auto;
+    object-fit: contain;
+  }
   h1 {
     text-align: center;
     margin-bottom: 20px;
     font-size: 2.5rem;
   }
+  .select-city{
+    margin: 20px 0 ;
+    padding: 10px 20px;
+    /* width: 90%; */
+    border: 0;
+    outline: none;
+    font-size: 20px;
+    cursor: pointer;
+    background-color: rgb(163, 163, 163);
+    option{
+      /* color: white; */
+      padding: 10px 20px;
+    }
+  }
   .cart-item {
     display: flex;
     align-items: center;
-    background-color: rgb(126, 126, 126);
+    background-color: rgb(29, 29, 29);
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
@@ -36,7 +57,7 @@
     }
     .price {
       font-size: 1.1rem;
-      color: black;
+      color: rgb(255, 255, 255);
     }
     .description {
       font-size: 1rem;
@@ -58,6 +79,7 @@
     margin: 10px 0;
     display: flex;
     align-items: center;
+    color: white;
     span {
       font-size: 1rem;
       font-weight: 800;
@@ -78,6 +100,11 @@
   .remove-button:hover {
     background-color: transparent;
   }
+  .minimumOrderAb{
+    color: red;
+    margin: 30px 0 0px 0;
+    font-size: 20px;
+  }
   .shopping-cart-order{
       width: 100%;
       background-color: var(--primary-color);
@@ -92,6 +119,7 @@
         transform: scale(1.01);
         background-color: rgb(226, 143, 114);
     }
+    
 }
 
 /* Responsive Styles */

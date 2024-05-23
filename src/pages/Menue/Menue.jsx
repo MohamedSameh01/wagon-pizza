@@ -8,7 +8,7 @@ import LabelCard from "../../component/LabelCard/LabelCard";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 const Menue = () => {
-  const server = "https://admin.lightsoft.ch/";
+   const server = import.meta.env.VITE_SERVER;
   const [categories, setCategories] = useState({});
   const [isLoading1, setIsLoading1] = useState(false);
   const [isLoading2, setIsLoading2] = useState(false);
@@ -36,7 +36,7 @@ const Menue = () => {
     const fetchProducts = async () => {
       setIsLoading1(true);
       try {
-        const response = await fetch(`${server}api/Category/GetAllCategorys`);
+        const response = await fetch(`${server}/api/Category/GetAllCategorys`);
         if (!response.ok) {
           // throw new Error("Network response was not ok");
         }
@@ -56,7 +56,7 @@ const Menue = () => {
       setIsLoading2(true);
       try {
         const response = await fetch(
-          `${server}api/Product/GetAllProductsBySubCategoryId?id=${selectedSubCategory}`
+          `${server}/api/Product/GetAllProductsBySubCategoryId?id=${selectedSubCategory}`
         );
         if (!response.ok) {
           // throw new Error("Network response was not ok");
@@ -112,7 +112,7 @@ const Menue = () => {
                     onClick={() => getSelectedCat(cat.id)}
                   >
                     <img
-                      src={`${server}Images/${cat.photoName}`}
+                      src={`${server}/Images/${cat.photoName}`}
                       alt="label Image"
                       className="card-image"
                     />

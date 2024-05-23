@@ -11,12 +11,12 @@ const DailyProduct = () => {
     threshold: 0.1, // Trigger when 10% of the component is visible
   });
 
-  const server = "https://admin.lightsoft.ch/";
+  const server = import.meta.env.VITE_SERVER;
   const [dailyProduct, setDailyProducts] = useState({});
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch(`${server}api/Product/GetHomeProducts`);
+        const response = await fetch(`${server}/api/Product/GetHomeProducts`);
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }

@@ -96,9 +96,12 @@
     width: 48%;
     text-align: left;
     cursor: pointer;
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+    
     input{
       cursor: pointer;
-
+      margin-right: 5px;
     }
   }
 
@@ -126,6 +129,7 @@
     display: block;
     margin-top: 20px auto;
     width: 80%;
+    font-size: 1.2rem;
   }
 
   .total {

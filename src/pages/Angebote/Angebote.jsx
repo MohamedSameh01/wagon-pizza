@@ -30,14 +30,14 @@ const Angebote = () => {
     threshold: 0.1, 
   });
   
-  const server = "https://admin.lightsoft.ch/";
+  const server = import.meta.env.VITE_SERVER;
   const [todayProductsData, setTodayProductsData] = useState({});
   const [offers, setOffers] = useState({});
   useEffect(() => {
     const fetchProducts = async () => {
       try {
         const response = await fetch(
-          `${server}api/TodayBonus/GetAllTodayBonus`
+          `${server}/api/TodayBonus/GetAllTodayBonus`
         );
         if (!response.ok) {
           throw new Error("Network response was not ok");
@@ -54,7 +54,7 @@ const Angebote = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch(`${server}api/Offer/GetAllOffers`);
+        const response = await fetch(`${server}/api/Offer/GetAllOffers`);
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }

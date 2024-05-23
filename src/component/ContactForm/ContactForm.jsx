@@ -4,7 +4,7 @@ import "./ContactForm.css";
 import CardInfo from "../CardInfo/CardInfo";
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
-import Logo from "../../assets/85a30340-f824-4e4a-b2a5-c5d808affecc.jpg";
+import Logo from "../../assets/85a30340-f824-4e4a-b2a5-c5d808affecc.png";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 const ContactForm = () => {
@@ -16,13 +16,14 @@ const ContactForm = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [sending, setSending] = useState(false);
   const [sent, setSent] = useState(false);
-  const server = "https://admin.lightsoft.ch/";
+  const server = import.meta.env.VITE_SERVER;
+
 
   useEffect(() => {
     const fetchProducts = async () => {
       setIsLoading(true);
       try {
-        const response = await fetch(`${server}api/Company/GetCompanyData`);
+        const response = await fetch(`${server}/api/Company/GetCompanyData`);
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
@@ -55,7 +56,7 @@ const ContactForm = () => {
     setSending(true);
     try {
       const response = await axios.post(
-        "https://admin.lightsoft.ch/api/Contact/Contact",
+        `${server}/api/Contact/Contact`,
         formData
       );
       toast.success("Check your email");
