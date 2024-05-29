@@ -5,29 +5,45 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import checkOut from "../../assets/images/checkOut.jpg";
+import axios from "axios";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { successCheckOut } from "../../reduxTool/AuthContext";
+import { useLocation } from "react-router-dom";
 
 const CheckOutForm = () => {
   const { ref, inView } = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
+  const navigate = useNavigate();
   const server = import.meta.env.VITE_SERVER;
   const [delivers, setDilevers] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [selectedCity, setSelectedCity] = useState("");
+  const [sending, setSending] = useState(false);
+  const [sent, setSent] = useState(false);
+  const dispatch = useDispatch();
+  const { isCheckedOut } = useSelector((state) => state.auth);
+  const location =useLocation();
+  const userId=location.state?.response;
+  const addressCity=location.state?.city;
+
+  
   const [formData, setFormData] = useState({
+    userId: `${userId}`,
     name: "",
     street: "",
-    address: "",
-    time: "",
+    city: "",
+    postBox: "",
     discountCode: "",
     notes: "",
+    deliveryTime: "",
+    email: "",
+    mobile: "",
+    paymentWay: 0,
   });
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
   useEffect(() => {
     const fetchProducts = async () => {
       setIsLoading(true);
@@ -46,15 +62,57 @@ const CheckOutForm = () => {
     fetchProducts();
   }, []);
 
-   useEffect(() => {
-     setFormData((prevFormData) => ({
-       ...prevFormData,
-       address: selectedCity,
-     }));
-   }, [selectedCity]);
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
-   
-   
+  useEffect(() => {
+    let city, postBox;
+    const matchedDelivery = delivers?.data?.find(
+      (del) => del.city === addressCity
+    );
+    if (matchedDelivery) {
+      city = matchedDelivery.city;
+      postBox = matchedDelivery.postBox;
+      setSelectedCity(postBox + " " + city);
+    }
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      city: city,
+      postBox: postBox,
+    }));
+  }, [selectedCity,delivers?.data,addressCity]);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setSending(true);
+    try {
+      const response = await axios.post(`${server}/api/Cart/order`, formData);
+      toast.success("Check your email");
+      dispatch(successCheckOut());
+      console.log(response)
+      navigate("/cart/checkOut/payment", {
+        state: { response: response.data?.data?.id},
+      });
+      setSent(true);
+      setFormData({
+        name: "",
+        street: "",
+        city: "",
+        postBox: "",
+        deliveryTime: "",
+        discountCode: "",
+        notes: "",
+        email:"",
+        mobile:"",
+        paymentWay: 0,
+      });
+    } catch (error) {
+      toast.error("Failed to send email");
+    } finally {
+      setSending(false);
+    }
+  };
 
   return (
     <motion.div
@@ -70,7 +128,7 @@ const CheckOutForm = () => {
         </div>
         <div className="check-out-container">
           <form id="orderForm">
-            <h2>Order Form</h2>
+            <h2>Check Out</h2>
             <div className="form-group">
               <label htmlFor="name">Name:</label>
               <input
@@ -94,7 +152,15 @@ const CheckOutForm = () => {
 
             <div className="form-group">
               <label htmlFor="city">City:</label>
-              {delivers?.data && (
+              <input
+                type="text"
+                id="city"
+                name="city"
+                value={selectedCity}
+                disabled
+                // onChange={handleChange}
+              />
+              {/* {delivers?.data && (
                 <select
                   className="select-city"
                   name="address"
@@ -111,7 +177,7 @@ const CheckOutForm = () => {
                       );
                     })}
                 </select>
-              )}
+              )} */}
             </div>
 
             <div className="form-group">
@@ -124,11 +190,29 @@ const CheckOutForm = () => {
               />
             </div>
             <div className="form-group">
+              <label htmlFor="email">Email:</label>
+              <input
+                type="text"
+                id="email"
+                name="email"
+                onChange={handleChange}
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="mobile">mobile:</label>
+              <input
+                type="text"
+                id="mobile"
+                name="mobile"
+                onChange={handleChange}
+              />
+            </div>
+            <div className="form-group">
               <label htmlFor="deliveryTime">Delivery Time:</label>
               <input
                 type="time"
                 id="deliveryTime"
-                name="time"
+                name="deliveryTime"
                 required
                 onChange={handleChange}
               />
@@ -141,7 +225,9 @@ const CheckOutForm = () => {
                 onChange={handleChange}
               ></textarea>
             </div>
-            <button type="submit">Submit</button>
+            <button type="submit" disabled={sending} onClick={handleSubmit}>
+              {sending ? "Sending..." : "check out"}
+            </button>
           </form>
         </div>
       </div>
@@ -150,3 +236,5 @@ const CheckOutForm = () => {
 };
 
 export default CheckOutForm;
+
+

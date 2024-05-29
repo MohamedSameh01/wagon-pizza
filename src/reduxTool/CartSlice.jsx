@@ -5,7 +5,7 @@ import { createSlice } from "@reduxjs/toolkit";
 export const CartSlice = createSlice({
   name: "cart",
   initialState: {
-    cart: [],
+    items: [],
     totalItems: 0,
     totalPrice: 0,
   },
@@ -13,7 +13,7 @@ export const CartSlice = createSlice({
     addMeal: (state, action) => {
       try {
         const meal = action.payload.meal;
-        console.log("meal", meal);
+        // console.log("meal", meal);
         meal.topings = action.payload.selectedExtensions || [];
         let priceOfTopings = 0;
         if (meal.topings.length > 0) {
@@ -22,8 +22,8 @@ export const CartSlice = createSlice({
           }, 0);
         }
         const arraysEqual = (a, b) => JSON.stringify(a) === JSON.stringify(b);
-        const exist = state.cart.find(
-          (x) => x.id === meal.id && arraysEqual(x.topings, meal.topings)
+        const exist = state.items.find(
+          (x) => x.productId === meal.id && arraysEqual(x.topings, meal.topings)
         );
         if (exist) {
           exist.quantity++;
@@ -31,8 +31,8 @@ export const CartSlice = createSlice({
           state.totalItems++;
           state.totalPrice += meal.price + priceOfTopings;
         } else {
-          state.cart.push({
-            id: meal.id,
+          state.items.push({
+            productId: meal.id,
             quantity: 1,
             price: meal.price,
             totalPrice: meal.price + priceOfTopings,
@@ -56,8 +56,10 @@ export const CartSlice = createSlice({
       try {
         const meal = action.payload;
         const arraysEqual = (a, b) => JSON.stringify(a) === JSON.stringify(b);
-        const exist = state.cart.find(
-          (x) => x.id === meal.id && arraysEqual(x.topings, meal.topings)
+        const exist = state.items.find(
+          (x) =>
+            x.productId === meal.productId &&
+            arraysEqual(x.topings, meal.topings)
         );
         if (!exist) return;
 
@@ -75,10 +77,11 @@ export const CartSlice = createSlice({
         } else if (exist.quantity === 1) {
           const arraysNotEqual = (a, b) =>
             JSON.stringify(a) !== JSON.stringify(b);
-          state.cart = state.cart.filter(
+          state.items = state.items.filter(
             (x) =>
-              x.id !== meal.id ||
-              (x.id === meal.id && arraysNotEqual(x.topings, meal.topings))
+              x.productId !== meal.productId ||
+              (x.productId === meal.productId &&
+                arraysNotEqual(x.topings, meal.topings))
           );
           state.totalItems--;
           state.totalPrice -= meal.price + priceOfTopings;
@@ -91,8 +94,10 @@ export const CartSlice = createSlice({
     removeMeal: (state, action) => {
       try {
         const meal = action.payload;
-        const exist = state.cart.find(
-          (x) => x.id === meal.id && JSON.stringify(x.topings) === JSON.stringify(meal.topings)
+        const exist = state.items.find(
+          (x) =>
+            x.productId === meal.productId &&
+            JSON.stringify(x.topings) === JSON.stringify(meal.topings)
         );
         if (!exist) return;
 
@@ -104,8 +109,10 @@ export const CartSlice = createSlice({
         }
         state.totalItems -= exist.quantity;
         state.totalPrice -= exist.totalPrice;
-        state.cart = state.cart.filter(
-          (x) => x.id !== meal.id || JSON.stringify(x.topings) !== JSON.stringify(meal.topings)
+        state.items = state.items.filter(
+          (x) =>
+            x.productId !== meal.productId ||
+            JSON.stringify(x.topings) !== JSON.stringify(meal.topings)
         );
       } catch (err) {
         console.log("can't remove this meal", err);
@@ -115,9 +122,11 @@ export const CartSlice = createSlice({
     addMealFromCart: (state, action) => {
       const meal = action.payload;
       const arraysEqual = (a, b) => JSON.stringify(a) === JSON.stringify(b);
-      const exist = state.cart.find(
-        (x) => x.id === meal.id && arraysEqual(x.topings, meal.topings)
+      const exist = state.items.find(
+        (x) =>
+          x.productId === meal.productId && arraysEqual(x.topings, meal.topings)
       );
+      // console.log("exist",exist)
       let priceOfTopings = 0;
       if (meal.topings.length > 0) {
         priceOfTopings = meal.topings.reduce((acc, obj) => {

@@ -18,7 +18,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
 const ShoppingCart = ({ setCheckoutAllowed }) => {
-  const [cartData, setCartData] = useState([]);
+  const [selectedCity, setSelectedCity] = useState("");
   const [delivers, setDilevers] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [minimumOrderAb, setMinimumOrderAb] = useState("");
@@ -30,19 +30,20 @@ const ShoppingCart = ({ setCheckoutAllowed }) => {
   const [sent, setSent] = useState(false);
 
   const handleOrderClick = async (e) => {
-    // e.preventDefault();
-    // setSending(true);
-    // try {
-    //   const response = await axios.post(`${server}/api/Contact/Contact`, cart);
-    //   toast.success("success");
-    //   setSent(true);
+    e.preventDefault();
+    setSending(true);
+    try {
+      const response = await axios.post(`${server}/api/Cart/cart/add`, cart);
+      // console.log("response", response);
+      toast.success("success");
+      setSent(true);
       setCheckoutAllowed(true);
-      navigate("/cart/checkOut");
-    // } catch (err) {
-    //   toast.error("Failed to send");
-    // }finally{
-    //    setSending(false);
-    // }
+      navigate("/cart/checkOut", { state: { response: response.data ,city:selectedCity } });
+    } catch (err) {
+      toast.error("Failed to send");
+    } finally {
+      setSending(false);
+    }
   };
 
   const scrollToTop = () => {
@@ -74,7 +75,18 @@ const ShoppingCart = ({ setCheckoutAllowed }) => {
     fetchProducts();
   }, []);
 
-  console.log("cart", cart);
+  const getAddress=(e)=>{
+    const address=e.target.value;
+    // console.log("address",address);
+    const orderAb = address.match(/\d+/);
+    setMinimumOrderAb(orderAb);
+     const cityMatch = address.match(/[a-zA-Z\s]+/);
+     const city = cityMatch ? cityMatch[0].trim() : "";
+     setSelectedCity(city);
+    //  console.log(selectedCity)
+     
+  }
+  // console.log("cart", cart);
 
   return (
     <div className="cart-container">
@@ -83,15 +95,12 @@ const ShoppingCart = ({ setCheckoutAllowed }) => {
         <img className="empty-cart" src={emptyCart} alt="emptyCart" />
       )}
       {cart.totalItems > 0 && (
-        <select
-          className="select-city"
-          onChange={(e) => setMinimumOrderAb(e.target.value)}
-        >
+        <select className="select-city" onChange={getAddress}>
           <option value={""}>select City</option>
           {delivers.data &&
             delivers.data.map((del) => {
               return (
-                <option value={del.orderAb} key={del.id}>
+                <option value={[del.orderAb, del.city]} key={del.id}>
                   {" "}
                   {del.postBox} {del.city}
                 </option>
@@ -100,7 +109,7 @@ const ShoppingCart = ({ setCheckoutAllowed }) => {
         </select>
       )}
       {cart.totalItems > 0 &&
-        cart.cart.map((meal, index) => {
+        cart.items.map((meal, index) => {
           return (
             <div className="cart-item" key={index}>
               <img
@@ -176,12 +185,14 @@ const ShoppingCart = ({ setCheckoutAllowed }) => {
             className="shopping-cart-order"
             onClick={handleOrderClick}
             disabled={
-              cart.totalPrice < minimumOrderAb || minimumOrderAb === ""||sending
+              cart.totalPrice < minimumOrderAb ||
+              minimumOrderAb === "" ||
+              sending
                 ? true
                 : false
             }
           >
-            {sending?"sending":"Order"}
+            {sending ? "sending" : "Order"}
           </button>
         </>
       )}

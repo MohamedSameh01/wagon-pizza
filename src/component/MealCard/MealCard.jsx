@@ -54,7 +54,7 @@ const MealCard = ({ meal, width }) => {
         />
         <div className="card-content">
           <h2 className="meal-name">{meal.name}</h2>
-          <p>{meal.description1}</p>
+          <p>{meal.description}</p>
           <div className="card-footer">
             <span className="price"> CHF {meal.price.toFixed(2)}</span>
             <span className="cart-icon">
@@ -63,7 +63,6 @@ const MealCard = ({ meal, width }) => {
           </div>
         </div>
       </motion.div>
-
       <Modal
         className="modal"
         open={open}
@@ -90,8 +89,8 @@ const MealCard = ({ meal, width }) => {
             {meal.extensions && <h1>extras :</h1>}
             <div className="toppings">
               {meal?.extensions &&
-                meal?.extensions?.map((topping) => (
-                  <label key={topping.name}>
+                meal?.extensions?.map((topping,index) => (
+                  <label key={index}>
                     <input
                       type="checkbox"
                       value={topping.name}

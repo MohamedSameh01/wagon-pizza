@@ -51,7 +51,7 @@ const Nav = () => {
       };
     }
   }, [isCart]);
-    console.log("cart",cart.cart)
+    // console.log("cart",cart.cart)
 
   return (
     <header className="header">

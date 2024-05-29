@@ -55,6 +55,9 @@ const ReservationForm = () => {
       );
       toast.success("check your email");
       setSent(true);
+       setTimeout(() => {
+         setSent(false);
+       }, 3000);
       setFormData({
         name: "",
         email: "",
@@ -81,7 +84,7 @@ const ReservationForm = () => {
       return `${day}.${month}.${year}`;
     }
   };
-  console.log("formData", formData);
+  // console.log("formData", formData);
   return (
     <div className="reservation">
       <h1>
@@ -172,7 +175,7 @@ const ReservationForm = () => {
         </button>
         {sent && (
           <div>
-            <p>Message sent successfully!</p>
+            <p style={{ color: "#1dff1d" }}>Message sent successfully!</p>
           </div>
         )}
       </form>

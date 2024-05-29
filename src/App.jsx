@@ -18,8 +18,13 @@ import CartPage from "./pages/CartPage/CartPage";
 import CheckOut from "./pages/CheckOut/CheckOut";
 import { ProtectedRoute } from "./component/ProtectedRoute/ProtectedRoute";
 import { useState } from "react";
+import Payment from "./pages/Payment/Payment";
+import { useSelector } from "react-redux";
+import SuccessPage from "./pages/SuccessPage/SuccessPage";
+
 function App() {
    const [isCheckoutAllowed, setCheckoutAllowed] = useState(false);
+   const {isCheckedOut}=useSelector((state)=>state.auth)
   return (
     <>
       <Nav />
@@ -29,6 +34,8 @@ function App() {
         <Route path="/reservation" element={<Reservation />} />
         <Route path="/angebote" element={<Angebote />} />
         <Route path="/kontakt" element={<Kontakt />} />
+        <Route path="/success" element={<SuccessPage />} />
+        
         <Route
           path="/cart"
           element={<CartPage setCheckoutAllowed={setCheckoutAllowed} />}
@@ -36,7 +43,21 @@ function App() {
         <Route
           path="/cart/checkOut"
           element={
-            <ProtectedRoute element={CheckOut} isAllowed={isCheckoutAllowed} />
+            <ProtectedRoute
+              element={CheckOut}
+              isAllowed={isCheckoutAllowed}
+              redirectPath={"/cart"}
+            />
+          }
+        />
+        <Route
+          path="/cart/checkOut/payment"
+          element={
+            <ProtectedRoute
+              element={Payment}
+              isAllowed={isCheckedOut}
+              redirectPath={"/cart/checkOut"}
+            />
           }
         />
 

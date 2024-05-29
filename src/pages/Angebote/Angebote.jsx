@@ -33,11 +33,13 @@ const Angebote = () => {
   const server = import.meta.env.VITE_SERVER;
   const [todayProductsData, setTodayProductsData] = useState({});
   const [offers, setOffers] = useState({});
+
+  // console.log("todayProductsData", todayProductsData);
   useEffect(() => {
     const fetchProducts = async () => {
       try {
         const response = await fetch(
-          `${server}/api/TodayBonus/GetAllTodayBonus`
+          `${server}/api/product/GetAllTodayBonus`
         );
         if (!response.ok) {
           throw new Error("Network response was not ok");
@@ -54,7 +56,7 @@ const Angebote = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch(`${server}/api/Offer/GetAllOffers`);
+        const response = await fetch(`${server}/api/product/GetAllOffers`);
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
