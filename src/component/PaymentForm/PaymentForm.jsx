@@ -63,7 +63,7 @@ const PaymentForm = () => {
       elements,
       confirmParams: {
         // Make sure to change this to your payment completion page
-        return_url: "https://wagon-pizza.vercel.app/success",
+        return_url: "http://wagon-pizza.vercel.app/success",
       },
     });
 
