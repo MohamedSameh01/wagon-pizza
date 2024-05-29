@@ -10,6 +10,17 @@ import axios from "axios";
 import "./Payment.css"
 import Check from "../../component/Check/Check";
 const Payment = () => {
+  
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
+  useEffect(() => {
+    scrollToTop();
+  }, []);
   // publish Key
   const [clientSecret, setClientSecret] = useState("");
    const server = import.meta.env.VITE_SERVER;

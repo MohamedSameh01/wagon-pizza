@@ -52,7 +52,7 @@
   }
 
   button:hover {
-    background: darkgreen;
+    background: orangered;
   }
 
   /* Media query for smaller screens */
