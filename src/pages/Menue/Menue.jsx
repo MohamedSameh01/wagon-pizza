@@ -87,6 +87,7 @@ const Menue = () => {
     triggerOnce: true, 
     threshold: 0.1, 
   });
+  console.log(categories)
   return (
     <section className="menue-sec">
       <div className="container">
@@ -104,22 +105,24 @@ const Menue = () => {
             {isLoading1 ? (
               <Spiner />
             ) : (
-              categories?.data?.map((cat) => {
-                return (
-                  <div
-                    className="card-label"
-                     key={cat.id}
-                    onClick={() => getSelectedCat(cat.id)}
-                  >
-                     <img
-                      src={`${server}/Images/${cat.photoName}`}
-                      alt="label Image"
-                      className="card-Image"
-                    />
-                    <h4 className="card-title">{cat.name}</h4>
-                  </div>
-                );
-              })
+              categories?.data
+                ?.filter((cat) => cat.name !== "Offers" && cat.name !== "Bonus")
+                .map((cat) => {
+                  return (
+                    <div
+                      className="card-label"
+                      key={cat.id}
+                      onClick={() => getSelectedCat(cat.id)}
+                    >
+                      <img
+                        src={`${server}/Images/${cat.photoName}`}
+                        alt="label Image"
+                        className="card-Image"
+                      />
+                      <h4 className="card-title">{cat.name}</h4>
+                    </div>
+                  );
+                })
             )}
           </div>
         </motion.div>
