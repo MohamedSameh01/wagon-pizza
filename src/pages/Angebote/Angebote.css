@@ -3,7 +3,9 @@
   background-position: center;
   background-repeat: no-repeat;
   h1 {
-    font-size: 2.5rem;
+    font-size: 4rem;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
     text-align: center;
   }
 }
@@ -25,9 +27,15 @@
     color: var(--primary-color);
   }
 }
-@media (max-width: 480px) {
+@media (max-width: 422px) {
   .card {
     width: 90vw;
+  }
+  .angebote {
+    h1 {
+      font-size: 2.8rem;
+    
+    }
   }
 }
 

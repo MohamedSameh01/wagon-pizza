@@ -65,7 +65,10 @@ const Footer = () => {
               </div>
             </div>
             <div className="footer__box">
-              <h3 className="footer__link-title">Uber Uns...</h3>
+              <h3 className="footer__link-title">
+                Uber Uns... <br />
+                <br />
+              </h3>
               <ul className="footer__menu">
                 <li className="footer__menu-item">
                   <p className="footer__link">
@@ -78,7 +81,11 @@ const Footer = () => {
               </ul>
             </div>
             <div className="footer__box">
-              <h3 className="footer__link-title">Arbeitszeiten</h3>
+              <h3 className="footer__link-title">
+                Arbeitszeiten
+                <br />
+                <br />
+              </h3>
               <ul className="footer__menu">
                 <li className="footer__menu-item">
                   <p className="footer__link">{delivers?.data?.openTime1}</p>
@@ -92,7 +99,11 @@ const Footer = () => {
               </ul>
             </div>
             <div className="footer__box">
-              <h3 className="footer__link-title">Lieferzeiten</h3>
+              <h3 className="footer__link-title">
+                Lieferzeiten
+                <br />
+                <br />
+              </h3>
               <ul className="footer__menu">
                 <li className="footer__menu-item">
                   <p className="footer__link">{delivers?.data?.delivery1}</p>
@@ -109,7 +120,7 @@ const Footer = () => {
               </ul>
             </div>
           </div>
-      
+
           <hr />
           <p className="light-soft">
             Copy Rights @<span className="highlight">Light Soft</span>

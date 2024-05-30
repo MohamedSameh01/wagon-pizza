@@ -16,12 +16,13 @@ const Sign = () => {
       className="animated-component"
     >
       <section className="sign">
-        <h1 className="component-label highlight">Sign</h1>
+        {/* <h1 className="component-label highlight">Sign</h1> */}
         <div className="text">
           <h1>
             Profitieren Sie von unserem exklusiven Angebot:
             <br />
-            Erhalten Sie <span> 50 % Rabatt auf Ihre erste Bestellung!</span>
+            Erhalten Sie <span> 50 % </span>
+            Rabatt auf Ihre erste Bestellung!
           </h1>
         </div>
       </section>

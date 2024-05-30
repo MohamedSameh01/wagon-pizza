@@ -140,7 +140,7 @@ const CheckOutForm = () => {
               />
             </div>
             <div className="form-group">
-              <label htmlFor="street">Street:</label>
+              <label htmlFor="street">Straße:</label>
               <input
                 type="text"
                 id="street"
@@ -151,7 +151,7 @@ const CheckOutForm = () => {
             </div>
 
             <div className="form-group">
-              <label htmlFor="city">City:</label>
+              <label htmlFor="city">Stadt:</label>
               <input
                 type="text"
                 id="city"
@@ -181,7 +181,7 @@ const CheckOutForm = () => {
             </div>
 
             <div className="form-group">
-              <label htmlFor="discountCode">Discount Code:</label>
+              <label htmlFor="discountCode">Rabattcode:</label>
               <input
                 type="text"
                 id="discountCode"
@@ -190,7 +190,7 @@ const CheckOutForm = () => {
               />
             </div>
             <div className="form-group">
-              <label htmlFor="email">Email:</label>
+              <label htmlFor="email">E-mail:</label>
               <input
                 type="text"
                 id="email"
@@ -208,7 +208,7 @@ const CheckOutForm = () => {
               />
             </div>
             <div className="form-group">
-              <label htmlFor="deliveryTime">Delivery Time:</label>
+              <label htmlFor="deliveryTime">Lieferzeit:</label>
               <input
                 type="time"
                 id="deliveryTime"
@@ -218,7 +218,7 @@ const CheckOutForm = () => {
               />
             </div>
             <div className="form-group">
-              <label htmlFor="notes">Notes:</label>
+              <label htmlFor="notes">Nachricht:</label>
               <textarea
                 id="notes"
                 name="notes"
@@ -226,7 +226,7 @@ const CheckOutForm = () => {
               ></textarea>
             </div>
             <button type="submit" disabled={sending} onClick={handleSubmit}>
-              {sending ? "Sending..." : "check out"}
+              {sending ? "Senden..." : "check out"}
             </button>
           </form>
         </div>

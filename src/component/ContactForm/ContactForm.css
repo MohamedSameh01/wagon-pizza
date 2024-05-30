@@ -1,9 +1,21 @@
 .contact {
   min-height: 100vh;
+  
   h1{
     margin-top: 50px;
     text-align: center;
    
+  }
+  .highlighth1{
+    margin: 100px 0;
+    font-size: 4rem;
+    font-weight: bold;
+    color: var(--primary-color);
+  }
+  .company-address{
+    color: white;
+    font-size: 1.4rem;
+    text-align: center;
   }
   .company-logo-name{
     display: flex;
@@ -25,12 +37,10 @@
 }
 .contact-form {
   background-color: #222;
-  padding: 20px;
+  padding: 20px 40px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  width: 100%;
-  max-width: 400px;
-  height: 500px; 
+  width: 60%;
   margin:50px auto 50px auto ;
   margin-bottom: 70px;
   color: white;
@@ -44,7 +54,8 @@
 
   .form-group label {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
   }
 
   .form-group input,
@@ -53,9 +64,11 @@
     padding: 10px;
     border: none;
     background-color: #000;
-    color: white;
+    color: black;
     border-radius: 5px;
+    font-size: 1.4rem;
     transition: border-color 0.3s, box-shadow 0.3s;
+    background-color: #DCDADA;
   }
 
   .form-group input:focus,
@@ -74,6 +87,7 @@
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
+    font-size: 1.4rem;
   }
 
   button:hover {
@@ -82,15 +96,26 @@
 }
 
 @media (max-width:652px) {
-    .contact .container{
-        display: block;
-    }
-    .company-logo-name{
-      flex-direction: column;
-      align-items: center;
+  .contact .container{
+    display: block;
+  }
+  .company-logo-name{
+    flex-direction: column;
+    align-items: center;
       h1{
         margin-bottom: 20px;
       }
     }
-
-}
+    .contact-form{
+      width: 100%;
+    }
+    
+  }
+  @media (max-width:450px) {
+    .contact .highlighth1{
+      font-size: 2.8rem;
+    }
+    .contact .contact-form{
+      padding: 20px 10px;
+    }
+  }

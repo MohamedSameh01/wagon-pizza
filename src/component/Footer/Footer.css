@@ -65,6 +65,9 @@
   color: var(--small-text-color);
   font-size: 18px;
   color: white;
+  line-height: 1.2;
+  margin-top: -10px;
+  
 }
 
 .footer__copyright {

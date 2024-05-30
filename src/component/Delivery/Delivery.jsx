@@ -41,6 +41,7 @@ const Delivery = () => {
       className="animated-component"
     >
       <div className="postbox-container">
+        <h1 className="highlight">Liefergebiete</h1>
         <div className="postbox-item container">
           {delivers?.data && isLoading ? (
             <Spiner />
@@ -48,7 +49,7 @@ const Delivery = () => {
             delivers.data.map((deliver) => (
               <div key={deliver?.id} className="postbox-details">
                 <h2>
-                 {deliver?.postBox} {deliver?.city}
+                  {deliver?.postBox} {deliver?.city}
                 </h2>
                 <p>ab CHF {deliver?.orderAb.toFixed(2)}</p>
               </div>

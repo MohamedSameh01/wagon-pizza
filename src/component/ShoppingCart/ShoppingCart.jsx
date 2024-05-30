@@ -90,13 +90,13 @@ const ShoppingCart = ({ setCheckoutAllowed }) => {
 
   return (
     <div className="cart-container">
-      <h1 className="highlight">Cart</h1>
+      <h1 className="highlight">Wagen</h1>
       {cart.totalItems === 0 && (
         <img className="empty-cart" src={emptyCart} alt="emptyCart" />
       )}
       {cart.totalItems > 0 && (
         <select className="select-city" onChange={getAddress}>
-          <option value={""}>select City</option>
+          <option value={""}>Stadt wählen </option>
           {delivers.data &&
             delivers.data.map((del) => {
               return (
@@ -120,7 +120,7 @@ const ShoppingCart = ({ setCheckoutAllowed }) => {
               <div className="product-details">
                 <h3>{meal.name}</h3>
                 <p className="price">
-                  Price:{" "}
+                  Preis :{" "}
                   <span className="highlight">
                     CHF {meal.totalPrice.toFixed(2)}
                   </span>
@@ -135,7 +135,7 @@ const ShoppingCart = ({ setCheckoutAllowed }) => {
                   })}
                 </p>
                 <div className="quantity-container">
-                  Quantity: <span className="highlight"> {meal.quantity}</span>
+                  Menge : <span className="highlight"> {meal.quantity}</span>
                 </div>
                 <div className="cart-buttons">
                   <button
@@ -166,18 +166,21 @@ const ShoppingCart = ({ setCheckoutAllowed }) => {
       {cart.totalItems > 0 && (
         <>
           <h2 className="total-price">
-            Total Price : CHF
+            Gesamtpreis : CHF
             <span className="highlight">
               {" "}
               {cart.totalPrice.toFixed(2)}{" "}
             </span>{" "}
           </h2>
           {minimumOrderAb === "" && (
-            <p className="minimumOrderAb">You must select area ....</p>
+            <p className="minimumOrderAb">
+              Sie müssen eine Stadt auswählen ....
+            </p>
           )}
           {cart.totalPrice < minimumOrderAb && minimumOrderAb !== "" && (
             <p className="minimumOrderAb">
-              you must request order more than or equal the minimum OrderAb CHF{" "}
+              Der Einkaufswert erreicht nicht die erforderliche Mindestgrenze
+              für eine Lieferung in Ihre Region! Ab CHF{" "}
               {parseFloat(minimumOrderAb).toFixed(2)}...
             </p>
           )}
@@ -192,7 +195,7 @@ const ShoppingCart = ({ setCheckoutAllowed }) => {
                 : false
             }
           >
-            {sending ? "sending" : "Order"}
+            {sending ? "Senden ..." : "Befehl"}
           </button>
         </>
       )}

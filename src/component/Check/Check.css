@@ -11,6 +11,8 @@
     color: var(--primary-color);
     .highlight{
         text-align: center;
+        margin-bottom: 70px;
+        font-size: 3rem;
     }
     p{
         color: rgb(183, 183, 183);

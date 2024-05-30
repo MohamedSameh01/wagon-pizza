@@ -24,6 +24,9 @@ header {
       cursor: pointer;
       justify-content: flex-start;
       align-items: center;
+      gap: 20px;
+      font-size: 20px;
+      font-weight: 700;
       img {
         width: 15%;
         height: 15%;
@@ -37,7 +40,7 @@ header {
       align-items: center;
       li {
         margin-right: 18px;
-        font-size: 1.1rem;
+        font-size: 1.3rem;
         a {
           /* transition: 0.3s ease-in-out; */
           position: relative;

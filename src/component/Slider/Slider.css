@@ -48,18 +48,19 @@
   left: 10%;
 
   h1 {
-    font-size: 4rem;
+    font-size: 5rem;
+    font-weight: bold;
     color: var(--orange-light);
   }
   p {
     font-size: 2.5rem;
-    color: var(--primary-color);
+    color: #F9F7F7;
     margin-top: 10px;
     line-height: 50px;
   }
 }
 
-@media only screen and (max-width: 440px) {
+@media only screen and (max-width: 495px) {
   .slider .slider-info {
     h1 {
     font-size: 3rem;

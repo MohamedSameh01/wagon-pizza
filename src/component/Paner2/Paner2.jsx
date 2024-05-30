@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 // import React from 'react'
 import "./Paner2.css"
-import PanerBoy from "../../assets/images/panerBoy2.jpg"
+import PanerBoy from "../../assets/images/panerGirl.png"
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 const Paner2 = () => {
@@ -19,7 +19,7 @@ const Paner2 = () => {
         className="animated-component"
       >
         <section className="section panner">
-          <h1 className="component-label highlight"> paner </h1>
+          {/* <h1 className="component-label highlight"> paner </h1> */}
           <div className="container">
             <div className="offer__wrapper">
               <div className="offer__img">

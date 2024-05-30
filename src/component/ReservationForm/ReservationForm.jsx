@@ -87,13 +87,22 @@ const ReservationForm = () => {
   // console.log("formData", formData);
   return (
     <div className="reservation">
-      <h1>
+      {/* <h1>
         {" "}
         <span className="highlight">Reserve</span> Your Table any time and for
         any occeasion
-      </h1>
+      </h1> */}
       <form id="contactForm" onSubmit={handleSubmit}>
-        <h2 className="contact-us">Reservation</h2>
+        <div className="reservation-text">
+          <h2 className="contact-us">Reservation</h2>
+          <p>
+            Buchen Sie online oder
+            <br />
+            rufen Sie uns unter{" "}
+            <span className="highlight">+41 55 460 33 66 </span> zwischen{" "}
+            <span className="highlight">9:30 - 22:00 Uhr </span>an
+          </p>
+        </div>
         <div className="form-group">
           <label htmlFor="name">Name:</label>
           <input
@@ -108,7 +117,7 @@ const ReservationForm = () => {
           <p>Selected Date: {formatSelectedDate(selectedDate)}</p>
         )} */}
         <div className="form-group">
-          <label htmlFor="email">Email:</label>
+          <label htmlFor="email">E-mail:</label>
           <input
             type="email"
             id="email"
@@ -121,7 +130,7 @@ const ReservationForm = () => {
           <label htmlFor="phone">Telefon:</label>
           <input type="tel" id="phone" name="phone" onChange={handelChange} />
         </div>
-        <div className="form-group">
+        {/* <div className="form-group">
           <label htmlFor="salute">Salute:</label>
           <input
             type="text"
@@ -129,9 +138,9 @@ const ReservationForm = () => {
             name="salute"
             onChange={handelChange}
           />
-        </div>
+        </div> */}
         <div className="form-group">
-          <label htmlFor="street">Anzaani Personen:</label>
+          <label htmlFor="street">Anzahl Personen:</label>
           <input
             type="text"
             id="street"
@@ -139,43 +148,52 @@ const ReservationForm = () => {
             onChange={handelChange}
           />
         </div>
-        <div className="form-group ">
-          <label htmlFor="date">Datum:</label>
-          <div className="dateContainer">
+        <div className="time-inputs">
+          <div className="form-group ">
+            <label htmlFor="date">Datum:</label>
+            <div className="dateContainer">
+              <input
+                type="text"
+                placeholder="DD-MM-YYYY"
+                // name="rDate"
+                disabled
+                value={
+                  formatSelectedDate(selectedDate)
+                    ? formatSelectedDate(selectedDate)
+                    : "DD.MM.YYYY"
+                }
+              />
+              <input
+                type="date"
+                id="date"
+                name="rDate"
+                value={selectedDate}
+                onChange={handleDateChange}
+              />
+            </div>
+          </div>
+          <div className="form-group">
+            <label htmlFor="rTime">Zeit:</label>
             <input
-              type="text"
-              placeholder="DD-MM-YYYY"
-              // name="rDate"
-              disabled
-              value={
-                formatSelectedDate(selectedDate)
-                  ? formatSelectedDate(selectedDate)
-                  : "DD.MM.YYYY"
-              }
-            />
-            <input
-              type="date"
-              id="date"
-              name="rDate"
-              value={selectedDate}
-              onChange={handleDateChange}
+              type="time"
+              id="rTime"
+              name="rTime"
+              onChange={handelChange}
             />
           </div>
         </div>
         <div className="form-group">
-          <label htmlFor="rTime">Time:</label>
-          <input type="time" id="rTime" name="rTime" onChange={handelChange} />
-        </div>
-        <div className="form-group">
-          <label htmlFor="notes">Notes</label>
+          <label htmlFor="notes">Nachricht: </label>
           <textarea onChange={handelChange} name="notes" />
         </div>
         <button type="submit" disabled={sending}>
-          {sending ? "Sending..." : "Send Message"}
+          {sending ? "senden..." : "Nachricht senden"}
         </button>
         {sent && (
           <div>
-            <p style={{ color: "#1dff1d" }}>Message sent successfully!</p>
+            <p style={{ color: "#1dff1d" }}>
+              Nachricht erfolgreich gesendet ...
+            </p>
           </div>
         )}
       </form>

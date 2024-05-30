@@ -10,16 +10,16 @@ const About = () => {
   });
 
   return (
-      <motion.div
-        ref={ref}
-        initial={{ opacity: 0, y: 200 }}
-        animate={inView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.6 }}
-        className="animated-component"
-      >
-    <div className="about">
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 200 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.6 }}
+      className="animated-component"
+    >
+      <div className="about">
         <h1 className="component-label">
-          <span className="highlight">About</span>
+          <span className="highlight">Über uns...</span>
         </h1>
         <div className="container">
           <div className="image">
@@ -29,14 +29,14 @@ const About = () => {
             <h2>Ein gemütlicher Ort für kulinarischen Genuss.</h2>
             <p>
               Für ein unvergleichliches Wohlfühlessen <br /> empfehlen wir stets
-              eine Kombination aus Gemüse, <br /> Maisbrot und köstlich
+              eine Kombination aus Gemüse,  Maisbrot und köstlich
               Frittiertem.
               <br />
             </p>
           </div>
         </div>
-    </div>
-      </motion.div>
+      </div>
+    </motion.div>
   );
 }
 

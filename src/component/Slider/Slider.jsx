@@ -109,7 +109,7 @@ const Slider = () => {
       > */}
         <div className="slider-info">
           <h1> Wangen </h1> <h1> Pizza, Kebab und Kurier </h1>{" "}
-          <p> Unser Geheimrezept: Qualität, Frische und Vielfalt! </p>{" "}
+          <p> Unsere Geheimrezept: Qualität, Frische und Vielfalt! </p>{" "}
         </div>{" "}
       {/* </motion.div> */}
     </section>

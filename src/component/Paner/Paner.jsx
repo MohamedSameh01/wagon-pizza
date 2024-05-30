@@ -19,25 +19,28 @@ const Paner = () => {
       className="animated-component"
     >
       <section className="section">
-        <h1 className="component-label highlight">paner</h1>
+        {/* <h1 className="component-label highlight">paner</h1> */}
         <div className="container">
           <div className="offer__wrapper">
+            <div className="offer__img">
+              <img src={PanerImg} alt="Im Wangen's Pizza" />
+            </div>
             <div className="offer__content">
               <h2>
-                <span className="highlight">Im Wangen's Pizza</span> geniessen
-                Sie exzellente Speisen und Getränke in einem entspannten
-                Ambiente. Wir vereinen gekonnt die raffinierte italienische
-                Esskultur mit dem Schweizer Lebensstil.
+                <span className="highlight">
+                  Gerichte zum Abholen bestellen.
+                </span>{" "}
+                <br />
+                Jetzt bequem Online abholen oder schnell liefern lassen.
+                <br />
+                <br /> Bei uns kannst du ganz einfach dein Lieblingsessen
+                bestellen und bequem nach Hause liefern lassen!
               </h2>
 
               <Link to="menue">
                 {" "}
-                <button className="view__more-btn">Order Now</button>
+                <button className="view__more-btn">Jetzt bestellen</button>
               </Link>
-            </div>
-
-            <div className="offer__img">
-              <img src={PanerImg} alt="Im Wangen's Pizza" />
             </div>
           </div>
         </div>

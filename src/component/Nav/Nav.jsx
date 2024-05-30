@@ -60,7 +60,8 @@ const Nav = () => {
           <div className="logo">
             <img src={Logo} alt="logo" />
             <h1>
-              <span className="highlight">wagon</span>pizza
+              <span className="highlight">Wangen </span>
+              Pizza
             </h1>
           </div>
         </Link>
@@ -71,13 +72,14 @@ const Nav = () => {
               <NavLink to="/">Home</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink to="menue">Menue</NavLink>
+              <NavLink to="menue">Menü</NavLink>
+            </li>
+
+            <li className="nav-item">
+              <NavLink to="angebote">Angebote & Gustscheine</NavLink>
             </li>
             <li className="nav-item">
               <NavLink to="reservation">Reservation</NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink to="angebote">Angebote & Gustscheine</NavLink>
             </li>
             <li className="nav-item">
               <NavLink to="kontakt">Kontakt</NavLink>
@@ -90,7 +92,10 @@ const Nav = () => {
             <Link to="Login">Login</Link>
           </button> */}
           <div className="cart-container">
-            <FaCartShopping className="cart" onClick={()=>navigate("/cart")} />
+            <FaCartShopping
+              className="cart"
+              onClick={() => navigate("/cart")}
+            />
             <span className="nomOfMeals">{cart.totalItems}</span>
           </div>
           <div className="menu-btn">

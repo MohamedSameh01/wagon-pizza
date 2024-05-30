@@ -79,7 +79,7 @@ const ContactForm = () => {
 
   return (
     <div className="contact">
-      <h1 className="highlight">Kontakt</h1>
+      <h1 className="highlighth1">Kontaktieren Sie uns...</h1>
       <motion.div
         ref={ref}
         initial={{ opacity: 0, y: 200 }}
@@ -91,18 +91,32 @@ const ContactForm = () => {
           <div className="contact-info">
             <div className="company-logo-name">
               <img src={Logo} alt="logo" />
-              <h1 className="highlight">Wangen Pizza, Kebab und Kurier</h1>
+              <div>
+                <h1 className="highlight">Wangen Pizza, Kebab und Kurier</h1>
+                <br/><br/>
+                <p className="company-address">
+                  {" "}
+                  {companyData?.data?.city +
+                    " " +
+                    companyData?.data?.street}{" "}
+                 
+                </p>
+              </div>
             </div>
             <CardInfo
               tel={companyData?.data?.phone2}
               pho={companyData?.data?.phone1}
-              address={companyData?.data?.city + companyData?.data?.street}
+              // address={companyData?.data?.city +" "+ companyData?.data?.street}
               email={companyData?.data?.email}
               whatsapp={companyData?.data?.phone1}
             />
           </div>
           <form onSubmit={handleSubmit} className="contact-form">
-            <h2 className="highlight">Contact Us</h2>
+            <h2 className="highlight " style={{ fontSize: "2rem" }}>
+              Kontakt
+            </h2>
+            <br />
+            <br />
             <div className="form-group">
               <label htmlFor="name">Name:</label>
               <input
@@ -115,7 +129,7 @@ const ContactForm = () => {
               />
             </div>
             <div className="form-group">
-              <label htmlFor="email">Email:</label>
+              <label htmlFor="email">E-mail:</label>
               <input
                 type="email"
                 id="email"
@@ -126,7 +140,7 @@ const ContactForm = () => {
               />
             </div>
             <div className="form-group">
-              <label htmlFor="phone">Phone:</label>
+              <label htmlFor="phone">Telefon:</label>
               <input
                 type="tel"
                 id="phone"
@@ -136,7 +150,7 @@ const ContactForm = () => {
               />
             </div>
             <div className="form-group">
-              <label htmlFor="message">Message:</label>
+              <label htmlFor="message">Nachricht:</label>
               <textarea
                 id="message"
                 name="message"
@@ -147,11 +161,13 @@ const ContactForm = () => {
               />
             </div>
             <button type="submit" disabled={sending}>
-              {sending ? "Sending..." : "Send Message"}
+              {sending ? "warte..." : "Senden"}
             </button>
             {sent && (
               <div>
-                <p style={{ color: "#1dff1d" }}>Message sent successfully!</p>
+                <p style={{ color: "#1dff1d", fontSize: "1rem" }}>
+                  Nachricht erfolgreich gesendet ...
+                </p>
               </div>
             )}
           </form>

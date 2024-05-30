@@ -39,7 +39,7 @@ const DailyProduct = () => {
     >
       <div className="dailyProduct container">
         <h1>
-          <span>Daily</span> Products
+          <span>Produkte</span> für den täglichen Bedarf !
         </h1>
         <div className="cards">
           {dailyProduct.data &&

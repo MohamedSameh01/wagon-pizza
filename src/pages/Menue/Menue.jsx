@@ -1,12 +1,12 @@
 /* eslint-disable no-unused-vars */
 // import React from 'react'
-import "./Menue.css";
 import { useEffect, useRef, useState } from "react";
 import MealCard from "../../component/MealCard/MealCard";
 import Spiner from "../../component/spiner/Spiner";
 import LabelCard from "../../component/LabelCard/LabelCard";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import "./Menue.css";
 const Menue = () => {
    const server = import.meta.env.VITE_SERVER;
   const [categories, setCategories] = useState({});
@@ -91,7 +91,7 @@ const Menue = () => {
     <section className="menue-sec">
       <div className="container">
         <h1>
-          <span className="highlight">Men</span>ue
+          <span className="highlight">Unser </span>Menü
         </h1>
         <motion.div
           ref={ref}
@@ -108,13 +108,13 @@ const Menue = () => {
                 return (
                   <div
                     className="card-label"
-                    key={cat.id}
+                     key={cat.id}
                     onClick={() => getSelectedCat(cat.id)}
                   >
-                    <img
+                     <img
                       src={`${server}/Images/${cat.photoName}`}
                       alt="label Image"
-                      className="card-image"
+                      className="card-Image"
                     />
                     <h4 className="card-title">{cat.name}</h4>
                   </div>
@@ -159,7 +159,6 @@ const Menue = () => {
         <div></div>
       </div>
     </section>
-    
   );
 };
 
