@@ -9,6 +9,7 @@ import { FaCartShopping } from "react-icons/fa6";
 import { addMeal } from "../../reduxTool/CartSlice";
 import "./MealCard.css";
 import Image from "../../assets/images/paner.png";
+import { useEffect } from "react";
 
 const MealCard = ({ meal, width }) => {
   
@@ -19,6 +20,9 @@ const MealCard = ({ meal, width }) => {
    const [selectedExtensions, setSelectedExtensions] = useState([]);
   const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
+   const [relatedExtensions, setRelatedExtensions] = useState({});
+   const [isLoading, setIsLoading] = useState(false);
+   const [categoryId,selecedCategoryId]=useState("");
   const server = import.meta.env.VITE_SERVER;
   const showModal = () => setOpen(true);
   const handleOk = () => setOpen(false);
@@ -35,8 +39,28 @@ const MealCard = ({ meal, width }) => {
      );
    };
 
-  
 
+    useEffect(() => {
+      const fetchProducts = async () => {
+        setIsLoading(true);
+        try {
+          const response = await fetch(
+            `${server}/api/Extension/GetAllExtensions`
+          );
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
+          const data = await response.json();
+          setRelatedExtensions(data);
+        } catch (error) {
+          console.error("Failed to fetch products:", error);
+        }
+        setIsLoading(false);
+      };
+      fetchProducts();
+    }, [categoryId,server]);
+  
+   console.log(meal)
   return (
     <div className="card" style={{ width: width }}>
       <motion.div
@@ -88,8 +112,8 @@ const MealCard = ({ meal, width }) => {
             <p>{meal.description1}</p>
             {meal.extensions && <h1>extras :</h1>}
             <div className="toppings">
-              {meal?.extensions &&
-                meal?.extensions?.map((topping,index) => (
+              {relatedExtensions.data&&
+              relatedExtensions?.data?.filter((x)=>x.categoryId===meal.subCategory.categoryId).map((topping, index) => (
                   <label key={index}>
                     <input
                       type="checkbox"
