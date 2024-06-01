@@ -28,7 +28,6 @@ const DailyProduct = () => {
     };
     fetchProducts();
   }, []);
-  console.log("dailyProducts", dailyProduct.data);
   return (
     <motion.div
       ref={ref}

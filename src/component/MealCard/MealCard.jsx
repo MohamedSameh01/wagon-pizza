@@ -60,7 +60,6 @@ const MealCard = ({ meal, width }) => {
       fetchProducts();
     }, [categoryId,server]);
   
-   console.log(meal)
   return (
     <div className="card" style={{ width: width }}>
       <motion.div

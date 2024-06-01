@@ -68,7 +68,6 @@ const Angebote = () => {
     };
     fetchProducts();
   }, []);
-  // console.log("offers", offers);
   return (
     <section className="angebote">
       <div className="container">
