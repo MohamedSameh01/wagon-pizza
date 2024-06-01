@@ -34,7 +34,7 @@ const ShoppingCart = ({ setCheckoutAllowed }) => {
     setSending(true);
     try {
       const response = await axios.post(`${server}/api/Cart/cart/add`, cart);
-      // console.log("response", response);
+      // console.log("cart", cart);
       toast.success("success");
       setSent(true);
       setCheckoutAllowed(true);
@@ -126,7 +126,7 @@ const ShoppingCart = ({ setCheckoutAllowed }) => {
                   </span>
                 </p>
                 <p className="description" key={top.id}>
-                  {meal.topings.map((top) => {
+                  {meal.extensions.map((top) => {
                     return (
                       <span key={top.id} className="cart-topings">
                         {top.name} ,{" "}

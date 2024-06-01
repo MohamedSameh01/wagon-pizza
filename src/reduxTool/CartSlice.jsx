@@ -14,16 +14,16 @@ export const CartSlice = createSlice({
       try {
         const meal = action.payload.meal;
         // console.log("meal", meal);
-        meal.topings = action.payload.selectedExtensions || [];
+        meal.extensions = action.payload.selectedExtensions || [];
         let priceOfTopings = 0;
-        if (meal.topings.length > 0) {
-          priceOfTopings = meal.topings.reduce((acc, obj) => {
+        if (meal.extensions.length > 0) {
+          priceOfTopings = meal.extensions.reduce((acc, obj) => {
             return acc + obj.price;
           }, 0);
         }
         const arraysEqual = (a, b) => JSON.stringify(a) === JSON.stringify(b);
         const exist = state.items.find(
-          (x) => x.productId === meal.id && arraysEqual(x.topings, meal.topings)
+          (x) => x.productId === meal.id && arraysEqual(x.extensions, meal.extensions)
         );
         if (exist) {
           exist.quantity++;
@@ -42,7 +42,7 @@ export const CartSlice = createSlice({
             description1: meal.description1,
             description2: meal.description2,
             description3: meal.description3,
-            topings: meal.topings,
+            extensions: meal.extensions,
           });
           state.totalItems++;
           state.totalPrice += meal.price + priceOfTopings;
@@ -59,13 +59,13 @@ export const CartSlice = createSlice({
         const exist = state.items.find(
           (x) =>
             x.productId === meal.productId &&
-            arraysEqual(x.topings, meal.topings)
+            arraysEqual(x.extensions, meal.extensions)
         );
         if (!exist) return;
 
         let priceOfTopings = 0;
-        if (meal.topings.length > 0) {
-          priceOfTopings = meal.topings.reduce((acc, obj) => {
+        if (meal.extensions.length > 0) {
+          priceOfTopings = meal.extensions.reduce((acc, obj) => {
             return acc + obj.price;
           }, 0);
         }
@@ -81,7 +81,7 @@ export const CartSlice = createSlice({
             (x) =>
               x.productId !== meal.productId ||
               (x.productId === meal.productId &&
-                arraysNotEqual(x.topings, meal.topings))
+                arraysNotEqual(x.extensions, meal.extensions))
           );
           state.totalItems--;
           state.totalPrice -= meal.price + priceOfTopings;
@@ -97,13 +97,13 @@ export const CartSlice = createSlice({
         const exist = state.items.find(
           (x) =>
             x.productId === meal.productId &&
-            JSON.stringify(x.topings) === JSON.stringify(meal.topings)
+            JSON.stringify(x.extensions) === JSON.stringify(meal.extensions)
         );
         if (!exist) return;
 
         let priceOfTopings = 0;
-        if (meal.topings.length > 0) {
-          priceOfTopings = meal.topings.reduce((acc, obj) => {
+        if (meal.extensions.length > 0) {
+          priceOfTopings = meal.extensions.reduce((acc, obj) => {
             return acc + obj.price;
           }, 0);
         }
@@ -112,7 +112,7 @@ export const CartSlice = createSlice({
         state.items = state.items.filter(
           (x) =>
             x.productId !== meal.productId ||
-            JSON.stringify(x.topings) !== JSON.stringify(meal.topings)
+            JSON.stringify(x.extensions) !== JSON.stringify(meal.extensions)
         );
       } catch (err) {
         console.log("can't remove this meal", err);
@@ -124,12 +124,12 @@ export const CartSlice = createSlice({
       const arraysEqual = (a, b) => JSON.stringify(a) === JSON.stringify(b);
       const exist = state.items.find(
         (x) =>
-          x.productId === meal.productId && arraysEqual(x.topings, meal.topings)
+          x.productId === meal.productId && arraysEqual(x.extensions, meal.extensions)
       );
       // console.log("exist",exist)
       let priceOfTopings = 0;
-      if (meal.topings.length > 0) {
-        priceOfTopings = meal.topings.reduce((acc, obj) => {
+      if (meal.extensions.length > 0) {
+        priceOfTopings = meal.extensions.reduce((acc, obj) => {
           return acc + obj.price;
         }, 0);
       }
@@ -143,3 +143,6 @@ export const CartSlice = createSlice({
 
 export const { addMeal, deleteMeal, removeMeal, addMealFromCart } = CartSlice.actions;
 export default CartSlice.reducer;
+
+
+

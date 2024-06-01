@@ -87,7 +87,9 @@ const Menue = () => {
     triggerOnce: true, 
     threshold: 0.1, 
   });
-  console.log(categories)
+
+
+  // console.log("products" ,prodOfSubCats)
   return (
     <section className="menue-sec">
       <div className="container">

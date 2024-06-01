@@ -23,28 +23,31 @@ const Payment = () => {
   }, []);
   // publish Key
   const [clientSecret, setClientSecret] = useState("");
+  const [prePrice,setPrePrice]=useState("");
+  const [discount, setDiscount] = useState("");
+  const [totalPrice,setTotalPrice]=useState("");
    const server = import.meta.env.VITE_SERVER;
-  const stripePromise = loadStripe(
-    "pk_test_51PBrSnRqgrJpcKxeJjMH7PizBA16oVuTCnCdp3v6vQVEimO9NQ3bnqrhDKyIUGimLkJwGFTEb0OYOuX2QXeZAplg00TQalEuPv"
-  );
+   const publishKey = import.meta.env.VITE_PUPLISH_KEY;
+  const stripePromise = loadStripe(`${publishKey}`);
     const location = useLocation();
     const keyId=location.state?.response;
-    console.log("keyId",keyId)
-
+    
    useEffect(() => {
      const createPaymentIntent = async () => {
        try {
          const response = await axios.post(
            `${server}/api/Cart/create-payment-intent`,{orderId:keyId});
-            console.log(response)
-         setClientSecret(`${response?.data?.clientSecret}`);
+          //  console.log("response", response);
+            setPrePrice(response?.data?.cartTotalNumber);
+            setDiscount(response?.data?.discountValue);
+            setTotalPrice(response?.data?.totalAfterDiscount);
+            setClientSecret(`${response?.data?.clientSecret}`);
        } catch (error) {
          console.error("Error creating payment intent:", error);
        }
      };
      createPaymentIntent();
    }, []);
-   console.log("clientSecret",clientSecret)
   const appearance = {
     // theme: "stripe",
     theme: "night",
@@ -58,8 +61,12 @@ const Payment = () => {
     <div className="payment-container">
       {clientSecret && (
         <Elements options={options} stripe={stripePromise}>
-          <PaymentForm  />
-          <Check/>
+          <PaymentForm orderID={keyId}/>
+          <Check
+            prePrice={prePrice}
+            discount={discount}
+            totalPrice={totalPrice}
+          />
         </Elements>
       )}
     </div>

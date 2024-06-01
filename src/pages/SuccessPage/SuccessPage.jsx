@@ -6,7 +6,7 @@ const SuccessPage = () => {
     const navigate=useNavigate();
     return (
       <div className="success-container">
-        <div className="card">
+        <div className="success-card">
           <div className="icon-container">
             <span className="success-circle">
               <svg
