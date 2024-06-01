@@ -90,7 +90,7 @@ const CheckOutForm = () => {
       const response = await axios.post(`${server}/api/Cart/order`, formData);
       toast.success("Check your email");
       dispatch(successCheckOut());
-      console.log(response)
+      // console.log(response)
       navigate("/cart/checkOut/payment", {
         state: { response: response.data?.data?.id},
       });
