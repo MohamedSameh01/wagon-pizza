@@ -74,7 +74,7 @@ const PaymentForm = ({ orderID }) => {
       elements,
       confirmParams: {
         // Make sure to change this to your payment completion page
-        return_url: "https://wagon-pizza.vercel.app/success/${orderId}",
+        return_url: `https://wagon-pizza.vercel.app/success/${orderId}`,
         // return_url: "http://localhost:5173/success",
         // return_url: `http://localhost:5173/success/${orderId}`,
       },
