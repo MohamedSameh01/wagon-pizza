@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 // import React from 'react'
 import "./Paner2.css"
-import PanerBoy from "../../assets/images/panerGirl.png"
+import PanerBoy from "../../assets/images/Image002.png"
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 const Paner2 = () => {
@@ -28,10 +28,13 @@ const Paner2 = () => {
 
               <div className="offer__content">
                 <h2>
-                  <span className="highlight">Im Wangen's Pizza</span> geniessen
-                  Sie exzellente Speisen und Getränke in einem entspannten
-                  Ambiente. Wir vereinen gekonnt die raffinierte italienische
-                  Esskultur mit dem Schweizer Lebensstil.
+                  <span className="highlight">Bei Wangen's Pizza</span>{" "}
+                  geniessen Sie exzellente Speisen und Getränke in einem
+                  entspannten Ambiente.
+                  <br />
+                  Wir vereinen geschickt die raffinierte italienische Esskultur
+                  mit dem{" "}
+                  <span className="highlight">Schweizer Lebensstil.</span>
                 </h2>
                 {/* <button className="view__more-btn">Order Now</button> */}
               </div>

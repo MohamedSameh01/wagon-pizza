@@ -73,9 +73,15 @@ const Footer = () => {
                 <li className="footer__menu-item">
                   <p className="footer__link">
                     {" "}
-                    is a long established fact that a reader will be distracted
-                    by the readable content of a page when looking at its
-                    layout. The point of using Lorem Ipsum is that it has a
+                    Bei uns geniessen Sie exzellente Pizzen und Getränke in
+                    einem entspannten Ambiente. Unsere Küche vereint gekonnt die
+                    raffinierte italienische Esskultur mit dem charmanten
+                    Schweizer Lebensstil.
+                    <br />
+                    <br /> Ob Sie bei uns vor Ort speisen oder unsere köstlichen
+                    Pizzen mit nach Hause nehmen möchten, bei
+                    <span className="highlight"> Wangen </span>Pizza erleben Sie
+                    stets erstklassigen Genuss und herzliche Gastfreundschaft.
                   </p>
                 </li>
               </ul>
@@ -120,10 +126,19 @@ const Footer = () => {
               </ul>
             </div>
           </div>
+          <div className="footer-extras">
+            <div>
+              <p>Impressum</p>
+              <p>Datenschutzbestimmungen</p>
+              <p>AGB</p>
+            </div>
+          </div>
 
           <hr />
           <p className="light-soft">
-            Copy Rights @<span className="highlight">Light Soft</span>
+            © Copyright 2024,<span className="highlight"> WeDo24.ch,</span>,
+            Alle Rechte vorbehalten. Entwickelt von
+            <span className="highlight"> Lightsoft</span>
           </p>
         </div>
       </footer>

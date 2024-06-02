@@ -34,7 +34,7 @@ function App() {
         <Route path="/reservation" element={<Reservation />} />
         <Route path="/angebote" element={<Angebote />} />
         <Route path="/kontakt" element={<Kontakt />} />
-        <Route path="/success" element={<SuccessPage />} />
+        <Route path="/success/:orderId" element={<SuccessPage />} />
         
         <Route
           path="/cart"

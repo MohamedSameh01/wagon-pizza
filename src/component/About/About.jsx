@@ -19,18 +19,20 @@ const About = () => {
     >
       <div className="about">
         <h1 className="component-label">
-          <span className="highlight">Über uns...</span>
+          <span className="highlight">
+            Herzlich willkommen bei Wangen Pizza!
+          </span>
         </h1>
         <div className="container">
           <div className="image">
             <img src={About_image} alt="" />
           </div>
           <div className="text">
-            <h2>Ein gemütlicher Ort für kulinarischen Genuss.</h2>
+            <h2>Ein einladender Ort für kulinarischen Genuss.</h2>
             <p>
-              Für ein unvergleichliches Wohlfühlessen <br /> empfehlen wir stets
-              eine Kombination aus Gemüse,  Maisbrot und köstlich
-              Frittiertem.
+              Für ein unvergleichliches Wohlfühlmahl empfehlen wir eine stets
+              köstliche Kombination aus frischem Gemüse, Maisbrot und delikaten
+              frittierten Spezialitäten
               <br />
             </p>
           </div>

@@ -37,7 +37,6 @@ const Payment = () => {
        try {
          const response = await axios.post(
            `${server}/api/Cart/create-payment-intent`,{orderId:keyId});
-          //  console.log("response", response);
             setPrePrice(response?.data?.cartTotalNumber);
             setDiscount(response?.data?.discountValue);
             setTotalPrice(response?.data?.totalAfterDiscount);

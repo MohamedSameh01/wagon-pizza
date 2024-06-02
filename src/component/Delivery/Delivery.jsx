@@ -1,5 +1,6 @@
+/* eslint-disable react-refresh/only-export-components */
 /* eslint-disable react/prop-types */
-// import React from 'react'
+import React from 'react'
 import { useEffect, useState } from "react";
 import "./Delivery.css";
 import Spiner from "../spiner/Spiner";
@@ -63,4 +64,4 @@ const Delivery = () => {
   );
 };
 
-export default Delivery;
+export default React.memo(Delivery);

@@ -19,10 +19,12 @@ const Sign = () => {
         {/* <h1 className="component-label highlight">Sign</h1> */}
         <div className="text">
           <h1>
-            Profitieren Sie von unserem exklusiven Angebot:
-            <br />
+            Profitieren Sie von unserem
+            <br /> exklusiven Angebot:
+            <br /> <br />
             Erhalten Sie <span> 50 % </span>
-            Rabatt auf Ihre erste Bestellung!
+            Rabatt
+            <br /> auf Ihre erste Bestellung!
           </h1>
         </div>
       </section>

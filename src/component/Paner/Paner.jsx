@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 // import React from 'react'
 import "./Paner.css"
-import PanerImg from "../../assets/images/paner.png"
+import PanerImg from "../../assets/images/Image003.png"
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
@@ -18,7 +18,7 @@ const Paner = () => {
       transition={{ duration: 0.6 }}
       className="animated-component"
     >
-      <section className="section">
+      <section className="section" style={{marginTop:"150px"}}>
         {/* <h1 className="component-label highlight">paner</h1> */}
         <div className="container">
           <div className="offer__wrapper">
@@ -28,13 +28,14 @@ const Paner = () => {
             <div className="offer__content">
               <h2>
                 <span className="highlight">
-                  Gerichte zum Abholen bestellen.
+                  Gerichte zum Mitnehmen bestellen.
                 </span>{" "}
                 <br />
-                Jetzt bequem Online abholen oder schnell liefern lassen.
+                Jetzt bequem online bestellen und abholen oder schnell liefern
+                lassen.
                 <br />
-                <br /> Bei uns kannst du ganz einfach dein Lieblingsessen
-                bestellen und bequem nach Hause liefern lassen!
+                <br /> Bei uns kannst du dein Lieblingsessen ganz einfach
+                bestellen und bequem nach
               </h2>
 
               <Link to="menue">

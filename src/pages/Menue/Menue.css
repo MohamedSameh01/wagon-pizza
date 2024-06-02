@@ -76,8 +76,9 @@
       border-radius: 50%;
       object-fit: cover;
     }
-    .card-label:hover {
-      background-color: #e99d59;
-    }
+    
   }
+  .card-label:hover {
+      background-color: #EE7C16;
+    }
 }

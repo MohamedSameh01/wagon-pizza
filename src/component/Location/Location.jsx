@@ -1,4 +1,5 @@
-// import React from 'react'
+/* eslint-disable react-refresh/only-export-components */
+import React from 'react'
 import "./Location.css";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
@@ -29,4 +30,4 @@ const Location = () => {
   );
 };
 
-export default Location;
+export default React.memo(Location);

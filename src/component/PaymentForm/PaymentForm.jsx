@@ -11,24 +11,22 @@ import {
   useElements,
 } from "@stripe/react-stripe-js";
 import TwentImage from "../../assets/images/TwentImage.png";
+import axios from "axios";
 const PaymentForm = ({ orderID }) => {
+
+
   const stripe = useStripe();
   const elements = useElements();
-  const server = import.meta.env.VITE_SERVER;
   const [message, setMessage] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [paymentMethod, setPaymentMethod] = useState("stripe");
-  const succeededFun = async () => {
-    try {
-      const response = await axios.post(
-        `${server}/api/Cart/PaymentSucceeded`,
-        orderID
-      );
-      // console.log("function exucuted perfectly")
-    } catch (error) {
-      console.error("Error creating payment intent:", error);
-    }
-  };
+  const [orderId,setOrderId]=useState("");
+
+  useEffect(()=>{
+    setOrderId(orderID);
+  },[])
+
+  
 
   useEffect(() => {
     if (!stripe) {
@@ -47,7 +45,6 @@ const PaymentForm = ({ orderID }) => {
       switch (paymentIntent.status) {
         case "succeeded":
           setMessage("Payment succeeded!");
-          succeededFun();
           break;
         case "processing":
           setMessage("Your payment is processing.");
@@ -77,8 +74,9 @@ const PaymentForm = ({ orderID }) => {
       elements,
       confirmParams: {
         // Make sure to change this to your payment completion page
-        return_url: "https://wagon-pizza.vercel.app/success",
-        // return_url: "http://localhost:5174/success",
+        return_url: "https://wagon-pizza.vercel.app/success/${orderId}",
+        // return_url: "http://localhost:5173/success",
+        // return_url: `http://localhost:5173/success/${orderId}`,
       },
     });
 

@@ -6,7 +6,20 @@
   background: var(--card-bg);
   display: block;
   font-family: Arial, Helvetica, sans-serif;
-  /* margin-top: 100px; */
+  .footer-extras {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 30px;
+    div {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      p {
+        color: var(--primary-color);
+        margin-left: 30px;
+      }
+    }
+  }
 }
 .footer__wrapper {
   display: flex;
@@ -24,7 +37,6 @@
 .footer__logo p {
   margin-top: 15px;
   margin-bottom: 20px;
-
 }
 
 .subscribe__box {
@@ -34,10 +46,7 @@
   border: 1px solid var(--primary-color);
   border-radius: 5px;
   width: 90%;
-  
 }
-
-
 
 .footer__link-title {
   margin-bottom: 10px;
@@ -51,10 +60,10 @@
   row-gap: 1rem;
 }
 .social-icons {
-  flex-direction: row ;
+  flex-direction: row;
   justify-content: space-between;
   color: rgb(255, 179, 3);
-  .icon{
+  .icon {
     width: 50px;
     height: 50px;
     object-fit: contain;
@@ -67,40 +76,41 @@
   color: white;
   line-height: 1.2;
   margin-top: -10px;
-  
 }
 
 .footer__copyright {
   text-align: center;
   margin-top: 50px;
 }
-.info-company{
+.info-company {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  span{
+  span {
     text-align: center;
   }
 }
-hr{
+hr {
   color: #acb2b2;
   margin-top: 50px;
 }
-.light-soft{
+.light-soft {
   text-align: center;
-  color: rgb(194, 163, 163);
-  text-decoration: underline;
+  color: rgb(210, 210, 210);
+  /* text-decoration: underline; */
+  margin-top: 5px;
+  font-size: 16px;
 }
 @media only screen and (max-width: 768px) {
-      section {
+  section {
     padding: 40px 0px;
   }
- .footer__logo {
+  .footer__logo {
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
-   align-items: center;
+    align-items: center;
   }
 
   .footer__wrapper {
@@ -111,19 +121,14 @@ hr{
 
   .footer__box {
     width: 45%;
-
   }
-
- 
 
   .subscribe__box {
     width: 100%;
   }
 
- 
   .footer__link-title {
     font-size: 1.5rem;
-
   }
 
   .footer__link {
@@ -135,14 +140,14 @@ hr{
   }
 }
 @media only screen and (max-width: 576px) {
-      .footer__box {
+  .footer__box {
     width: 90%;
     text-align: center;
   }
   .footer__link {
     font-size: 18px;
   }
-  .info-company{
+  .info-company {
     flex-direction: column;
     justify-content: center;
   }

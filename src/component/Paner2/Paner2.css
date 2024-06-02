@@ -22,7 +22,7 @@
 .offer__content h2 {
   font-size: 3rem;
   line-height: 50px;
-  word-spacing: 10px;
+  /* word-spacing: 10px; */
   margin-bottom: 30px;
 }
 
