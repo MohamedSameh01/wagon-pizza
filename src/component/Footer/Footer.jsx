@@ -80,8 +80,15 @@ const Footer = () => {
                     <br />
                     <br /> Ob Sie bei uns vor Ort speisen oder unsere köstlichen
                     Pizzen mit nach Hause nehmen möchten, bei
-                    <span className="highlight"> Wangen </span>Pizza erleben Sie
-                    stets erstklassigen Genuss und herzliche Gastfreundschaft.
+                    <span
+                      className="highlight"
+                      style={{ color: "rgb(255, 179, 3)" }}
+                    >
+                      {" "}
+                      Wangen{" "}
+                    </span>
+                    Pizza erleben Sie stets erstklassigen Genuss und herzliche
+                    Gastfreundschaft.
                   </p>
                 </li>
               </ul>
@@ -136,9 +143,16 @@ const Footer = () => {
 
           <hr />
           <p className="light-soft">
-            © Copyright 2024,<span className="highlight"> WeDo24.ch,</span>,
-            Alle Rechte vorbehalten. Entwickelt von
-            <span className="highlight"> Lightsoft</span>
+            © Copyright 2024,
+            <span className="highlight" style={{ color: "rgb(255, 179, 3)" }}>
+              {" "}
+              WeDo24.ch,
+            </span>
+            , Alle Rechte vorbehalten. Entwickelt von
+            <span className="highlight" style={{ color: "rgb(255, 179, 3)" }}>
+              {" "}
+              Lightsoft
+            </span>
           </p>
         </div>
       </footer>
