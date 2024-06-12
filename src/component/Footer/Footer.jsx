@@ -101,13 +101,22 @@ const Footer = () => {
               </h3>
               <ul className="footer__menu">
                 <li className="footer__menu-item">
-                  <p className="footer__link">{delivers?.data?.openTime1}</p>
+                  <p className="footer__link company-time">
+                    <span>Mo. – Do.: </span>
+                    {delivers?.data?.openTime1}
+                  </p>
                 </li>
                 <li className="footer__menu-item">
-                  <p className="footer__link">{delivers?.data?.openTime2}</p>
+                  <p className="footer__link company-time">
+                    <span>Fr. – Sa.: </span>
+                    {delivers?.data?.openTime2}
+                  </p>
                 </li>
                 <li className="footer__menu-item">
-                  <p className="footer__link">{delivers?.data?.openTime3}</p>
+                  <p className="footer__link company-time">
+                    <span>So.:</span>
+                    {`${delivers?.data?.openTime3}`}
+                  </p>
                 </li>
               </ul>
             </div>
@@ -119,16 +128,22 @@ const Footer = () => {
               </h3>
               <ul className="footer__menu">
                 <li className="footer__menu-item">
-                  <p className="footer__link">{delivers?.data?.delivery1}</p>
+                  <p className="footer__link company-time">
+                    <span>Mo. – Do.: </span>
+                    {delivers?.data?.delivery1}
+                  </p>
                 </li>
                 <li className="footer__menu-item">
-                  <p className="footer__link">{delivers?.data?.delivery2}</p>
+                  <p className="footer__link company-time">
+                    <span>Fr. – Sa.: </span>
+                    {delivers?.data?.delivery2}
+                  </p>
                 </li>
                 <li className="footer__menu-item">
-                  <p className="footer__link">{delivers?.data?.delivery3}</p>
-                </li>
-                <li className="footer__menu-item">
-                  <p className="footer__link">{delivers?.data?.delivery4}</p>
+                  <p className="footer__link company-time">
+                    <span>So.:</span>
+                    {`${delivers?.data?.delivery3}`}
+                  </p>
                 </li>
               </ul>
             </div>
