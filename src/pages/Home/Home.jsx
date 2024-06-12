@@ -2,7 +2,7 @@
 
 import About from "../../component/About/About";
 import DailyProduct from "../../component/DailyProduct/DailyProduct";
-import Delivery from "../../component/Delivery/Delivery";
+// import Delivery from "../../component/Delivery/Delivery";
 import Garage from "../../component/Garage/Garage";
 // import Footer from "../../component/Footer/Footer";
 // import Location from "../../component/Location/Location";
@@ -32,7 +32,7 @@ const Home = () => {
       <Paner2 />
       <Paner />
       <Garage />
-      <Delivery/>
+      {/* <Delivery/> */}
       {/* <ReservationForm/> */}
       {/* <Location /> */}
       {/* <Footer /> */}

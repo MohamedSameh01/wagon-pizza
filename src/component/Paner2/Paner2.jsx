@@ -23,7 +23,7 @@ const Paner2 = () => {
           <div className="container">
             <div className="offer__wrapper">
               <div className="offer__img">
-                <img src={PanerBoy} alt="Im Wangen's Pizza" />
+                <img src={PanerBoy} alt="Im Wangen's Pizza" loading="lazy" />
               </div>
 
               <div className="offer__content">

@@ -135,9 +135,15 @@ const Footer = () => {
           </div>
           <div className="footer-extras">
             <div>
-              <p>Impressum</p>
-              <p>Datenschutzbestimmungen</p>
-              <p>AGB</p>
+              <Link to="/impressum">
+                <p>Impressum</p>
+              </Link>
+              <Link to="/Datenschutzbestimmungen">
+                <p>Datenschutzbestimmungen</p>
+              </Link>
+              <Link to="/agb">
+                <p>AGB</p>
+              </Link>
             </div>
           </div>
 
@@ -146,7 +152,7 @@ const Footer = () => {
             © Copyright 2024,
             <span className="highlight" style={{ color: "rgb(255, 179, 3)" }}>
               {" "}
-              WeDo24.ch,
+              Wangen Pizza
             </span>
             , Alle Rechte vorbehalten. Entwickelt von
             <span className="highlight" style={{ color: "rgb(255, 179, 3)" }}>

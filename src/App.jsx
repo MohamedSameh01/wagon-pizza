@@ -21,6 +21,10 @@ import { useState } from "react";
 import Payment from "./pages/Payment/Payment";
 import { useSelector } from "react-redux";
 import SuccessPage from "./pages/SuccessPage/SuccessPage";
+import Delivery from "./component/Delivery/Delivery";
+import Impressum from "./component/Policy&Info/Impressum";
+import Datenschutzbestimmungen from "./component/Policy&Info/Datenschutzbestimmungen";
+import AGB from "./component/Policy&Info/AGB";
 
 function App() {
    const [isCheckoutAllowed, setCheckoutAllowed] = useState(false);
@@ -35,7 +39,7 @@ function App() {
         <Route path="/angebote" element={<Angebote />} />
         <Route path="/kontakt" element={<Kontakt />} />
         <Route path="/success/:orderId" element={<SuccessPage />} />
-        
+
         <Route
           path="/cart"
           element={<CartPage setCheckoutAllowed={setCheckoutAllowed} />}
@@ -60,12 +64,22 @@ function App() {
             />
           }
         />
+        <Route path="/impressum" element={<Impressum />} />
+        <Route
+          path="/datenschutzbestimmungen"
+          element={<Datenschutzbestimmungen />}
+        />
+        <Route
+          path="/agb"
+          element={<AGB />}
+        />
 
         {/* <Route path="/Login" element={<LoginPage />} />
         <Route path="/Register" element={<RegisterPage />} />
         <Route path="/ForgetPass" element={<ForgetPassPage />} />
         <Route path="/ResetPassword" element={<ResetPassPage />} /> */}
       </Routes>
+      <Delivery />
       <Location />
       <Footer />
     </>

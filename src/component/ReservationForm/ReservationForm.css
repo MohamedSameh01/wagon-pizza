@@ -1,11 +1,12 @@
 .reservation {
-  background-image: url("../../assets/background/hero-bg-2.jpg");
+  background-image: url("../../assets/background/08.png");
   display: flex;
   justify-content: flex-end;
   align-items: center;
   /* gap: 100px; */
   padding: 80px 50px 200px 200px;
   background-position: center;
+  background-size: cover;
   background-repeat: no-repeat;
   form {
     background-color: #3a3a3a;
@@ -83,7 +84,7 @@
 
   button {
     width: 100%;
-    padding: 10px;
+    padding: 20px;
     background-color: orange;
     color: black;
     border: none;

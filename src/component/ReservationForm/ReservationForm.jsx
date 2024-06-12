@@ -104,6 +104,15 @@ const ReservationForm = () => {
           </p>
         </div>
         <div className="form-group">
+          <label htmlFor="salute">Salute:</label>
+          <input
+            type="text"
+            id="salute"
+            name="salute"
+            onChange={handelChange}
+          />
+        </div>
+        <div className="form-group">
           <label htmlFor="name">Name:</label>
           <input
             type="text"
@@ -130,15 +139,7 @@ const ReservationForm = () => {
           <label htmlFor="phone">Telefon:</label>
           <input type="tel" id="phone" name="phone" onChange={handelChange} />
         </div>
-        {/* <div className="form-group">
-          <label htmlFor="salute">Salute:</label>
-          <input
-            type="text"
-            id="salute"
-            name="salute"
-            onChange={handelChange}
-          />
-        </div> */}
+
         <div className="form-group">
           <label htmlFor="street">Anzahl Personen:</label>
           <input

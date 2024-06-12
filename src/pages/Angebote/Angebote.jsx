@@ -73,7 +73,7 @@ const Angebote = () => {
       <div className="container">
         <div className="today-bonus">
           <h1>
-            Today<span className="highlight">Bonus</span>
+            Angebot<span className="highlight"> mit </span>Bonus
           </h1>
           <div className="cards">
             <Swiper
@@ -121,8 +121,8 @@ const Angebote = () => {
             transition={{ duration: 0.6 }}
             className="animated-component"
           >
-            <h1>
-              Today<span className="highlight">offers</span>
+            <h1 style={{marginTop:"200px"}}>
+              Tages<span className="highlight">angebote</span>
             </h1>
             <div className="cards">
               {offers.data &&
