@@ -25,7 +25,7 @@ const About = () => {
         </h1>
         <div className="container">
           <div className="image">
-            <img loading="lazy" src={About_image} alt="" />
+            <img src={About_image} alt="" />
           </div>
           <div className="text">
             <h2>Ein einladender Ort für kulinarischen Genuss.</h2>

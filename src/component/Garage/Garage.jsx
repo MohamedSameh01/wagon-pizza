@@ -23,9 +23,9 @@ const Garage = () => {
           Gratis <span> Parkplätze</span>
         </h1>
         <div className="places container">
-          <img src={Garage1} alt="garage1" loading="lazy" />
-          <img src={Garage2} alt="garage2" loading="lazy" />
-          <img src={Garage3} alt="garage3" loading="lazy" />
+          <img src={Garage1} alt="garage1" />
+          <img src={Garage2} alt="garage2" />
+          <img src={Garage3} alt="garage3" />
         </div>
       </div>
     </motion.div>
