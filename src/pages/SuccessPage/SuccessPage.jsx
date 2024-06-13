@@ -41,12 +41,12 @@ const SuccessPage = () => {
             </svg>
           </span>
         </div>
-        <h1>Payment Successful</h1>
+        <h1>Bezahlung erfolgreich</h1>
         <p>
-          Thank you for your payment! Your transaction has been completed
-          successfully.
+          Vielen Dank für Ihre Zahlung! Ihre Transaktion wurde erfolgreich
+          abgeschlossen.
         </p>
-        <button onClick={() => navigate("/")}>Go to Home</button>
+        <button onClick={() => navigate("/")}>Zur Startseite</button>
       </div>
     </div>
   );
