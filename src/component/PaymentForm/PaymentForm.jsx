@@ -12,21 +12,19 @@ import {
 } from "@stripe/react-stripe-js";
 import TwentImage from "../../assets/images/TwentImage.png";
 import axios from "axios";
+import { useSelector } from "react-redux";
 const PaymentForm = ({ orderID }) => {
-
-
   const stripe = useStripe();
   const elements = useElements();
   const [message, setMessage] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [paymentMethod, setPaymentMethod] = useState("stripe");
-  const [orderId,setOrderId]=useState("");
+  const [orderId, setOrderId] = useState("");
+  const checkUser = useSelector((state) => state.checkSlice.isCheck);
 
-  useEffect(()=>{
+  useEffect(() => {
     setOrderId(orderID);
-  },[])
-
-  
+  }, []);
 
   useEffect(() => {
     if (!stripe) {
@@ -129,7 +127,11 @@ const PaymentForm = ({ orderID }) => {
             id="payment-element"
             options={paymentElementOptions}
           />
-          <button disabled={isLoading || !stripe || !elements} id="submit">
+          <button
+            disabled={isLoading || !stripe || !elements || !checkUser}
+            className={!checkUser?"disable":""}
+            id="submit"
+          >
             <span id="button-text">
               {isLoading ? (
                 <div className="spinner" id="spinner">
