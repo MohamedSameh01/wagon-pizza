@@ -18,7 +18,7 @@ const Paner = () => {
       transition={{ duration: 0.6 }}
       className="animated-component"
     >
-      <section className="section" style={{marginTop:"150px"}}>
+      <section className="section panner" style={{ marginTop: "150px" }}>
         {/* <h1 className="component-label highlight">paner</h1> */}
         <div className="container">
           <div className="offer__wrapper">

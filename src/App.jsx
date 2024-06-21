@@ -79,7 +79,6 @@ function App() {
         <Route path="/ForgetPass" element={<ForgetPassPage />} />
         <Route path="/ResetPassword" element={<ResetPassPage />} /> */}
       </Routes>
-      <Delivery />
       <Location />
       <Footer />
     </>

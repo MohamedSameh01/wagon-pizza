@@ -14,14 +14,14 @@
   width: 100%;
 }
 .offer__content h2{
-     font-size: 1.5rem;
+     font-size: 3rem;
   line-height: 40px;
   margin-bottom: 20px;
   font-family: Arial, Helvetica, sans-serif;
 }
 
 .offer__content h2 span{
-  font-size: 4rem;
+  font-size: 3rem;
   line-height: 50px;
   margin-bottom: 30px;
 }
@@ -52,11 +52,20 @@
      .offer__content {
     flex-wrap: wrap;
     flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
   }
   .container .offer__img , .container .offer__content{
-    width: 90%;
+    width: 100%;
   }
  .offer__content {
     margin-bottom: 40px;
   }
 }
+/* @media only screen and (max-width: 370px) {
+  .offer__wrapper {
+    justify-content: flex-start;
+  }
+} */

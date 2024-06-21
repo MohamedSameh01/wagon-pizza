@@ -14,6 +14,7 @@ import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import Delivery from "../../component/Delivery/Delivery";
 const Angebote = () => {
    const scrollToTop = () => {
      window.scrollTo({
@@ -121,7 +122,7 @@ const Angebote = () => {
             transition={{ duration: 0.6 }}
             className="animated-component"
           >
-            <h1 style={{marginTop:"200px"}}>
+            <h1 style={{ marginTop: "200px" }}>
               Tages<span className="highlight">angebote</span>
             </h1>
             <div className="cards">
@@ -141,6 +142,7 @@ const Angebote = () => {
           </motion.div>
         </div>
       </div>
+      <Delivery/>
     </section>
   );
 };

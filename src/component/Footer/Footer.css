@@ -9,7 +9,7 @@
   .footer-extras {
     display: flex;
     justify-content: flex-end;
-    margin-top: 30px;
+    margin-top: 70px;
     div {
       display: flex;
       justify-content: flex-start;
@@ -17,6 +17,7 @@
       p {
         color: rgb(255, 179, 3);
         margin-left: 30px;
+        font-size: 1.2rem;
       }
     }
   }
@@ -146,6 +147,18 @@ hr {
   }
 }
 @media only screen and (max-width: 576px) {
+  .footer{
+    .footer-extras{
+      justify-content: center;
+      div{
+        justify-content: center;
+      }
+    }
+    
+    .footer-extras div p {
+      font-size: .8rem;
+    }
+  }
   .footer__box {
     width: 90%;
     text-align: center;

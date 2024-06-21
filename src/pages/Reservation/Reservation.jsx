@@ -3,6 +3,7 @@
 import ReservationForm from "../../component/ReservationForm/ReservationForm";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import Delivery from "../../component/Delivery/Delivery";
 const Reservation = () => {
   const { ref, inView } = useInView({
     triggerOnce: true, // Animation triggers only once
@@ -19,6 +20,7 @@ const Reservation = () => {
       >
         <ReservationForm />
       </motion.div>
+      <Delivery />
     </div>
   );
 };

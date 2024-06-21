@@ -7,6 +7,7 @@ import LabelCard from "../../component/LabelCard/LabelCard";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import "./Menue.css";
+import Delivery from "../../component/Delivery/Delivery";
 const Menue = () => {
    const server = import.meta.env.VITE_SERVER;
   const [categories, setCategories] = useState({});
@@ -163,6 +164,7 @@ const Menue = () => {
         </motion.div>
         <div></div>
       </div>
+      <Delivery />
     </section>
   );
 };

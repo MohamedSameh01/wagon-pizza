@@ -1,6 +1,7 @@
 // import React from 'react'
 
 import ContactForm from "../../component/ContactForm/ContactForm"
+import Delivery from "../../component/Delivery/Delivery";
 
 const Kontakt = () => {
 
@@ -15,9 +16,10 @@ const Kontakt = () => {
 
   return (
     <div>
-      <ContactForm/>
+      <ContactForm />
+      <Delivery />
     </div>
-  )
+  );
 }
 
 export default Kontakt
