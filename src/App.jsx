@@ -25,6 +25,7 @@ import Delivery from "./component/Delivery/Delivery";
 import Impressum from "./component/Policy&Info/Impressum";
 import Datenschutzbestimmungen from "./component/Policy&Info/Datenschutzbestimmungen";
 import AGB from "./component/Policy&Info/AGB";
+import FailedPayment from "./pages/FailedPaymentPage/FailedPayment"
 
 function App() {
    const [isCheckoutAllowed, setCheckoutAllowed] = useState(false);
@@ -38,7 +39,8 @@ function App() {
         <Route path="/reservation" element={<Reservation />} />
         <Route path="/angebote" element={<Angebote />} />
         <Route path="/kontakt" element={<Kontakt />} />
-        <Route path="/success/:orderId" element={<SuccessPage />} />
+        <Route path="/success" element={<SuccessPage />} />
+        <Route path="/failed-payment" element={<FailedPayment />} />
 
         <Route
           path="/cart"

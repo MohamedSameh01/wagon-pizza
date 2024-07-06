@@ -8,22 +8,22 @@ import axios from "axios";
 import { useEffect } from "react";
 const SuccessPage = () => {
   const navigate = useNavigate();
-  const orderId = useParams();
-  const server = import.meta.env.VITE_SERVER;
+  // const orderId = useParams();
+  // const server = import.meta.env.VITE_SERVER;
 
-  useEffect(() => {
-    const succeededFun = async () => {
-      try {
-        const response = await axios.post(
-          `${server}/api/Cart/PaymentSucceeded?orderId=${orderId.orderId}`,
-          orderId
-        );
-      } catch (error) {
-        console.error("Error creating payment intent:", error);
-      }
-    };
-    succeededFun();
-  }, [orderId]);
+  // useEffect(() => {
+  //   const succeededFun = async () => {
+  //     try {
+  //       const response = await axios.post(
+  //         `${server}/api/Cart/PaymentSucceeded?orderId=${orderId.orderId}`,
+  //         orderId
+  //       );
+  //     } catch (error) {
+  //       console.error("Error creating payment intent:", error);
+  //     }
+  //   };
+  //   succeededFun();
+  // }, [orderId]);
 
   return (
     <div className="success-container">
