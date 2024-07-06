@@ -33,7 +33,7 @@ const ReservationForm = () => {
     phone: "",
     rDate: "",
     rTime: "",
-    street: "",
+    numberOfPeople: "",
     notes: "",
     salute: "",
   });
@@ -64,7 +64,7 @@ const ReservationForm = () => {
         phone: "",
         rDate: "",
         rTime: "",
-        street: "",
+        numberOfPeople: "",
         notes: "",
         salute: "",
       });
@@ -149,11 +149,11 @@ const ReservationForm = () => {
         </div>
 
         <div className="form-group">
-          <label htmlFor="street">Anzahl Personen:</label>
+          <label htmlFor="numberOfPeople">Anzahl Personen:</label>
           <input
             type="text"
-            id="street"
-            name="street"
+            id="numberOfPeople"
+            name="numberOfPeople"
             onChange={handelChange}
           />
         </div>
