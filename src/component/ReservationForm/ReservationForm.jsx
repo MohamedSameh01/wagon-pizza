@@ -105,12 +105,20 @@ const ReservationForm = () => {
         </div>
         <div className="form-group">
           <label htmlFor="salute">Salute:</label>
-          <input
-            type="text"
+          <select
             id="salute"
             name="salute"
+            required
             onChange={handelChange}
-          />
+            value={formData.salute}
+          >
+            <option value="" disabled>
+              Select Salute
+            </option>
+            <option value="Herr">Herr</option>
+            <option value="Frau">Frau</option>
+            <option value="Firma">Firma</option>
+          </select>
         </div>
         <div className="form-group">
           <label htmlFor="name">Name:</label>

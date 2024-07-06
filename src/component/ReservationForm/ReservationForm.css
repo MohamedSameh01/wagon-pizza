@@ -81,7 +81,18 @@
       width: 45%;
     }
   }
-
+  .form-group select{
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    transition: box-shadow 0.3s;
+    font-size: 20px;
+    cursor: pointer;
+    option{
+      cursor: pointer;
+    }
+  }
   button {
     width: 100%;
     padding: 20px;

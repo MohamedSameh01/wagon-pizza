@@ -90,7 +90,7 @@ const ShoppingCart = ({ setCheckoutAllowed }) => {
 
   return (
     <div className="cart-container">
-      <h1 className="highlight">Wagen</h1>
+      <h1 className="highlight">Wangen</h1>
       {cart.totalItems === 0 && (
         <img className="empty-cart" src={emptyCart} alt="emptyCart" />
       )}

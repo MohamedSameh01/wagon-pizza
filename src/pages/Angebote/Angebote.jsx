@@ -15,6 +15,7 @@ import "swiper/css/scrollbar";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import Delivery from "../../component/Delivery/Delivery";
+import Location from "../../component/Location/Location";
 const Angebote = () => {
    const scrollToTop = () => {
      window.scrollTo({
@@ -142,7 +143,8 @@ const Angebote = () => {
           </motion.div>
         </div>
       </div>
-      <Delivery/>
+      <Delivery />
+      <Location />
     </section>
   );
 };

@@ -11,6 +11,7 @@ import "./Payment.css";
 import Check from "../../component/Check/Check";
 import { useSelector } from "react-redux";
 import CheckSlice from "../../reduxTool/CheckSlice";
+import Location from "../../component/Location/Location";
 const Payment = () => {
   const scrollToTop = () => {
     window.scrollTo({
@@ -23,55 +24,43 @@ const Payment = () => {
     scrollToTop();
   }, []);
 
-  const [clientSecret, setClientSecret] = useState("");
+  // const [clientSecret, setClientSecret] = useState("");
   const [prePrice, setPrePrice] = useState("");
   const [discount, setDiscount] = useState("");
   const [totalPrice, setTotalPrice] = useState("");
-  const server = import.meta.env.VITE_SERVER;
-  const publishKey = import.meta.env.VITE_PUPLISH_KEY;
-  const stripePromise = loadStripe(`${publishKey}`);
+  const [paymentUrl,setPaymentUrl]=useState("")
+  // const server = import.meta.env.VITE_SERVER;
+  // const publishKey = import.meta.env.VITE_PUPLISH_KEY;
+  // const stripePromise = loadStripe(`${publishKey}`);
   const location = useLocation();
-  const keyId = location.state?.response;
+  const response = location.state?.response;
+
   useEffect(() => {
-    const createPaymentIntent = async () => {
-      try {
-        const response = await axios.post(
-          `${server}/api/Cart/create-payment-intent`,
-          { orderId: keyId }
-        );
-        setPrePrice(response?.data?.cartTotalNumber);
-        setDiscount(response?.data?.discountValue);
-        setTotalPrice(response?.data?.totalAfterDiscount);
-        setClientSecret(`${response?.data?.clientSecret}`);
-      } catch (error) {
-        console.error("Error creating payment intent:", error);
-      }
-    };
-    createPaymentIntent();
-  }, []);
+    if(response){
+       setPrePrice(response?.data?.totalNumber);
+       setDiscount(response?.data?.discountValue);
+       setTotalPrice(response?.data?.finalTotalNumber);
+       setPaymentUrl(response?.paymentPageUrl);
+    }
+  }, [response]);
 
-  const appearance = {
-    theme: "night",
-    labels: "floating",
-  };
 
-  const options = {
-    clientSecret,
-    appearance,
-  };
+
 
   return (
     <div className="payment-container">
-      {clientSecret && (
+      {/* {clientSecret && (
         <Elements options={options} stripe={stripePromise}>
-          <PaymentForm orderID={keyId} />
-          <Check
-            prePrice={prePrice}
-            discount={discount}
-            totalPrice={totalPrice}
-          />
-        </Elements>
-      )}
+          <PaymentForm orderID={keyId} /> */}
+      <Check
+        prePrice={prePrice ? prePrice : 0}
+        discount={discount ? discount : 0}
+        totalPrice={totalPrice ? totalPrice : 0}
+        paymentUrl={paymentUrl ? paymentUrl : ""}
+      />
+      {/* </Elements>
+      )} */}
+      <Location />
     </div>
   );
 };

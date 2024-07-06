@@ -33,6 +33,7 @@ const CheckOutForm = () => {
   
   const [formData, setFormData] = useState({
     userId: `${userId}`,
+    salute:"",
     name: "",
     street: "",
     city: "",
@@ -85,17 +86,19 @@ const CheckOutForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
     setSending(true);
     try {
+      
       const response = await axios.post(`${server}/api/Cart/order`, formData);
       toast.success("Check your email");
       dispatch(successCheckOut());
-      // console.log(response)
       navigate("/cart/checkOut/payment", {
-        state: { response: response.data?.data?.id},
+        state: { response: response.data},
       });
       setSent(true);
       setFormData({
+        salute:"",
         name: "",
         street: "",
         city: "",
@@ -127,8 +130,25 @@ const CheckOutForm = () => {
           <img src={checkOut} alt="checkOut" />
         </div>
         <div className="check-out-container">
-          <form id="orderForm">
+          <form id="orderForm" onSubmit={handleSubmit}>
             <h2>Check Out</h2>
+            <div className="form-group">
+              <label htmlFor="name">Salute:</label>
+              <select
+                id="salute"
+                name="salute"
+                required
+                onChange={handleChange}
+                value={formData.salute}
+              >
+                <option value="" disabled>
+                  Select Salute
+                </option>
+                <option value="Herr">Herr</option>
+                <option value="Frau">Frau</option>
+                <option value="Firma">Firma</option>
+              </select>
+            </div>
             <div className="form-group">
               <label htmlFor="name">Name:</label>
               <input
@@ -196,6 +216,7 @@ const CheckOutForm = () => {
                 id="email"
                 name="email"
                 onChange={handleChange}
+                required
               />
             </div>
             <div className="form-group">
@@ -204,6 +225,7 @@ const CheckOutForm = () => {
                 type="text"
                 id="mobile"
                 name="mobile"
+                required
                 onChange={handleChange}
               />
             </div>
@@ -225,7 +247,7 @@ const CheckOutForm = () => {
                 onChange={handleChange}
               ></textarea>
             </div>
-            <button type="submit" disabled={sending} onClick={handleSubmit}>
+            <button type="submit" disabled={sending}>
               {sending ? "Senden..." : "check out"}
             </button>
           </form>

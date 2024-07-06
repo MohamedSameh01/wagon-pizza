@@ -2,6 +2,7 @@
 
 import ContactForm from "../../component/ContactForm/ContactForm"
 import Delivery from "../../component/Delivery/Delivery";
+import Location from "../../component/Location/Location";
 
 const Kontakt = () => {
 
@@ -18,6 +19,7 @@ const Kontakt = () => {
     <div>
       <ContactForm />
       <Delivery />
+      <Location />
     </div>
   );
 }

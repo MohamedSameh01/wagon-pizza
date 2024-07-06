@@ -5,6 +5,7 @@ import DailyProduct from "../../component/DailyProduct/DailyProduct";
 import Delivery from "../../component/Delivery/Delivery";
 // import Delivery from "../../component/Delivery/Delivery";
 import Garage from "../../component/Garage/Garage";
+import Location from "../../component/Location/Location";
 // import Footer from "../../component/Footer/Footer";
 // import Location from "../../component/Location/Location";
 // import Nav from "../../component/Nav/Nav";
@@ -27,13 +28,14 @@ const Home = () => {
     <div className="home">
       {/* <Nav /> */}
       <Slider />
-      <About/>
-      <DailyProduct/>
+      <About />
+      <DailyProduct />
       <Sign />
       <Paner2 />
       <Paner />
       <Garage />
-      <Delivery/>
+      <Delivery />
+      <Location />
       {/* <ReservationForm/> */}
       {/* <Location /> */}
       {/* <Footer /> */}

@@ -8,6 +8,7 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import "./Menue.css";
 import Delivery from "../../component/Delivery/Delivery";
+import Location from "../../component/Location/Location";
 const Menue = () => {
    const server = import.meta.env.VITE_SERVER;
   const [categories, setCategories] = useState({});
@@ -165,6 +166,7 @@ const Menue = () => {
         <div></div>
       </div>
       <Delivery />
+      <Location />
     </section>
   );
 };

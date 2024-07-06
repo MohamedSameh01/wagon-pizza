@@ -49,6 +49,7 @@ const SuccessPage = () => {
         <button onClick={() => navigate("/")}>Zur Startseite</button>
       </div>
     </div>
+    
   );
 };
 
