@@ -125,7 +125,7 @@ const MealCard = ({ meal, width }) => {
             </div>
             <button
               className="add-to-cart"
-              onClick={() => dispatch(addMeal({ meal, selectedExtensions }))}
+              onClick={() => {dispatch(addMeal({ meal, selectedExtensions }));handleOk()}}
             >
               In den Warenkorb
             </button>

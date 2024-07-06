@@ -27,8 +27,7 @@ const Check = ({ prePrice, discount, totalPrice, paymentUrl }) => {
       <div className="check">
         <label>
           <input type="checkbox" onChange={handleCheck} />
-          Ich habe die Allgemeine Geschäftsbestimmungen gelesen und stimme ihnen
-          zu.
+          Ich habe die Allgemeine Geschäftsbestimmungen gelesen und stimme ihnen zu.
         </label>
         <hr />
         <h1 className="highlight">Rechnungsdetails :-</h1>
@@ -49,7 +48,7 @@ const Check = ({ prePrice, discount, totalPrice, paymentUrl }) => {
           className={!checkUser ? "btn-pay disable" : "btn-pay"}
           disabled={!checkUser}
         >
-          Zur Kasse gehen ->
+          Zur Kasse gehen
         </button>
       </div>
     </div>

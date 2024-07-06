@@ -24,8 +24,10 @@
     font-size: 20px;
     cursor: pointer;
     background-color: rgb(163, 163, 163);
+    font-weight: 600;
     option{
       /* color: white; */
+      font-weight: 600;
       padding: 10px 20px;
     }
   }
