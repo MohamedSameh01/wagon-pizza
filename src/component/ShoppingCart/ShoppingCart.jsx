@@ -129,7 +129,7 @@ const ShoppingCart = ({ setCheckoutAllowed }) => {
                   {meal.extensions.map((top) => {
                     return (
                       <span key={top.id} className="cart-topings">
-                        {top.name} ,{" "}
+                        {top.name +" "} ,{" "}
                       </span>
                     );
                   })}

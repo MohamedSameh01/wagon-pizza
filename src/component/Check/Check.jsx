@@ -27,20 +27,21 @@ const Check = ({ prePrice, discount, totalPrice, paymentUrl }) => {
       <div className="check">
         <label>
           <input type="checkbox" onChange={handleCheck} />
-          Ich habe die Allgemeine Geschäftsbestimmungen gelesen und stimme ihnen zu.
+          Ich habe die Allgemeine Geschäftsbestimmungen gelesen und stimme ihnen
+          zu.
         </label>
         <hr />
         <h1 className="highlight">Rechnungsdetails :-</h1>
         <div className="price-container">
-          <h2>Preis vor Rabatt</h2>
+          <h2>Total: </h2>
           <p>CHF {prePrice.toFixed(2)} </p>
         </div>
         <div className="price-container">
-          <h2>Rabatt</h2>
+          <h2>Coupon-Rabatt: </h2>
           <p>CHF {discount.toFixed(2)} </p>
         </div>
         <div className="price-container ">
-          <h2>Der Endpreis</h2>
+          <h2>Gesamtsumme: </h2>
           <p>CHF {totalPrice.toFixed(2)} </p>
         </div>
         <button
