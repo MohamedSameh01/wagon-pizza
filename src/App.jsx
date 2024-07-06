@@ -56,7 +56,7 @@ function App() {
             />
           }
         />
-        <Route
+        <Route 
           path="/cart/checkOut/payment"
           element={
             <ProtectedRoute
