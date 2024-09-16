@@ -53,13 +53,13 @@ const Footer = () => {
                 <img src={Logo} alt="Logo" />
               </div>
               <div className="social-icons">
-                <a href="www.google.com">
+                <a href="www.google.com" target="_blank">
                   <img src={Facebook} alt="facebook" className="icon" />
                 </a>
-                <a href="www.google.com">
+                <a href="www.google.com" target="_blank">
                   <img src={Twitter} alt="twitter" className="icon" />
                 </a>
-                <a href="www.google.com">
+                <a href="www.google.com" target="_blank">
                   <img src={Instgram} alt="instgram" className="icon" />
                 </a>
               </div>

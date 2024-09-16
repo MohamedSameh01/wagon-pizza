@@ -77,7 +77,7 @@ const MealCard = ({ meal, width }) => {
         />
         <div className="card-content">
           <h2 className="meal-name">{meal.name}</h2>
-          <p>{meal.description}</p>
+          <p title={meal.description}>{meal.description}</p>
           <div className="card-footer">
             <span className="price"> CHF {meal.price.toFixed(2)}</span>
             <span className="cart-icon">

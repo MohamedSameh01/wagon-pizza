@@ -11,7 +11,7 @@ function Loginhook() {
     const [lo, setLog] = useState(true)
 
     const navigate = useNavigate()
-
+  
     const dispatch = useDispatch()
     const { loginUser, error } = useSelector((state) => state.Auth)
 
@@ -28,7 +28,6 @@ function Loginhook() {
                     "email": userName,
                     "password": password
                 }
-
             ))
             setLog(false)
         }
@@ -50,15 +49,16 @@ function Loginhook() {
                 }
             } else {
                 if (error) {
-                    if (error.message === "Invalid password") {
-                        toast.error("Invalid password")
-                    }
-                    if (error.message === "Email not confirmed ") {
-                        toast.error("Email not confirmed ")
-                    }
-                    if (error.message === "There is no user with that Email address") {
-                        toast.error("This email does not exist")
-                    }
+                    // if (error.message === "Invalid password") {
+                    //     toast.error("Invalid password")
+                    // }
+                    // if (error.message === "Email not confirmed ") {
+                    //     toast.error("Email not confirmed ")
+                    // }
+                    // if (error.message === "There is no user with that Email address") {
+                    //     toast.error("This email does not exist")
+                    // }
+                    toast.error(error.message)
                 }
             }
         }

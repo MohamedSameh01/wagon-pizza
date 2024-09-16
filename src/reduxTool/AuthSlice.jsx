@@ -8,7 +8,7 @@ const initialState = {
     isloading: false,
     error: null,
     forget: [],
-    reset: [],
+    reset: [], 
     contact:[],
 }
 
